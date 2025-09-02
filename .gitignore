@@ -1,0 +1,9 @@
+# crea .gitignore (o edítalo) con estas líneas:
+printf "node_modules/\n.env\n.DS_Store\ncoverage/\ndist/\nbuild/\n" > .gitignore
+
+# deja de trackear node_modules ya agregado por error (no lo borra del disco)
+git rm -r --cached node_modules
+
+# agrega el .gitignore y el cambio
+git add .gitignore
+git commit -m "chore: agrega .gitignore y deja de trackear node_modules"
