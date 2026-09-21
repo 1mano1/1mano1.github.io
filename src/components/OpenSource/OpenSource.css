@@ -1,0 +1,139 @@
+.opensource {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.os-featured {
+  background-color: var(--bg-gray);
+  border-radius: 24px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.os-featured-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.os-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.os-featured-title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.os-badge {
+  background-color: #0E0F12;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.os-featured-desc {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 800px;
+}
+
+.os-stats {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.os-terminal {
+  background-color: #0E0F12;
+  color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: monospace;
+  max-width: 600px;
+}
+
+.terminal-header {
+  background-color: #1A1C23;
+  padding: 12px 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-header .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot.red { background-color: #FF5F56; }
+.dot.yellow { background-color: #FFBD2E; }
+.dot.green { background-color: #27C93F; }
+
+.terminal-body {
+  padding: 24px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.terminal-body .prompt { color: var(--accent-blue); margin-right: 8px; }
+.terminal-body .success { color: #27C93F; }
+
+.os-ctas {
+  display: flex;
+  gap: 16px;
+}
+
+.os-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.os-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.os-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.os-card-top h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.os-lang {
+  font-size: 12px;
+  background-color: var(--bg-gray);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.os-card p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  flex-grow: 1;
+}
+
+.os-star {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}

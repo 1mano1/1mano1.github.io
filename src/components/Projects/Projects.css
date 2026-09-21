@@ -1,0 +1,88 @@
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.section-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link-github {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-blue);
+}
+
+.link-github:hover {
+  text-decoration: underline;
+}
+
+.project-card {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  background-color: var(--bg-gray);
+  border-radius: 24px;
+  padding: 64px;
+}
+
+.project-card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.project-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.project-year {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.project-desc {
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.project-tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.project-tags span {
+  background-color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #e0e0e0;
+}
+
+.project-image {
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}

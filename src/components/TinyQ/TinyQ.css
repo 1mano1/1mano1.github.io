@@ -1,0 +1,93 @@
+.tinyq-page {
+  padding-top: 40px;
+}
+
+.back-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: var(--text-primary);
+}
+
+.tinyq-hero-content h1 {
+  font-size: 64px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.tinyq-subtitle {
+  font-size: 24px;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin-bottom: 64px;
+}
+
+.tinyq-illustrations {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 80px;
+}
+
+.tinyq-illustrations img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 16px;
+  background-color: var(--bg-gray);
+}
+
+.tinyq-steps h2 {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 48px;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.step-card {
+  background-color: var(--bg-gray);
+  padding: 40px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step-num {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.step-card h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.step-card p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.step-card a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-blue);
+  margin-top: 16px;
+}
+
+.step-card a:hover {
+  text-decoration: underline;
+}
