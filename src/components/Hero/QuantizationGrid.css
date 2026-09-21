@@ -1,0 +1,315 @@
+.quant-wrapper {
+  position: relative;
+  width: 560px;
+  height: 560px;
+  font-family: 'Inter', sans-serif;
+}
+
+.quant-container {
+  width: 100%;
+  height: 100%;
+  background-color: #F5F6F8;
+  border-radius: 24px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.quant-board {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  margin-bottom: 48px;
+}
+
+.quant-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: absolute;
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quant-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.quant-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5E636E;
+  text-transform: uppercase;
+}
+
+.quant-size {
+  font-size: 24px;
+  font-weight: 600;
+  color: #0E0F12;
+}
+
+.blue-label, .blue-size {
+  color: #2D55FF;
+}
+
+.quant-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+  width: 200px;
+  height: 200px;
+}
+
+.int4-grid {
+  gap: 2px;
+  width: 160px;
+  height: 160px;
+  margin-top: 20px;
+}
+
+.quant-cell {
+  background-color: #2D55FF;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: crosshair;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.quant-cell:hover {
+  transform: scale(1.3);
+  box-shadow: 0 4px 12px rgba(45, 85, 255, 0.4);
+  z-index: 10;
+}
+
+.int4-grid .quant-cell {
+  border-radius: 2px;
+}
+
+.quant-tooltip {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0E0F12;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 20;
+}
+
+.quant-cell:hover .quant-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Arrow */
+.quant-arrow-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(calc(-50% + 20px));
+  opacity: 0;
+  transition: all 1s ease;
+  z-index: 5;
+  margin-top: 20px;
+}
+
+.quant-arrow {
+  font-size: 24px;
+  color: #0E0F12;
+  font-weight: 300;
+  letter-spacing: -2px;
+}
+
+.chip-bits {
+  background-color: #0E0F12;
+  color: #fff;
+  padding: 4px 10px;
+  font-size: 11px;
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+/* Memoria */
+.quant-divider {
+  border: none;
+  border-top: 1px solid #E5E7EB;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.memory-stats {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mem-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #5E636E;
+  margin-bottom: 16px;
+}
+
+.mem-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.mem-row:last-child {
+  margin-bottom: 0;
+}
+
+.mem-bar-wrapper {
+  width: 100%;
+  height: 12px;
+  background-color: #E2E8F0;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.mem-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1), background-color 1s ease;
+}
+
+.fp16-fill {
+  width: 100%;
+  background-color: #93A9FF;
+}
+
+.int4-fill {
+  width: 100%; /* Initially full to represent unquantized state */
+  background-color: #93A9FF;
+}
+
+.mem-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-family: monospace;
+  color: #5E636E;
+  font-weight: 500;
+}
+
+.blue-type, .blue-val {
+  color: #2D55FF;
+}
+
+/* Floating Chips */
+.chip {
+  background-color: #fff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  position: absolute;
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.chip .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot.green { background-color: #16A34A; }
+.dot.blue { background-color: #2D55FF; }
+
+.chip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chip-text strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0E0F12;
+}
+
+.chip-text span {
+  font-size: 12px;
+  color: #5E636E;
+}
+
+.chip-accuracy {
+  bottom: -20px;
+  left: -20px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.chip-android {
+  top: -20px;
+  right: -20px;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* --- ANIMATION STATES --- */
+.fp16-block {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.int4-block {
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.is-animated .fp16-block {
+  transform: translateX(-225px);
+}
+
+.is-animated .int4-block {
+  opacity: 1;
+  transform: translateX(65px);
+}
+
+.is-animated .quant-arrow-container {
+  opacity: 1;
+}
+
+/* The magic memory bar shrink */
+.is-animated .int4-fill {
+  width: 27%;
+  background-color: #2D55FF; /* Turn dark blue as it shrinks */
+}
+
+.is-animated .chip-accuracy {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.is-animated .chip-android {
+  opacity: 1;
+  transform: translateY(0);
+}
