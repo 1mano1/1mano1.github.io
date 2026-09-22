@@ -1,0 +1,27 @@
+/* El chip a lo ancho — Figma 49:2249 */
+
+/* Sin relleno arriba: los 56 de abajo del hero ya separan. Abajo, los 120
+   dibujados, que bajan a 48 en movil. */
+.chiptq {
+  padding-bottom: clamp(48px, calc(48px + 72 * (100vw - 360px) / 1152), 120px);
+}
+
+/* Figma le pone 120 de canaleta a la izquierda y 92 a la derecha, con lo que
+   el dibujo mide 1300 y queda descuadrado respecto a todo lo demas de la
+   pagina. Aqui va en la canaleta normal (1272 a 1512) y centrado. */
+.chiptq__marco {
+  border-radius: clamp(20px, calc(20px + 12 * (100vw - 360px) / 1152), 32px);
+  overflow: hidden;
+}
+
+/* La ilustracion se escala por alto y lo que sobra de ancho se recorta: con
+   el alto fijo de 460 dentro de una caja de 1272 se comian 14px por lado.
+   Fijando la proporcion del lienzo, la escala de alto y la de ancho son la
+   misma y no se pierde nada. Abajo de 900 se deja recortar, como el panel
+   del portafolio, que es como esta dibujado el movil. */
+@media (min-width: 900px) {
+  .chiptq .chipq {
+    height: auto;
+    aspect-ratio: 1300 / 460;
+  }
+}

@@ -1,0 +1,190 @@
+/* Nav — Figma 19:4 (desktop) y 53:2158 (movil) */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--blanco) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-boton) var(--sale);
+}
+
+.nav--desplazado {
+  border-bottom-color: var(--linea);
+}
+
+.nav__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  /* desktop 28px, movil 18px */
+  padding-block: clamp(18px, calc(18px + 10 * (100vw - 360px) / 1152), 28px);
+}
+
+/* ---- marca ---- */
+
+.nav__marca {
+  display: flex;
+  align-items: center;
+  /* desktop 10px, movil 8px */
+  gap: clamp(8px, calc(8px + 2 * (100vw - 360px) / 1152), 10px);
+}
+
+.logo {
+  display: block;
+  flex: none;
+  /* desktop 28px, movil 26px */
+  width: clamp(26px, calc(26px + 2 * (100vw - 360px) / 1152), 28px);
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.nav__nombre {
+  font-weight: 600;
+  font-size: clamp(15px, calc(15px + 1 * (100vw - 360px) / 1152), 16px);
+  letter-spacing: -0.01em;
+  color: var(--tinta);
+  white-space: nowrap;
+}
+
+.nav__nombre-largo {
+  display: none;
+}
+
+/* ---- enlaces ---- */
+
+.nav__enlaces {
+  display: none;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav__enlace {
+  position: relative;
+  font-size: var(--t-chico);
+  font-weight: 500;
+  color: var(--gris);
+  transition: color var(--t-hover) var(--sale);
+}
+
+.nav__enlace::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1.5px;
+  background: var(--azul);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-hover) var(--sale);
+}
+
+@media (hover: hover) {
+  .nav__enlace:hover {
+    color: var(--tinta);
+  }
+
+  .nav__enlace:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.nav__cta {
+  display: none;
+}
+
+/* ---- boton de menu (solo movil, Figma 53:2166) ---- */
+
+.nav__menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 37px;
+  padding: 13px 11px;
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+  background: var(--blanco);
+}
+
+.nav__raya {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--tinta);
+  transition: transform var(--t-boton) var(--sale);
+}
+
+.nav__raya--uno {
+  transform: translateY(3.5px) rotate(45deg);
+}
+
+.nav__raya--dos {
+  transform: translateY(-3.5px) rotate(-45deg);
+}
+
+/* ---- panel movil ---- */
+
+/* El display del autor le gana al [hidden] del navegador: hay que
+   apagarlo a mano o el panel ocupa sitio con el menu cerrado. */
+.nav__panel[hidden] {
+  display: none;
+}
+
+.nav__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px var(--canaleta) 24px;
+  border-top: 1px solid var(--linea);
+  background: var(--blanco);
+  animation: panel-abre 220ms var(--sale);
+}
+
+@keyframes panel-abre {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+.nav__panel-enlace {
+  padding: 14px 4px;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--tinta);
+  border-bottom: 1px solid var(--linea-suave);
+}
+
+.nav__panel-cta {
+  margin-top: 16px;
+  width: 100%;
+}
+
+/* ---- desktop ---- */
+
+@media (min-width: 900px) {
+  .nav__enlaces,
+  .nav__cta {
+    display: flex;
+  }
+
+  .nav__menu,
+  .nav__panel {
+    display: none;
+  }
+
+  .nav__nombre-largo {
+    display: inline;
+  }
+
+  .nav__nombre-corto {
+    display: none;
+  }
+}

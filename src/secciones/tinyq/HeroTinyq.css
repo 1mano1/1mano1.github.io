@@ -1,0 +1,180 @@
+/* Hero de tinyq — Figma 49:2175 (desktop) / 196:1466 (movil) */
+
+/* El movil dibuja esta pagina con otro lenguaje visual que el desktop
+   (chips azules rellenos, botones capsula, comando en negro) y ademas solo
+   tiene 6 de las 10 secciones. Se sigue el desktop y se encoge, que es lo
+   que hace el resto del sitio; del movil se toman las decisiones de
+   reparto: alineado a la izquierda, chips que envuelven y botones abajo. */
+.herotq {
+  padding-top: clamp(24px, calc(24px + 48 * (100vw - 360px) / 1152), 72px);
+  padding-bottom: 56px;
+}
+
+.herotq__interior {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, calc(20px + 8 * (100vw - 360px) / 1152), 28px);
+}
+
+.herotq__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 13px en desktop y 11 en movil: a 13 los cuatro chips suman 346 y se
+   parten en dos filas dentro de los 320 utiles. El movil dibujado los tiene
+   a 10px justo por eso, en una sola fila. */
+.herotq__chip {
+  padding: 5px clamp(10px, calc(10px + 2 * (100vw - 360px) / 1152), 12px);
+  border: 1px solid var(--linea);
+  border-radius: var(--r-chip);
+  font-size: clamp(11px, calc(11px + 2 * (100vw - 360px) / 1152), 13px);
+  line-height: 1.32;
+  color: var(--gris);
+}
+
+/* 34px en movil y 64 en desktop. No usa --t-h1 (40 → 68) porque este
+   titular es mas largo que el del portafolio y a 40 se come tres lineas. */
+.herotq__titulo {
+  font-size: clamp(34px, calc(34px + 30 * (100vw - 360px) / 1152), 64px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: clamp(-1.92px, calc(-0.85px - 1.07 * (100vw - 360px) / 1152), -0.85px);
+  color: var(--tinta);
+}
+
+.herotq__titulo em {
+  font-style: normal;
+  color: var(--azul);
+}
+
+.herotq__bajada {
+  font-size: clamp(15px, calc(15px + 4 * (100vw - 360px) / 1152), 19px);
+  line-height: 1.55;
+  color: var(--gris);
+}
+
+/* ---- comando y botones ---- */
+
+.herotq__acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.herotq__comando {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 7px 7px 7px 18px;
+  border: 1px solid var(--linea);
+  border-radius: var(--r-m);
+  background: var(--superficie);
+  /* El comando es largo: si no cabe se desliza dentro de su caja en vez de
+     ensanchar la pagina. */
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.herotq__linea {
+  flex: 1;
+  min-width: 0;
+  font-size: clamp(13px, calc(13px + 2 * (100vw - 360px) / 1152), 15px);
+  font-weight: 500;
+  line-height: 1.32;
+  color: var(--tinta);
+  white-space: nowrap;
+}
+
+.herotq__signo {
+  padding-right: 8px;
+  color: var(--gris-claro);
+}
+
+/* En movil van a mitades: sueltos suman 317 de los 320 que hay, y basta
+   que una fuente redondee distinto para que el segundo caiga solo. */
+.herotq__botones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.herotq__boton {
+  padding: 15px 22px;
+  line-height: 21px;
+}
+
+/* El movil dibujado no lo lleva, y sin el los dos botones caben. */
+.herotq__github {
+  display: none;
+  width: 18px;
+  height: 18px;
+}
+
+@media (min-width: 700px) {
+  .herotq__botones {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .herotq__github {
+    display: block;
+  }
+}
+
+/* ---- desktop: todo centrado ---- */
+
+@media (min-width: 900px) {
+  .herotq__interior {
+    align-items: center;
+  }
+
+  .herotq__titulo,
+  .herotq__bajada {
+    text-align: center;
+  }
+
+  .herotq__acciones {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .herotq__comando {
+    overflow-x: visible;
+  }
+}
+
+/* ---- boton de copiar (tambien lo usa la seccion de comandos) ---- */
+
+.copiar {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px 9px 12px;
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+  background: var(--blanco);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.32;
+  color: var(--gris);
+  transition:
+    border-color var(--t-hover) var(--sale),
+    color var(--t-hover) var(--sale);
+}
+
+/* Ancho fijo para que "Copiar" -> "Copiado" no mueva lo que tiene al lado. */
+.copiar__texto {
+  min-width: 52px;
+  text-align: left;
+}
+
+@media (hover: hover) {
+  .copiar:hover {
+    border-color: var(--gris-claro);
+    color: var(--tinta);
+  }
+}

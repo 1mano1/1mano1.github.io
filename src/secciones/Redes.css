@@ -1,0 +1,230 @@
+/* 05 — En línea. Figma 73:4270 (desktop) / 56:3260 (movil) */
+
+/* Fondo blanco, que es el del desktop. El movil la dibuja sobre #f5f6f8 y
+   rompe la alternancia por su cuenta; se sigue al desktop porque Contacto
+   empieza sin relleno arriba y el gris terminaria justo donde arranca el
+   panel azul. */
+.redes {
+  padding-top: clamp(64px, calc(64px + 76 * (100vw - 360px) / 1152), 140px);
+  padding-bottom: clamp(64px, calc(64px + 76 * (100vw - 360px) / 1152), 140px);
+}
+
+/* 12 de separacion mas 14 de relleno bajo la cabecera en movil; 64 en
+   desktop, donde la cabecera no lleva relleno. Van juntos en un solo hueco. */
+.redes__interior {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(26px, calc(26px + 38 * (100vw - 360px) / 1152), 64px);
+}
+
+/* ---- cabecera ---- */
+
+.redes__cabecera {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.redes__titulos {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, calc(10px + 6 * (100vw - 360px) / 1152), 16px);
+}
+
+/* El movil dibujado no lleva la entradilla: las seis tarjetas dicen lo
+   mismo —que hay codigo en GitHub y modelos en Hugging Face— con el nombre
+   de cada sitio, asi que no se pierde informacion al ocultarla. */
+.redes__intro {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  .redes__cabecera {
+    flex-direction: row;
+    /* cross:MAX en Figma: la entradilla se apoya en la linea de base del h2. */
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .redes__intro {
+    display: block;
+    max-width: 400px;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--gris);
+  }
+}
+
+/* ---- tarjetas ---- */
+
+/* El hueco entre filas es el de la seccion (64) porque en Figma cada fila de
+   tres es un frame suelto; el de las columnas es 20. A dos columnas no hay
+   nada dibujado y se usa el 20 en los dos sentidos: 64 de aire entre tres
+   filas de tarjetas de 102 dejaria la seccion medio vacia.
+   Los cortes van mas arriba de lo habitual (930 y 1420 en vez de 720 y 1200)
+   porque la columna de texto necesita 211px para que quepa la descripcion
+   mas larga, y de ahi sale el ancho minimo de tarjeta: 385. A 768 con dos
+   columnas la tarjeta se quedaba en 319 y todas las descripciones salian
+   con puntos suspensivos. */
+.redes__lista {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 930px) {
+  .redes__lista {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1420px) {
+  .redes__lista {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    row-gap: 64px;
+  }
+}
+
+/* `min-width: 0` para que la meta sin cortar no ensanche la columna: el
+   minimo de la rejilla seria el largo del texto y la tarjeta se saldria de
+   la pantalla en vez de recortar la descripcion. */
+.tarjeta-red {
+  min-width: 0;
+}
+
+.tarjeta-red__enlace {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  /* 16 en movil y 24 en desktop: con el mosaico de 52 salen los 86 y los 102
+     de alto que estan dibujados. */
+  padding: 16px;
+  /* La tarjeta que envuelve a dos lineas estira su fila; el enlace llena el
+     alto para que el borde no se quede corto al lado de la de junto. */
+  height: 100%;
+  border: 1px solid var(--linea);
+  border-radius: 22px;
+  transition:
+    border-color var(--t-hover) var(--sale),
+    box-shadow var(--t-hover) var(--sale);
+}
+
+@media (min-width: 720px) {
+  .tarjeta-red__enlace {
+    padding: 24px;
+  }
+}
+
+.tarjeta-red__marca {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Figma dibuja el de Figma 2.5px por encima del centro y el de Roblox 6.5
+   abajo y a la izquierda; aqui los seis van centrados. En un mosaico de 52
+   ese desplazamiento se nota y no parece buscado. */
+.tarjeta-red__github {
+  width: 26px;
+  height: 26px;
+  color: var(--blanco);
+}
+
+.tarjeta-red__letra {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.41;
+  color: var(--blanco);
+}
+
+.tarjeta-red__letra--k {
+  font-size: 28px;
+  color: #20beff;
+}
+
+.tarjeta-red__textos {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 3px;
+  min-width: 0;
+}
+
+.tarjeta-red__nombre {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.41;
+  letter-spacing: -0.005em;
+  color: var(--tinta);
+}
+
+/* A 360 la columna de texto mide 164 y las metas piden entre 168 y 198, asi
+   que algo sobra siempre. Figma lo corta en seco; aqui se encoge solo la
+   descripcion y el usuario nunca se toca, que es el dato que sirve para
+   buscar la cuenta. Dejarlo envolver costaba dos lineas en las seis tarjetas
+   y un corte a media frase ("Código y / experimentos"). */
+.tarjeta-red__meta {
+  display: flex;
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.41;
+  color: var(--gris);
+}
+
+.tarjeta-red__cuenta,
+.tarjeta-red__punto {
+  flex: none;
+}
+
+.tarjeta-red__que {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* El separador va con espacios anchos, como esta dibujado. */
+.tarjeta-red__punto {
+  padding-inline: 6px;
+}
+
+.tarjeta-red__flecha {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--r-chip);
+  background: var(--superficie);
+  color: var(--tinta);
+  transition:
+    background-color var(--t-hover) var(--sale),
+    color var(--t-hover) var(--sale);
+}
+
+.tarjeta-red__flecha .icono-enlace {
+  color: currentColor;
+}
+
+/* El estado hover de Figma solo pinta el circulo de azul con la flecha en
+   blanco. El borde azul y la sombra no estan dibujados: son los mismos de
+   las otras tarjetas del sitio, que si no, la tarjeta entera se queda
+   quieta mientras el cursor esta encima. */
+@media (hover: hover) {
+  .tarjeta-red__enlace:hover {
+    border-color: var(--azul);
+    box-shadow: 0 8px 20px -6px rgb(26 51 178 / 0.18);
+  }
+
+  .tarjeta-red__enlace:hover .tarjeta-red__flecha {
+    background: var(--azul);
+    color: var(--blanco);
+  }
+}

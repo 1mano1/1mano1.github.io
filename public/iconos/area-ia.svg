@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame">
+<rect width="56" height="56" rx="16" fill="#EEF2FF"/>
+<path id="Vector" opacity="0.5" d="M14 18L28 14" stroke="#2D55FF" stroke-width="1.2"/>
+<path id="Vector_2" opacity="0.5" d="M14 18L28 28" stroke="#2D55FF" stroke-width="1.2"/>
+<path id="Vector_3" opacity="0.5" d="M14 38L28 28" stroke="#2D55FF" stroke-width="1.2"/>
+<path id="Vector_4" opacity="0.5" d="M14 38L28 42" stroke="#2D55FF" stroke-width="1.2"/>
+<path id="Vector_5" opacity="0.5" d="M14 18L28 42" stroke="#2D55FF" stroke-width="1.2"/>
+<path id="Vector_6" opacity="0.5" d="M14 38L28 14" stroke="#2D55FF" stroke-width="1.2"/>
+<path id="Vector_7" opacity="0.5" d="M28 14L42 28" stroke="#2D55FF" stroke-width="1.2"/>
+<path id="Vector_8" opacity="0.5" d="M28 28H42" stroke="#2D55FF" stroke-width="1.2"/>
+<path id="Vector_9" opacity="0.5" d="M28 42L42 28" stroke="#2D55FF" stroke-width="1.2"/>
+<circle id="Ellipse" cx="14" cy="18" r="4" fill="#2D55FF"/>
+<circle id="Ellipse_2" cx="14" cy="38" r="4" fill="#2D55FF"/>
+<circle id="Ellipse_3" cx="28" cy="14" r="4" fill="#2D55FF"/>
+<circle id="Ellipse_4" cx="28" cy="28" r="4" fill="#2D55FF"/>
+<circle id="Ellipse_5" cx="28" cy="42" r="4" fill="#2D55FF"/>
+<circle id="Ellipse_6" cx="42" cy="28" r="4" fill="#2D55FF"/>
+</g>
+</svg>
