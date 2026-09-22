@@ -1,0 +1,384 @@
+/* 02 — Open source. Figma 73:3272 (desktop) / 54:2896 (movil) */
+
+.open {
+  background: var(--blanco);
+  padding-top: clamp(64px, calc(64px + 76 * (100vw - 360px) / 1152), 140px);
+  padding-bottom: clamp(64px, calc(64px + 76 * (100vw - 360px) / 1152), 140px);
+  /* Entre cabecera, chip, panel y repos hay 14 en movil y 64 en desktop. */
+  --hueco: clamp(14px, calc(14px + 50 * (100vw - 360px) / 1152), 64px);
+}
+
+.open .contenedor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hueco);
+}
+
+.open__cabecera {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, calc(10px + 6 * (100vw - 360px) / 1152), 16px);
+}
+
+/* ---- panel del proyecto destacado (Figma 23:6) ---- */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--linea);
+  border-radius: clamp(24px, calc(24px + 8 * (100vw - 360px) / 1152), 32px);
+  background: var(--blanco);
+}
+
+.panel__info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: clamp(24px, calc(24px + 12 * (100vw - 360px) / 1152), 36px);
+  padding: clamp(26px, calc(26px + 30 * (100vw - 360px) / 1152), 56px)
+    clamp(22px, calc(22px + 34 * (100vw - 360px) / 1152), 56px);
+}
+
+.panel__repo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.panel__marca {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--tinta);
+  color: var(--blanco);
+}
+
+.panel__marca .icono-github {
+  width: 22px;
+  height: 22px;
+}
+
+.panel__ruta {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.32;
+  color: var(--tinta);
+}
+
+.panel__licencia {
+  padding: 4px 10px;
+  border: 1px solid var(--linea);
+  border-radius: var(--r-chip);
+  font-size: 11px;
+  line-height: 1.32;
+  color: var(--gris);
+}
+
+.panel__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 34px en movil, 44 en desktop */
+.panel__titulo {
+  font-size: clamp(34px, calc(34px + 10 * (100vw - 360px) / 1152), 44px);
+  font-weight: 600;
+  line-height: 1.41;
+  letter-spacing: -0.02em;
+  color: var(--tinta);
+}
+
+.panel__texto {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--gris);
+}
+
+/* ---- los tres pasos ---- */
+
+.panel__pasos {
+  display: flex;
+  flex-direction: column;
+}
+
+/* En movil el paso va en dos lineas: [n] Titulo arriba y el texto debajo
+   ocupando todo el ancho, no sangrado bajo el titulo. */
+.paso {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 8px 10px;
+  padding: 16px 0;
+  border-top: 1px solid var(--linea);
+}
+
+.paso__texto {
+  grid-column: 1 / -1;
+}
+
+.paso__num {
+  justify-self: start;
+  padding: 4px 9px;
+  border-radius: var(--r-s);
+  background: var(--azul-50);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.32;
+  color: var(--azul);
+}
+
+.paso__titulo,
+.paso__texto {
+  font-size: 15px;
+  line-height: 1.41;
+}
+
+.paso__titulo {
+  font-weight: 600;
+  color: var(--tinta);
+}
+
+.paso__texto {
+  color: var(--gris);
+}
+
+/* Desde tablet el titulo y el texto del paso van en la misma linea, como
+   en el diseno de escritorio. */
+@media (min-width: 560px) {
+  .paso {
+    grid-template-columns: auto auto 1fr;
+    column-gap: 20px;
+  }
+
+  .paso__texto {
+    grid-column: auto;
+  }
+}
+
+/* ---- pie: metadatos y botones ---- */
+
+.panel__pie {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.panel__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  font-size: 13px;
+  line-height: 1.41;
+  color: var(--gris);
+}
+
+.panel__meta .mono {
+  font-size: 13px;
+}
+
+.panel__lenguaje,
+.tarjeta-repo__lenguaje {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.panel__punto {
+  display: block;
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* En movil los dos botones ocupan el ancho completo, uno debajo del otro. */
+.panel__botones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Desde tablet los botones caben en fila y los metadatos se les pegan
+   encima, como esta dibujado el escritorio. */
+@media (min-width: 560px) {
+  .panel__pie {
+    gap: 0;
+  }
+
+  .panel__botones {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.boton--repo,
+.boton--docs {
+  padding: 13px 18px;
+  border-radius: var(--r-m);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.41;
+}
+
+.boton--repo {
+  gap: 10px;
+  padding-right: 20px;
+  background: var(--tinta);
+  color: var(--blanco);
+}
+
+.boton--repo .icono-github {
+  width: 18px;
+  height: 18px;
+}
+
+.boton--docs {
+  border: 1px solid var(--linea);
+  color: var(--tinta);
+}
+
+@media (hover: hover) {
+  .boton--repo:hover {
+    background: var(--azul);
+  }
+
+  .boton--docs:hover {
+    border-color: var(--tinta);
+    background: var(--superficie);
+  }
+}
+
+/* ---- terminal (Figma 23:49) ---- */
+
+.terminal {
+  margin: 0;
+  flex: none;
+  padding: clamp(24px, calc(24px + 16 * (100vw - 360px) / 1152), 40px)
+    clamp(22px, calc(22px + 18 * (100vw - 360px) / 1152), 40px);
+  background: var(--tinta);
+  font-family: var(--mono);
+  /* 12px/18.6 en movil, 14px/21.7 en desktop */
+  font-size: clamp(12px, calc(12px + 2 * (100vw - 360px) / 1152), 14px);
+  line-height: 1.55;
+  /* Las lineas ya vienen alineadas con espacios: si se parten, se descuadra. */
+  overflow-x: auto;
+}
+
+.terminal__linea {
+  min-height: 1.55em;
+}
+
+/* Los tres botones de la ventana los dibuja el ::before del bloque. */
+.terminal::before {
+  content: '';
+  display: block;
+  width: 47px;
+  height: 11px;
+  margin-bottom: 20px;
+  background:
+    radial-gradient(circle 5.5px at 5.5px 5.5px, #ff5f57 100%, transparent 0) 0 0 / 18px 11px
+      no-repeat,
+    radial-gradient(circle 5.5px at 5.5px 5.5px, #febc2e 100%, transparent 0) 18px 0 / 18px 11px
+      no-repeat,
+    radial-gradient(circle 5.5px at 5.5px 5.5px, #28c840 100%, transparent 0) 36px 0 / 11px 11px
+      no-repeat;
+}
+
+/* ---- tarjetas de repo (Figma 37:898 / 37:927 / 37:956) ---- */
+
+.open__repos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.tarjeta-repo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  border: 1px solid var(--linea);
+  border-radius: 20px;
+  background: var(--blanco);
+  transition:
+    border-color var(--t-hover) var(--sale),
+    box-shadow var(--t-hover) var(--sale),
+    opacity var(--t-revelar) var(--sale),
+    transform var(--t-revelar) var(--sale);
+}
+
+.tarjeta-repo__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tarjeta-repo__nombre {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.32;
+  color: var(--tinta);
+}
+
+.tarjeta-repo__nombre .icono-github {
+  width: 18px;
+  height: 18px;
+}
+
+.tarjeta-repo__texto {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gris);
+}
+
+.tarjeta-repo__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  line-height: 1.41;
+  color: var(--gris);
+}
+
+.tarjeta-repo__meta .panel__punto {
+  width: 9px;
+  height: 9px;
+}
+
+@media (hover: hover) {
+  .tarjeta-repo:hover {
+    border-color: var(--azul);
+    box-shadow: 0 16px 40px -4px rgb(26 51 178 / 0.12);
+  }
+
+  .tarjeta-repo:hover .icono-enlace {
+    color: var(--azul);
+  }
+}
+
+/* ---- desktop: panel en dos columnas y repos en fila ---- */
+
+@media (min-width: 900px) {
+  .panel {
+    flex-direction: row;
+  }
+
+  /* 520 de 1228 en Figma: 42.3% del ancho del panel. */
+  .terminal {
+    width: clamp(360px, 42.3%, 520px);
+  }
+
+  .open__repos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}

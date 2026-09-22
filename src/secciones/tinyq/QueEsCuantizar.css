@@ -1,0 +1,105 @@
+/* Qué es cuantizar — Figma 189:5996 (desktop) / 196:1485 (movil) */
+
+.quees__formatos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Tres columnas en desktop, una encima de otra en movil. El corte estaba en
+   860 y ahi la tarjeta medida daba 234 de ancho por 276 de alto: mas alta que
+   ancha y con la descripcion partida. A 1000 la tarjeta ronda los 270 y es
+   cuando el corte a tres columnas deja de apretar. */
+.quees__tarjetas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(12px, calc(12px + 8 * (100vw - 360px) / 1152), 20px);
+}
+
+@media (min-width: 1000px) {
+  .quees__tarjetas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.quees__tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  padding: clamp(20px, calc(20px + 8 * (100vw - 360px) / 1152), 28px);
+  border-radius: clamp(20px, calc(20px + 4 * (100vw - 360px) / 1152), 24px);
+  background: var(--superficie);
+}
+
+/* Apilada solo cuando hay tres columnas; en una sola columna la etiqueta y la
+   cifra comparten linea, como en el movil dibujado. */
+.quees__fila {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+@media (min-width: 1000px) {
+  .quees__fila {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+.quees__etiqueta {
+  font-size: clamp(12px, calc(12px + 1 * (100vw - 360px) / 1152), 13px);
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: 0.04em;
+  color: var(--gris);
+}
+
+.quees__cifra {
+  font-size: clamp(24px, calc(24px + 16 * (100vw - 360px) / 1152), 40px);
+  font-weight: 600;
+  line-height: 1.41;
+  letter-spacing: -0.02em;
+  color: var(--tinta);
+}
+
+/* La barra es la proporcion de memoria, no una decoracion: el ancho sale de
+   dividir los GB entre los del FP16. El carril completo se ve en movil, que
+   es donde esta dibujado asi. */
+.quees__barra {
+  height: 8px;
+  border-radius: var(--r-chip);
+  background: var(--linea);
+  overflow: hidden;
+}
+
+.quees__relleno {
+  height: 100%;
+  border-radius: var(--r-chip);
+}
+
+.quees__tarjeta--fp16 .quees__relleno {
+  background: var(--azul-300);
+}
+
+.quees__tarjeta--int8 .quees__relleno {
+  background: var(--azul-medio);
+}
+
+.quees__tarjeta--int4 .quees__relleno {
+  background: var(--azul-oscuro);
+}
+
+.quees__bits {
+  font-size: clamp(11px, calc(11px + 2 * (100vw - 360px) / 1152), 13px);
+  line-height: 1.32;
+  color: var(--gris);
+}
+
+.quees__que {
+  font-size: clamp(14px, calc(14px + 1 * (100vw - 360px) / 1152), 15px);
+  line-height: 1.55;
+  color: var(--gris);
+}

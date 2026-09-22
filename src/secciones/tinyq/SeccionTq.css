@@ -1,0 +1,76 @@
+/* Piezas que comparten todas las secciones de la pagina de tinyq.
+
+   No usan las del portafolio (.rotulo, .titulo-seccion) porque esta pagina
+   esta dibujada un punto mas chica: el rotulo va a 13 en vez de 12 y el h2 a
+   48 en vez de 52. Son dos escalas distintas del mismo sistema. */
+
+.sectq {
+  padding-block: clamp(64px, calc(64px + 56 * (100vw - 360px) / 1152), 120px);
+}
+
+/* Seccion sobre gris: la pagina alterna blanco y #f5f6f8. */
+.sectq--gris {
+  background: var(--superficie);
+}
+
+.sectq__interior {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, calc(28px + 12 * (100vw - 360px) / 1152), 40px);
+}
+
+.sectq__cabecera {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, calc(10px + 6 * (100vw - 360px) / 1152), 16px);
+}
+
+.sectq__rotulo {
+  display: block;
+  font-family: var(--mono);
+  font-size: clamp(11px, calc(11px + 2 * (100vw - 360px) / 1152), 13px);
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--azul);
+}
+
+/* 32 en movil y 48 en desktop. El interlineado del Figma (67.68 sobre 48)
+   es 1.41, que para un titular deja demasiado aire; el movil usa 1.1 y es
+   el que se sigue. */
+.sectq__titulo {
+  font-size: clamp(32px, calc(32px + 16 * (100vw - 360px) / 1152), 48px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: clamp(-1.2px, calc(-0.64px - 0.56 * (100vw - 360px) / 1152), -0.64px);
+  color: var(--tinta);
+}
+
+.sectq__intro {
+  max-width: 900px;
+  font-size: clamp(15px, calc(15px + 4 * (100vw - 360px) / 1152), 19px);
+  line-height: 1.55;
+  color: var(--gris);
+}
+
+/* Linea de procedencia debajo de una tabla o un grupo de tarjetas: de donde
+   salio el numero. Va en mono porque siempre nombra un archivo. */
+.sectq__fuente {
+  font-family: var(--mono);
+  font-size: clamp(11px, calc(11px + 2 * (100vw - 360px) / 1152), 13px);
+  line-height: 1.32;
+  color: var(--gris);
+}
+
+/* Recuadro azul palido con la conclusion de la seccion. */
+.sectq__nota {
+  padding: clamp(16px, calc(16px + 6 * (100vw - 360px) / 1152), 22px)
+    clamp(18px, calc(18px + 8 * (100vw - 360px) / 1152), 26px);
+  border-radius: var(--r-l);
+  /* Azul mucho mas lavado que --azul-50: es un fondo, no un chip. */
+  background: #f7f9ff;
+  font-size: clamp(13px, calc(13px + 4 * (100vw - 360px) / 1152), 17px);
+  line-height: 1.55;
+  color: var(--tinta);
+}

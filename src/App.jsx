@@ -1,37 +1,16 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
-import Hero from './components/Hero/Hero';
-import Areas from './components/Areas/Areas';
-import OpenSource from './components/OpenSource/OpenSource';
-import Projects from './components/Projects/Projects';
-import Design from './components/Design/Design';
-import Online from './components/Online/Online';
-import Footer from './components/Footer/Footer';
-import TinyQ from './components/TinyQ/TinyQ';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import ArribaAlNavegar from './lib/ArribaAlNavegar'
+import Portafolio from './paginas/Portafolio'
+import TinyQ from './paginas/TinyQ'
 
-const Home = () => (
-  <main>
-    <Hero />
-    <Areas />
-    <OpenSource />
-    <Projects />
-    <Design />
-    <Online />
-  </main>
-);
-
-function App() {
+export default function App() {
   return (
-    <Router>
-      <Navbar />
+    <BrowserRouter>
+      <ArribaAlNavegar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Portafolio />} />
         <Route path="/tinyq" element={<TinyQ />} />
       </Routes>
-      <Footer />
-    </Router>
-  );
+    </BrowserRouter>
+  )
 }
-
-export default App;

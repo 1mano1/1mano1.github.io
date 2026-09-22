@@ -1,0 +1,266 @@
+/* 04 — Diseño. Figma 73:3844 (desktop) / 56:3052 (movil) */
+
+.dis {
+  padding-top: clamp(64px, calc(64px + 76 * (100vw - 360px) / 1152), 140px);
+  padding-bottom: clamp(64px, calc(64px + 76 * (100vw - 360px) / 1152), 140px);
+}
+
+/* En movil el orden dibujado es titulo, filtros, tarjetas y al final el
+   boton de Figma; en desktop el boton sube a la derecha del titulo. Es la
+   misma pieza movida con `order`, no dos botones repetidos en el HTML. */
+.dis__interior {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: clamp(24px, calc(24px + 24 * (100vw - 360px) / 1152), 48px);
+}
+
+.dis__titulos {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, calc(10px + 6 * (100vw - 360px) / 1152), 16px);
+  order: 1;
+}
+
+/* Los 14 de relleno bajo la cabecera del movil (el hueco hasta los filtros
+   son 24 + 14); en desktop el hueco de 48 ya es el del diseno. */
+@media (max-width: 699px) {
+  .dis__titulos {
+    padding-bottom: 14px;
+  }
+}
+
+/* ---- boton de Figma ---- */
+
+.dis__perfil {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  order: 4;
+  padding: 12px 18px 12px 16px;
+  border: 1px solid var(--linea);
+  border-radius: var(--r-m);
+  background: var(--blanco);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.41;
+  color: var(--tinta);
+  transition:
+    border-color var(--t-hover) var(--sale),
+    box-shadow var(--t-hover) var(--sale),
+    opacity var(--t-revelar) var(--sale),
+    transform var(--t-revelar) var(--sale);
+}
+
+@media (hover: hover) {
+  .dis__perfil:hover {
+    border-color: var(--azul);
+    box-shadow: 0 8px 20px -6px rgb(26 51 178 / 0.18);
+  }
+}
+
+/* ---- filtros ---- */
+
+/* En movil la fila mide 573 dentro de 320 y el diseno la deja cortada: aqui
+   se desliza. La barra se oculta porque el corte ya avisa de que hay mas. */
+.dis__filtros-carril {
+  order: 2;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.dis__filtros-carril::-webkit-scrollbar {
+  display: none;
+}
+
+.dis__filtros {
+  display: flex;
+  gap: 8px;
+  width: max-content;
+}
+
+/* El chip activo de Figma no lleva borde y mide 38 en vez de 40, asi que la
+   fila queda 1px desalineada. Aqui el borde va transparente: mismos 40 en
+   todos y el mismo color de fondo que el dibujado. */
+.dis__filtro {
+  padding: 9px 16px;
+  border: 1px solid var(--linea);
+  border-radius: var(--r-chip);
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.41;
+  white-space: nowrap;
+  color: var(--tinta);
+  cursor: pointer;
+  transition:
+    background var(--t-hover) var(--sale),
+    border-color var(--t-hover) var(--sale),
+    color var(--t-hover) var(--sale);
+}
+
+.dis__filtro[aria-pressed="true"] {
+  border-color: transparent;
+  background: var(--tinta);
+  color: var(--blanco);
+}
+
+@media (hover: hover) {
+  .dis__filtro:hover {
+    border-color: var(--azul);
+    color: var(--azul);
+  }
+
+  .dis__filtro[aria-pressed="true"]:hover {
+    border-color: transparent;
+    color: var(--blanco);
+  }
+}
+
+/* ---- galeria ---- */
+
+/* Sin estirar: a dos columnas quedan emparejadas una tarjeta de 481 y otra
+   de 361, y estirar la corta solo le cuelga un hueco vacio debajo. */
+.dis__galeria {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  order: 3;
+  gap: 24px;
+}
+
+/* Dos columnas antes que tres para que la tarjeta ancha no quede de 800px
+   de ancho con 300 de alto en las pantallas intermedias. */
+@media (min-width: 720px) {
+  .dis__galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tarjeta-dis {
+    grid-column: span var(--columnas);
+  }
+}
+
+/* Con tres columnas iguales y hueco de 24, la tarjeta ancha sale de 792 y
+   la de al lado de 384; el diseno las dibuja 784 y 392 porque usa dos filas
+   sueltas con reparto 2:1. Son 8px, y a cambio los filtros pueden reordenar
+   la galeria: con dos filas fijas en el HTML, filtrar no tendria donde caer. */
+@media (min-width: 1200px) {
+  .dis__galeria {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* `min-width: 0` para que el arte que sobra no ensanche la columna: sin esto
+   el minimo de la rejilla es el ancho de la maqueta y la tarjeta de Pulso se
+   sale de la pantalla en vez de recortarse. */
+.tarjeta-dis {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 16px;
+}
+
+/* El arte manda la altura y nunca se deforma: ocupa el alto del recuadro, el
+   ancho lo saca de su proporcion, y lo que no cabe se recorta por los lados
+   —igual que la ilustracion de Proyectos—. Asi, con la tarjeta mas ancha que
+   el arte (1512) sobra fondo, que es el mismo color que trae el PNG dentro y
+   no se ve; y con la tarjeta mas estrecha (768..1440 y todo el movil) se
+   recorta por los lados, que es justo lo que hace el movil dibujado: el panel
+   del dashboard pasa de estar metido 28px a tocar los bordes.
+   Sin `object-fit`, que mide sobre el tamaño intrinseco del PNG: estan
+   exportados a 2x y con `none` el arte salia al doble. */
+.tarjeta-dis__miniatura {
+  display: grid;
+  /* La columna va fijada al ancho del recuadro: en `auto` crece hasta el arte
+     y entonces "centrado" es centrado dentro del arte, o sea que el recorte
+     se lo lleva todo el lado derecho en vez de repartirse. */
+  grid-template-columns: minmax(0, 1fr);
+  place-items: center;
+  overflow: hidden;
+  height: var(--alto-movil);
+  border-radius: 20px;
+  background: var(--fondo);
+}
+
+/* El ancho va calculado y no en `auto`: el navegador resuelve el ancho antes
+   que el alto, asi que con `auto` cae en el tamaño intrinseco del PNG —que
+   esta exportado a 2x— y el arte sale al doble. */
+.tarjeta-dis__miniatura img {
+  width: calc(var(--alto-movil) * var(--proporcion));
+  height: var(--alto-movil);
+  max-width: none;
+  /* No esta en el diseno: las tarjetas son lo unico clicable de la seccion
+     y sin esto no hay ninguna senal de que responden. */
+  transition: transform var(--t-boton) var(--sale);
+}
+
+@media (min-width: 720px) {
+  .tarjeta-dis__miniatura {
+    height: var(--alto);
+  }
+
+  .tarjeta-dis__miniatura img {
+    width: calc(var(--alto) * var(--proporcion));
+    height: var(--alto);
+  }
+}
+
+@media (hover: hover) {
+  .tarjeta-dis:hover .tarjeta-dis__miniatura img {
+    transform: scale(1.03);
+  }
+}
+
+.tarjeta-dis__pie {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.tarjeta-dis__textos {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.tarjeta-dis__titulo {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.41;
+  letter-spacing: -0.005em;
+  color: var(--tinta);
+}
+
+.tarjeta-dis__meta {
+  font-size: 13px;
+  line-height: 1.41;
+  color: var(--gris);
+}
+
+/* ---- desktop: el boton sube junto al titulo ---- */
+
+@media (min-width: 700px) {
+  .dis__interior {
+    grid-template-columns: 1fr auto;
+    column-gap: 32px;
+  }
+
+  .dis__titulos {
+    grid-column: 1;
+  }
+
+  /* cross:MAX en Figma: el boton se apoya en la linea de base del h2. */
+  .dis__perfil {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+    justify-self: end;
+  }
+
+  .dis__filtros-carril,
+  .dis__galeria {
+    grid-column: 1 / -1;
+  }
+}
