@@ -1,0 +1,70 @@
+/* CTA — Figma 52:2192 */
+
+.ctatq {
+  padding-top: clamp(64px, calc(64px + 56 * (100vw - 360px) / 1152), 120px);
+  padding-bottom: clamp(32px, calc(32px + 16 * (100vw - 360px) / 1152), 48px);
+  background: var(--blanco);
+}
+
+.ctatq__interior {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, calc(48px + 32 * (100vw - 360px) / 1152), 80px);
+}
+
+.ctatq__bloque {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  text-align: center;
+}
+
+.ctatq__titulo {
+  font-size: clamp(28px, calc(28px + 16 * (100vw - 360px) / 1152), 44px);
+  font-weight: 600;
+  line-height: 1.41;
+  letter-spacing: -0.025em;
+  color: var(--tinta);
+}
+
+.ctatq__bajada {
+  font-size: clamp(15px, calc(15px + 2 * (100vw - 360px) / 1152), 17px);
+  line-height: 1.41;
+  color: var(--gris);
+}
+
+/* Uno encima del otro en movil. A mitades no caben: "Volver al portafolio"
+   pide 195 de ancho y a 360 solo le tocan 154, con lo que la pagina se iba a
+   390 y se podia deslizar de lado entera. */
+.ctatq__botones {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+}
+
+@media (min-width: 560px) {
+  .ctatq__botones {
+    display: flex;
+    justify-content: center;
+    width: auto;
+  }
+}
+
+.ctatq__boton {
+  justify-content: center;
+  padding: 15px 22px;
+  line-height: 21px;
+}
+
+/* Sin raya arriba: el Figma la separa solo con los 80 del hueco. En movil
+   los dos textos no caben en un renglon y bajan uno debajo del otro. */
+.ctatq__pie {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  justify-content: space-between;
+  font-size: 13px;
+  line-height: 1.41;
+  color: var(--gris);
+}

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 382 320" width="382" height="320" fill="none">
+<rect width="382" height="320" fill="#FFF3E6"/>
+<g id="Bloques">
+<path id="Vector" d="M191 101L237 124L191 147L145 124L191 101Z" fill="#F2F3F5" stroke="black"/>
+<path id="Vector_2" d="M145 124L191 147V193L145 170V124Z" fill="#C9CDD4" stroke="black"/>
+<path id="Vector_3" d="M237 124L191 147V193L237 170V124Z" fill="#DDE0E5" stroke="black"/>
+<path id="Vector_4" d="M191 55L237 78L191 101L145 78L191 55Z" fill="#F2F3F5" stroke="black"/>
+<path id="Vector_5" d="M145 78L191 101V147L145 124V78Z" fill="#C9CDD4" stroke="black"/>
+<path id="Vector_6" d="M237 78L191 101V147L237 124V78Z" fill="#DDE0E5" stroke="black"/>
+<path id="Vector_7" d="M237 124L283 147L237 170L191 147L237 124Z" fill="#F2F3F5" stroke="black"/>
+<path id="Vector_8" d="M191 147L237 170V216L191 193V147Z" fill="#C9CDD4" stroke="black"/>
+<path id="Vector_9" d="M283 147L237 170V216L283 193V147Z" fill="#DDE0E5" stroke="black"/>
+<path id="Vector_10" d="M145 124L191 147L145 170L99 147L145 124Z" fill="#F2F3F5" stroke="black"/>
+<path id="Vector_11" d="M99 147L145 170V216L99 193V147Z" fill="#C9CDD4" stroke="black"/>
+<path id="Vector_12" d="M191 147L145 170V216L191 193V147Z" fill="#DDE0E5" stroke="black"/>
+<path id="Vector_13" d="M191 147L237 170L191 193L145 170L191 147Z" fill="#FF8A3D" stroke="black"/>
+<path id="Vector_14" d="M145 170L191 193V239L145 216V170Z" fill="#D9621A" stroke="black"/>
+<path id="Vector_15" d="M237 170L191 193V239L237 216V170Z" fill="#EF7428" stroke="black"/>
+<path id="Vector_16" d="M283 147L329 170L283 193L237 170L283 147Z" fill="#F2F3F5" stroke="black"/>
+<path id="Vector_17" d="M237 170L283 193V239L237 216V170Z" fill="#C9CDD4" stroke="black"/>
+<path id="Vector_18" d="M329 170L283 193V239L329 216V170Z" fill="#DDE0E5" stroke="black"/>
+<path id="Vector_19" d="M99 147L145 170L99 193L53 170L99 147Z" fill="#F2F3F5" stroke="black"/>
+<path id="Vector_20" d="M53 170L99 193V239L53 216V170Z" fill="#C9CDD4" stroke="black"/>
+<path id="Vector_21" d="M145 170L99 193V239L145 216V170Z" fill="#DDE0E5" stroke="black"/>
+<path id="Vector_22" d="M191 101L237 124L191 147L145 124L191 101Z" fill="#FF8A3D" stroke="black"/>
+<path id="Vector_23" d="M145 124L191 147V193L145 170V124Z" fill="#D9621A" stroke="black"/>
+<path id="Vector_24" d="M237 124L191 147V193L237 170V124Z" fill="#EF7428" stroke="black"/>
+<path id="Vector_25" d="M237 170L283 193L237 216L191 193L237 170Z" fill="#F2F3F5" stroke="black"/>
+<path id="Vector_26" d="M191 193L237 216V262L191 239V193Z" fill="#C9CDD4" stroke="black"/>
+<path id="Vector_27" d="M283 193L237 216V262L283 239V193Z" fill="#DDE0E5" stroke="black"/>
+<path id="Vector_28" d="M145 170L191 193L145 216L99 193L145 170Z" fill="#F2F3F5" stroke="black"/>
+<path id="Vector_29" d="M99 193L145 216V262L99 239V193Z" fill="#C9CDD4" stroke="black"/>
+<path id="Vector_30" d="M191 193L145 216V262L191 239V193Z" fill="#DDE0E5" stroke="black"/>
+<path id="Vector_31" d="M191 193L237 216L191 239L145 216L191 193Z" fill="#2D55FF" stroke="black"/>
+<path id="Vector_32" d="M145 216L191 239V285L145 262V216Z" fill="#1B38C4" stroke="black"/>
+<path id="Vector_33" d="M237 216L191 239V285L237 262V216Z" fill="#2447E6" stroke="black"/>
+<path id="Vector_34" d="M191 147L237 170L191 193L145 170L191 147Z" fill="#2D55FF" stroke="black"/>
+<path id="Vector_35" d="M145 170L191 193V239L145 216V170Z" fill="#1B38C4" stroke="black"/>
+<path id="Vector_36" d="M237 170L191 193V239L237 216V170Z" fill="#2447E6" stroke="black"/>
+</g>
+</svg>

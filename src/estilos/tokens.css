@@ -1,0 +1,69 @@
+/* Tokens sacados del archivo de Figma "Portafolio V3".
+   Los valores no se inventan: salen de figma_data.json (ver tools/fig.py).
+   Las escalas fluidas interpolan entre el diseno movil (360px) y el
+   desktop (1512px), que son los dos anchos que estan dibujados. */
+
+:root {
+  /* ---- color ---- */
+  --tinta: #0e0f12;
+  --azul: #2d55ff;
+  --azul-oscuro: #1a36b8;
+  --azul-medio: #5b78ff;
+  --azul-300: #9aaeff;
+  --azul-200: #c9d4ff;
+  --azul-100: #ced8ff;
+  --azul-50: #eef2ff;
+  --azul-borde: #8fa3ff;
+  --gris: #5e636e;
+  --gris-medio: #6b7080;
+  --gris-claro: #8a8fa0;
+  --linea: #e6e8ec;
+  --linea-suave: #f2f3f5;
+  --superficie: #f5f6f8;
+  --negro-2: #2a2a33;
+  --negro-3: #26262f;
+  --negro-4: #262a36;
+  --verde: #16a34a;
+  --verde-vivo: #28c840;
+  --blanco: #ffffff;
+
+  /* ---- tipografia ---- */
+  --fuente: 'Mona Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code', monospace;
+  --serif: 'Instrument Serif', Georgia, serif;
+
+  /* Escalas fluidas: clamp(movil, interpolacion, desktop) */
+  --t-h1: clamp(40px, calc(40px + 28 * (100vw - 360px) / 1152), 68px);
+  --t-h1-lh: 1.04;
+  --t-h1-ls: clamp(-2.38px, calc(-1px - 1.38 * (100vw - 360px) / 1152), -1px);
+  /* h2 de seccion: 32px/35.2 ls -0.64 en movil, 52px/73.32 ls -1.3 en desktop */
+  --t-h2: clamp(32px, calc(32px + 20 * (100vw - 360px) / 1152), 52px);
+  --t-h2-lh: clamp(35.2px, calc(35.2px + 38.12 * (100vw - 360px) / 1152), 73.32px);
+  --t-h2-ls: clamp(-1.3px, calc(-0.64px - 0.66 * (100vw - 360px) / 1152), -0.64px);
+  --t-h3: clamp(22px, calc(22px + 6 * (100vw - 360px) / 1152), 28px);
+  --t-cuerpo: clamp(16px, calc(16px + 3 * (100vw - 360px) / 1152), 19px);
+  --t-base: clamp(15px, calc(15px + 1 * (100vw - 360px) / 1152), 16px);
+  --t-chico: clamp(13px, calc(13px + 1 * (100vw - 360px) / 1152), 14px);
+  --t-mini: clamp(11px, calc(11px + 1 * (100vw - 360px) / 1152), 12px);
+
+  /* ---- espaciado ---- */
+  /* El diseno usa canaleta de 20px en movil y 120px en desktop. */
+  --canaleta: clamp(20px, calc(20px + 100 * (100vw - 360px) / 1152), 120px);
+  --ancho-max: 1512px;
+  --sec-y: clamp(48px, calc(48px + 52 * (100vw - 360px) / 1152), 100px);
+
+  /* ---- radios ---- */
+  --r-chip: 999px;
+  --r-s: 8px;
+  --r-m: 12px;
+  --r-l: 16px;
+  --r-xl: clamp(20px, calc(20px + 8 * (100vw - 360px) / 1152), 28px);
+  --r-xxl: clamp(28px, calc(28px + 8 * (100vw - 360px) / 1152), 36px);
+
+  /* ---- movimiento (de las transiciones del prototipo de Figma) ---- */
+  --sale: cubic-bezier(0, 0, 0.58, 1); /* EASE_OUT de Figma */
+  --entra-sale: cubic-bezier(0.42, 0, 0.58, 1); /* EASE_IN_AND_OUT */
+  --t-hover: 180ms;
+  --t-boton: 220ms;
+  --t-revelar: 700ms;
+}

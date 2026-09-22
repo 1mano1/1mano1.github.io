@@ -1,0 +1,129 @@
+/* Cómo funciona — Figma 84:6075 (desktop) / 197:1461 (movil) */
+
+/* Mismo corte que "Que es cuantizar": a menos de 1000 las tres tarjetas se
+   aprietan y la descripcion se parte en cuatro lineas. */
+.comofunciona__pasos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(12px, calc(12px + 8 * (100vw - 360px) / 1152), 20px);
+}
+
+@media (min-width: 1000px) {
+  .comofunciona__pasos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pasotq {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--linea);
+  border-radius: clamp(20px, calc(20px + 4 * (100vw - 360px) / 1152), 24px);
+  background: #fff;
+  overflow: hidden;
+}
+
+/* El movil dibujado cambia la ilustracion por una tira de 43px con una linea
+   en mono. Aqui se escala la misma del desktop: es la que lleva el dato, y
+   mantener un solo dibujo evita que las dos versiones se desfasen. La
+   proporcion es la del lienzo del Figma, asi que nada se recorta. */
+.pasotq__ilustracion {
+  width: 100%;
+  aspect-ratio: 408.67 / 200;
+  border-bottom: 1px solid var(--linea);
+}
+
+.pasotq__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pasotq__texto-svg {
+  font-family: var(--mono);
+  font-size: 12px;
+  fill: var(--gris);
+}
+
+.pasotq__texto-svg--chico {
+  font-size: 11px;
+}
+
+.pasotq__texto-svg--dato {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--tinta);
+}
+
+.pasotq__texto-svg--invertido {
+  font-size: 13px;
+  font-weight: 500;
+  fill: #fff;
+}
+
+.pasotq__cuerpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  padding: clamp(20px, calc(20px + 8 * (100vw - 360px) / 1152), 28px);
+  /* Menos arriba, y va bajando: el renglon del numero ya trae mucho aire
+     propio (32px de fuente en una caja de 42). El Figma le pone 8. */
+  padding-top: clamp(8px, calc(14px - 6 * (100vw - 360px) / 1152), 14px);
+}
+
+.pasotq__top {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, calc(10px + 4 * (100vw - 360px) / 1152), 14px);
+}
+
+/* Azul mas claro que --azul-300: el numero es una marca de orden, no un dato
+   que haya que leer antes que el titulo. */
+.pasotq__num {
+  font-size: clamp(24px, calc(24px + 8 * (100vw - 360px) / 1152), 32px);
+  font-weight: 700;
+  line-height: 1.32;
+  color: #9eadff;
+}
+
+.pasotq__titulo {
+  font-size: clamp(17px, calc(17px + 3 * (100vw - 360px) / 1152), 20px);
+  font-weight: 600;
+  line-height: 1.41;
+  letter-spacing: -0.005em;
+  color: var(--tinta);
+}
+
+.pasotq__que {
+  font-size: clamp(14px, calc(14px + 1 * (100vw - 360px) / 1152), 15px);
+  line-height: 1.55;
+  color: var(--gris);
+}
+
+/* Empuja el enlace al fondo para que los tres queden a la misma altura
+   aunque las descripciones midan distinto. */
+.pasotq__mas {
+  margin-top: auto;
+  padding-top: 4px;
+  align-self: flex-start;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.41;
+  color: var(--azul);
+  transition: color var(--t-hover) var(--sale);
+}
+
+.pasotq__mas span {
+  display: inline-block;
+  transition: transform var(--t-hover) var(--sale);
+}
+
+.pasotq__mas:hover {
+  color: var(--azul-oscuro);
+}
+
+.pasotq__mas:hover span {
+  transform: translateX(3px);
+}

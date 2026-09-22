@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame">
+<rect width="56" height="56" rx="16" fill="#2D55FF"/>
+<rect id="Rectangle" x="14" y="14" width="28" height="7" rx="2" fill="white"/>
+<circle id="Ellipse" cx="18.5" cy="17.5" r="1.5" fill="white"/>
+<rect id="Rectangle_2" x="14" y="24" width="28" height="7" rx="2" fill="white"/>
+<circle id="Ellipse_2" cx="18.5" cy="27.5" r="1.5" fill="white"/>
+<rect id="Rectangle_3" x="14" y="34" width="28" height="7" rx="2" fill="white"/>
+<circle id="Ellipse_3" cx="18.5" cy="37.5" r="1.5" fill="white"/>
+</g>
+</svg>

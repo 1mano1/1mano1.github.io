@@ -1,0 +1,322 @@
+/* Benchmarks — Figma 84:6396 (desktop) / 198:1461 (movil) */
+
+/* Ancho de la columna con el nombre del modelo, a la izquierda del eje. Se
+   usa tanto en las barras como en la rejilla y las marcas, para que las tres
+   cosas arranquen en el mismo pixel. */
+.bench {
+  --col-modelo: clamp(86px, calc(86px + 64 * (100vw - 360px) / 1152), 150px);
+  /* Aire a la derecha del eje para que quepan "6.8 GB −59%" y la marca de
+     8 GB. En el Figma el eje termina en 1140 de 1272 por lo mismo. */
+  --respiro: clamp(74px, calc(74px + 58 * (100vw - 360px) / 1152), 132px);
+}
+
+/* El titulo y la leyenda comparten renglon en desktop; en movil la leyenda
+   baja debajo del titulo. */
+.bench__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.bench__leyenda {
+  display: flex;
+  gap: 20px;
+}
+
+.bench__clave {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--tinta);
+}
+
+.bench__muestra {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.bench__muestra--fp16 {
+  background: var(--azul-300);
+}
+
+.bench__muestra--int8 {
+  background: var(--azul-medio);
+}
+
+.bench__muestra--int4 {
+  background: var(--azul-oscuro);
+}
+
+/* --- La grafica --- */
+
+.bench__lienzo {
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.bench__rejilla {
+  position: absolute;
+  inset: 0 var(--respiro) 30px var(--col-modelo);
+}
+
+.bench__linea {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--linea);
+}
+
+/* La ultima cae justo en el borde: se corre hacia dentro para no salirse. */
+.bench__linea:last-child {
+  transform: translateX(-1px);
+}
+
+.bench__grupos {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, calc(20px + 12 * (100vw - 360px) / 1152), 32px);
+}
+
+.bench__grupo {
+  display: grid;
+  grid-template-columns: var(--col-modelo) 1fr;
+  align-items: center;
+  padding-right: var(--respiro);
+}
+
+.bench__modelo {
+  padding-right: 12px;
+  font-size: clamp(13px, calc(13px + 2 * (100vw - 360px) / 1152), 15px);
+  font-weight: 600;
+  line-height: 1.41;
+  color: var(--tinta);
+}
+
+.bench__barras {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bench__fila {
+  position: relative;
+  height: clamp(16px, calc(16px + 6 * (100vw - 360px) / 1152), 22px);
+}
+
+.bench__barra {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Crecen al entrar. Va como animacion y no como transicion para que el ancho
+   real este puesto desde el primer render. */
+.bench__grafica.es-visible .bench__barra {
+  animation: bench-crecer var(--t-revelar) var(--sale) both;
+  animation-delay: var(--retraso, 0ms);
+  transform-origin: left center;
+}
+
+@keyframes bench-crecer {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bench__grafica.es-visible .bench__barra {
+    animation: none;
+  }
+}
+
+.bench__barra--fp16 {
+  background: var(--azul-300);
+}
+
+.bench__barra--int8 {
+  background: var(--azul-medio);
+}
+
+.bench__barra--int4 {
+  background: var(--azul-oscuro);
+}
+
+.bench__meta {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 8px;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.bench__valor {
+  font-size: clamp(11px, calc(11px + 2 * (100vw - 360px) / 1152), 13px);
+  font-weight: 500;
+  color: var(--tinta);
+}
+
+.bench__recorte {
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--azul-50);
+  font-size: clamp(10px, calc(10px + 2 * (100vw - 360px) / 1152), 12px);
+  font-weight: 500;
+  color: var(--azul);
+}
+
+.bench__marcas {
+  position: absolute;
+  right: var(--respiro);
+  bottom: 0;
+  left: var(--col-modelo);
+  height: 18px;
+}
+
+.bench__marca {
+  position: absolute;
+  top: 0;
+  font-size: clamp(11px, calc(11px + 2 * (100vw - 360px) / 1152), 13px);
+  color: var(--gris);
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+/* Debajo de 620 la columna del nombre se come la pista: quedan 160px para
+   8 GB y las marcas se encabalgan. El nombre pasa arriba de sus tres barras
+   y del eje solo quedan 0, 4 y 8. */
+@media (max-width: 619px) {
+  .bench {
+    --col-modelo: 0px;
+    --respiro: 64px;
+  }
+
+  .bench__grupo {
+    grid-template-columns: 1fr;
+  }
+
+  .bench__modelo {
+    padding: 0 0 8px;
+  }
+
+  .bench__marca:nth-child(even) {
+    display: none;
+  }
+
+  .bench__marca:first-child {
+    transform: none;
+  }
+
+  .bench__marca:last-child {
+    transform: translateX(-100%);
+  }
+}
+
+/* --- La tabla --- */
+
+.bench__tabla table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.bench__tabla th,
+.bench__tabla td {
+  padding: 18px clamp(14px, calc(14px + 14 * (100vw - 360px) / 1152), 28px);
+  font-size: clamp(13px, calc(13px + 2 * (100vw - 360px) / 1152), 15px);
+  line-height: 1.41;
+  color: var(--tinta);
+}
+
+.bench__tabla thead th {
+  padding-block: 14px;
+  background: var(--superficie);
+  font-size: clamp(11px, calc(11px + 1 * (100vw - 360px) / 1152), 12px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+.bench__tabla tbody th {
+  font-weight: 600;
+}
+
+.bench__tabla tbody tr + tr th,
+.bench__tabla tbody tr + tr td {
+  border-top: 1px solid var(--linea);
+}
+
+/* La perdida es el numero que cuesta y va en azul, como en el Figma. */
+.bench__perdida {
+  color: var(--azul);
+  font-weight: 500;
+}
+
+@media (min-width: 820px) {
+  .bench__tabla {
+    border: 1px solid var(--linea);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+}
+
+/* Debajo de 820 las siete columnas no caben. Cada fila pasa a ser una
+   tarjeta con las celdas etiquetadas, que es como esta dibujado el movil. */
+@media (max-width: 819px) {
+  .bench__tabla thead {
+    display: none;
+  }
+
+  .bench__tabla tbody tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-bottom: 12px;
+    padding: 16px 0;
+    border: 1px solid var(--linea);
+    border-radius: var(--r-l);
+  }
+
+  .bench__tabla tbody tr + tr th,
+  .bench__tabla tbody tr + tr td {
+    border-top: 0;
+  }
+
+  .bench__tabla tbody th {
+    grid-column: 1 / -1;
+    padding-bottom: 4px;
+    font-size: 16px;
+  }
+
+  .bench__tabla tbody td {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-block: 6px;
+  }
+
+  .bench__tabla tbody td::before {
+    content: attr(data-col);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--gris);
+  }
+}

@@ -1,0 +1,331 @@
+/* 03 — Proyectos. Figma 73:3584 (desktop) / 54:3050 (movil) */
+
+.proy {
+  background: var(--superficie);
+  padding-top: clamp(64px, calc(64px + 76 * (100vw - 360px) / 1152), 140px);
+  padding-bottom: clamp(64px, calc(64px + 76 * (100vw - 360px) / 1152), 140px);
+}
+
+/* 20 de separacion mas 14 de relleno bajo la cabecera en movil; 64 en
+   desktop, donde la cabecera no lleva relleno. Van juntos en un solo hueco. */
+.proy .contenedor {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(34px, calc(34px + 30 * (100vw - 360px) / 1152), 64px);
+}
+
+/* ---- cabecera ---- */
+
+.proy__cabecera {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.proy__titulos {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, calc(10px + 6 * (100vw - 360px) / 1152), 16px);
+}
+
+.proy__todos {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.41;
+  color: var(--tinta);
+  transition: color var(--t-hover) var(--sale);
+}
+
+.proy__todos span {
+  transition: transform var(--t-hover) var(--sale);
+}
+
+@media (hover: hover) {
+  .proy__todos:hover {
+    color: var(--azul);
+  }
+
+  .proy__todos:hover span {
+    transform: translateX(3px);
+  }
+}
+
+/* El movil dibujado no lleva este enlace: el de GitHub ya esta en la
+   seccion de open source, asi que no se pierde nada al ocultarlo. */
+@media (max-width: 699px) {
+  .proy__todos {
+    display: none;
+  }
+}
+
+@media (min-width: 700px) {
+  .proy__cabecera {
+    flex-direction: row;
+    /* cross:MAX en Figma: el enlace se apoya en la linea de base del h2. */
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+  }
+}
+
+/* ---- tarjetas ---- */
+
+/* Sin estirar: en Figma la tarjeta de Lumen es 23px mas alta que las otras
+   dos porque su descripcion ocupa una linea mas, y la fila queda desigual
+   a proposito. Igualarlas seria mas ordenado, pero no es lo dibujado. */
+.proy__lista {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 20px;
+}
+
+@media (min-width: 720px) {
+  .proy__lista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .proy__lista {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.tarjeta-proy {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--linea);
+  border-radius: 28px;
+  background: var(--blanco);
+  transition:
+    border-color var(--t-hover) var(--sale),
+    box-shadow var(--t-hover) var(--sale),
+    opacity var(--t-revelar) var(--sale),
+    transform var(--t-revelar) var(--sale);
+}
+
+@media (hover: hover) {
+  .tarjeta-proy:hover {
+    border-color: var(--azul);
+    box-shadow: 0 16px 40px -4px rgb(26 51 178 / 0.12);
+  }
+}
+
+/* El dibujo mide 382x320 y no se escala: se centra y lo que sobra se
+   recorta, que es justo lo que hace el diseno movil a 318 de ancho. */
+.tarjeta-proy__visual {
+  display: grid;
+  /* La columna va fijada al ancho del recuadro: en `auto` crece hasta el
+     dibujo y entonces "centrado" es centrado dentro del dibujo, o sea que el
+     recorte se lo lleva todo el lado derecho. El movil dibujado si centra:
+     el telefono esta en x=59 de 318, y en desktop en x=91 de 382. */
+  grid-template-columns: minmax(0, 1fr);
+  flex: none;
+  place-items: center;
+  height: 320px;
+  overflow: hidden;
+}
+
+.lienzo320,
+.fono {
+  position: relative;
+  flex: none;
+  width: 382px;
+  height: 320px;
+}
+
+.lienzo320 img {
+  width: 382px;
+  height: 320px;
+}
+
+.tarjeta-proy__cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px;
+}
+
+/* Figma pone el año centrado (cross:center) porque ahi el titulo siempre
+   cabe en una linea. En movil no cabe: "Lumen — IA en tu bolsillo" mide 253
+   en una fila de 262 y el diseno resuelve el sobrante recortando, o sea que
+   el "2026" del movil sale cortado a la mitad. Aqui el titulo envuelve, y el
+   año se apoya en la primera linea: (31.02 - 15.84) / 2 = 7.5, el mismo
+   desplazamiento que tiene dibujado cuando es de una sola linea. */
+.tarjeta-proy__alto {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tarjeta-proy__titulo {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.41;
+  letter-spacing: -0.01em;
+  color: var(--tinta);
+}
+
+.tarjeta-proy__anio {
+  flex: none;
+  padding-top: 7.5px;
+  font-size: 12px;
+  line-height: 1.32;
+  color: var(--gris);
+}
+
+.tarjeta-proy__texto {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--gris);
+}
+
+.tarjeta-proy__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 6px;
+}
+
+.chip-tec {
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--superficie);
+  font-size: 11px;
+  line-height: 1.32;
+  color: var(--gris);
+}
+
+/* ---- diagrama de Orbit API (Figma 26:3 .. 26:18) ----
+   Las lineas de puntos vienen del SVG exportado; los rotulos van en HTML
+   porque Figma los exporta convertidos en contornos. */
+
+.orbit__nodo {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid #cfe3d6;
+  border-radius: 10px;
+  background: var(--blanco);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.32;
+  white-space: nowrap;
+  color: var(--tinta);
+}
+
+.orbit__punto {
+  display: block;
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+/* ---- telefono de Lumen (Figma 25:25) ---- */
+
+/* El cuerpo negro es el borde de 6px: por fuera redondea a 34 y por dentro
+   a 28, que son los dos radios del diseno. Los hijos se colocan sobre la
+   caja de relleno, asi que llevan las mismas coordenadas que en Figma. */
+.fono__pantalla {
+  position: absolute;
+  left: 91px;
+  top: 40px;
+  width: 200px;
+  height: 400px;
+  border: 6px solid var(--tinta);
+  border-radius: 34px;
+  background: var(--blanco);
+  box-shadow: 0 20px 40px rgb(26 38 102 / 0.25);
+}
+
+.fono__camara,
+.fono__marca,
+.fono__estado,
+.fono__globo,
+.fono__caja,
+.fono__pista,
+.fono__enviar {
+  position: absolute;
+}
+
+.fono__camara {
+  left: 89px;
+  top: 12px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--tinta);
+}
+
+.fono__marca {
+  left: 16px;
+  top: 38px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 21.15px;
+  color: var(--tinta);
+}
+
+.fono__estado {
+  left: 112px;
+  top: 38px;
+  padding: 3px 8px;
+  border-radius: var(--r-chip);
+  background: #e8f7ee;
+  font-size: 9px;
+  line-height: 11.88px;
+  color: var(--verde);
+}
+
+.fono__globo {
+  padding: 8px 10px;
+  border-radius: 14px;
+  font-size: 10.5px;
+  line-height: 14.7px;
+}
+
+.fono__globo--yo {
+  background: var(--azul);
+  color: var(--blanco);
+}
+
+.fono__globo--ia {
+  background: var(--superficie);
+  color: var(--tinta);
+}
+
+.fono__caja {
+  left: 12px;
+  top: 340px;
+  width: 164px;
+  height: 34px;
+  border-radius: 17px;
+  background: var(--superficie);
+}
+
+.fono__pista {
+  left: 24px;
+  top: 350px;
+  font-size: 10px;
+  line-height: 14.1px;
+  color: var(--gris);
+}
+
+.fono__enviar {
+  left: 146px;
+  top: 344px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--azul);
+}

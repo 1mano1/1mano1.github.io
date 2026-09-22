@@ -1,0 +1,257 @@
+[
+ {
+  "id": "l0",
+  "spans": [
+   {
+    "t": "$ ",
+    "fill": "#5e636e",
+    "weight": 400
+   },
+   {
+    "t": "pip install ",
+    "fill": "#f5f6f8",
+    "weight": 400
+   },
+   {
+    "t": "git+https://github.com/1mano1/TinyQ.git",
+    "fill": "#9fb0ff",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l1",
+  "spans": [
+   {
+    "t": " ",
+    "fill": "#5e636e",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l2",
+  "spans": [
+   {
+    "t": "$ ",
+    "fill": "#5e636e",
+    "weight": 400
+   },
+   {
+    "t": "tinyq quantize ",
+    "fill": "#f5f6f8",
+    "weight": 400
+   },
+   {
+    "t": "Qwen/Qwen2.5-3B-Instruct",
+    "fill": "#9fb0ff",
+    "weight": 400
+   },
+   {
+    "t": " --group ",
+    "fill": "#f5f6f8",
+    "weight": 400
+   },
+   {
+    "t": "64",
+    "fill": "#ffb547",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l3",
+  "spans": [
+   {
+    "t": "Cargando   ",
+    "fill": "#f5f6f8",
+    "weight": 500
+   },
+   {
+    "t": "Qwen/Qwen2.5-3B-Instruct",
+    "fill": "#5e636e",
+    "weight": 400
+   },
+   {
+    "t": " (float16, cuda)",
+    "fill": "#5e636e",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l4",
+  "spans": [
+   {
+    "t": "Calibrando ",
+    "fill": "#f5f6f8",
+    "weight": 500
+   },
+   {
+    "t": "con wikitext2: ",
+    "fill": "#5e636e",
+    "weight": 400
+   },
+   {
+    "t": "128",
+    "fill": "#ffb547",
+    "weight": 400
+   },
+   {
+    "t": " x ",
+    "fill": "#5e636e",
+    "weight": 400
+   },
+   {
+    "t": "2048",
+    "fill": "#ffb547",
+    "weight": 400
+   },
+   {
+    "t": " tokens",
+    "fill": "#5e636e",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l5",
+  "spans": [
+   {
+    "t": "Cuantizando",
+    "fill": "#a3a8b3",
+    "weight": 400
+   },
+   {
+    "t": " a INT4, grupos de 64 (AWQ + gptq)",
+    "fill": "#f5f6f8",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l6",
+  "spans": [
+   {
+    "t": " ",
+    "fill": "#5e636e",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l7",
+  "spans": [
+   {
+    "t": "  Capas cuantizadas  ",
+    "fill": "#5e636e",
+    "weight": 400
+   },
+   {
+    "t": "252",
+    "fill": "#f5f6f8",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l8",
+  "spans": [
+   {
+    "t": "  Pesos FP16         ",
+    "fill": "#5e636e",
+    "weight": 400
+   },
+   {
+    "t": "5.55 GB",
+    "fill": "#f5f6f8",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l9",
+  "spans": [
+   {
+    "t": "  Pesos INT4         ",
+    "fill": "#5e636e",
+    "weight": 400
+   },
+   {
+    "t": "1.52 GB",
+    "fill": "#f5f6f8",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l10",
+  "spans": [
+   {
+    "t": "  Compresion         ",
+    "fill": "#5e636e",
+    "weight": 400
+   },
+   {
+    "t": "3.66x",
+    "fill": "#f5f6f8",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l11",
+  "spans": [
+   {
+    "t": "  Tiempo             ",
+    "fill": "#5e636e",
+    "weight": 400
+   },
+   {
+    "t": "16.4 min",
+    "fill": "#f5f6f8",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l12",
+  "spans": [
+   {
+    "t": "  En disco           ",
+    "fill": "#5e636e",
+    "weight": 400
+   },
+   {
+    "t": "2.76 GB",
+    "fill": "#f5f6f8",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l13",
+  "spans": [
+   {
+    "t": " ",
+    "fill": "#5e636e",
+    "weight": 400
+   }
+  ]
+ },
+ {
+  "id": "l14",
+  "spans": [
+   {
+    "t": "Listo ",
+    "fill": "#28c840",
+    "weight": 400
+   },
+   {
+    "t": "-> qwen2.5-3b-instruct-int4",
+    "fill": "#f5f6f8",
+    "weight": 400
+   }
+  ]
+ }
+]

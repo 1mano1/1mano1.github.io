@@ -1,16 +1,40 @@
-# React + Vite
+# Portafolio — Imanol Rodríguez
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Sitio personal en React + Vite. Se publica solo en <https://1mano1.github.io>.
 
-Currently, two official plugins are available:
+Dos páginas:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- `/` — el portafolio: proyectos, diseños, open source y contacto.
+- `/tinyq` — la documentación de [TinyQ](https://github.com/1mano1/TinyQ), la
+  librería que cuantiza modelos de lenguaje a 4 y 8 bits.
 
-## React Compiler
+## Correrlo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev        # http://localhost:5174
+npm run lint       # oxlint
+npm run build      # genera dist/
+```
 
-## Expanding the Oxlint configuration
+## La regla de los números
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+**Ninguna cifra derivada se escribe a mano.** Los GB, los porcentajes y el
+ancho de las barras se calculan en el componente a partir de los bytes crudos
+y de las perplejidades que están en `runs/*.json` del repo de TinyQ. Si un
+número cambia, se cambia el dato crudo y lo demás se recalcula solo.
+
+Viene de un problema real: los benchmarks del diseño original de Figma estaban
+inventados —hablaban de Llama-3, Mistral y Phi-3, modelos que nunca se
+midieron— y parecían mediciones de verdad. Cada componente lleva en su
+comentario de cabecera de qué archivo sale cada dato.
+
+Lo que todavía no se puede verificar está marcado con `TODO(Imanol)` en el
+propio componente, en vez de rellenarse con algo verosímil.
+
+## Despliegue
+
+`.github/workflows/deploy.yml` construye y publica en cada `push` a `main`.
+El único detalle no obvio es el `404.html`: GitHub Pages no conoce las rutas
+de React Router, así que `vite.config.js` copia ahí el `index.html` para que
+entrar directo a `/tinyq` funcione.

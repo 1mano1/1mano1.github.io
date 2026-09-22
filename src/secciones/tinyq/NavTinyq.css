@@ -1,0 +1,150 @@
+/* Nav de tinyq — Figma 49:2158 (desktop) / 196:1463 (movil) */
+
+.navtq {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--blanco) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-boton) var(--sale);
+}
+
+.navtq--desplazado {
+  border-bottom-color: var(--linea);
+}
+
+/* 18 de relleno en movil y 28 en desktop, como el nav del portafolio. */
+.navtq__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: clamp(18px, calc(18px + 10 * (100vw - 360px) / 1152), 28px);
+}
+
+/* ---- miga de pan ---- */
+
+.navtq__miga {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(13px, calc(13px + 2 * (100vw - 360px) / 1152), 15px);
+  white-space: nowrap;
+}
+
+.navtq__volver {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: var(--gris);
+  transition: color var(--t-hover) var(--sale);
+}
+
+.navtq__volver-largo {
+  display: none;
+}
+
+.navtq__separador {
+  color: var(--linea);
+}
+
+.navtq__padre {
+  color: var(--gris);
+  transition: color var(--t-hover) var(--sale);
+}
+
+.navtq__actual {
+  font-weight: 500;
+  color: var(--azul);
+}
+
+/* Los tres ultimos solo caben en desktop. */
+.navtq__separador,
+.navtq__padre,
+.navtq__actual {
+  display: none;
+}
+
+.navtq__aqui {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--tinta);
+}
+
+@media (hover: hover) {
+  .navtq__volver:hover,
+  .navtq__padre:hover {
+    color: var(--tinta);
+  }
+}
+
+/* ---- enlaces y star ---- */
+
+.navtq__enlaces {
+  display: none;
+  align-items: center;
+  gap: 28px;
+}
+
+.navtq__enlace {
+  position: relative;
+  padding-block: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gris);
+  transition: color var(--t-hover) var(--sale);
+}
+
+.navtq__enlace::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  border-radius: 2px;
+  background: var(--azul);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-hover) var(--sale);
+}
+
+@media (hover: hover) {
+  .navtq__enlace:hover {
+    color: var(--tinta);
+  }
+
+  .navtq__enlace:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.navtq__star {
+  display: none;
+  gap: 8px;
+  padding: 10px 16px 10px 14px;
+}
+
+@media (min-width: 900px) {
+  .navtq__separador,
+  .navtq__padre,
+  .navtq__actual {
+    display: inline;
+  }
+
+  .navtq__volver-largo {
+    display: inline;
+  }
+
+  .navtq__volver-corto,
+  .navtq__aqui {
+    display: none;
+  }
+
+  .navtq__enlaces,
+  .navtq__star {
+    display: flex;
+  }
+}

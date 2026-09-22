@@ -1,0 +1,173 @@
+/* Comparativa — Figma 190:5996 (desktop) / 199:1461 (movil) */
+
+/* Dos paneles de igual alto. Se parten en 1000, el mismo corte que usan las
+   tarjetas del resto de la pagina. */
+.compara__tablas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(12px, calc(12px + 8 * (100vw - 360px) / 1152), 20px);
+}
+
+@media (min-width: 1000px) {
+  .compara__tablas {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.compara__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  padding: clamp(20px, calc(20px + 12 * (100vw - 360px) / 1152), 32px);
+  border: 1px solid var(--linea);
+  border-radius: clamp(20px, calc(20px + 4 * (100vw - 360px) / 1152), 24px);
+  background: #fff;
+}
+
+.compara__encabezado {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.compara__titulo {
+  font-size: clamp(19px, calc(19px + 5 * (100vw - 360px) / 1152), 24px);
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  color: var(--tinta);
+}
+
+.compara__pie {
+  font-size: clamp(11px, calc(11px + 2 * (100vw - 360px) / 1152), 13px);
+  line-height: 1.32;
+  color: var(--gris);
+}
+
+/* La nota de cada panel se pega abajo para que las dos queden alineadas
+   aunque las tablas midan distinto. */
+.compara__nota {
+  margin-top: auto;
+  font-size: clamp(13px, calc(13px + 2 * (100vw - 360px) / 1152), 15px);
+  line-height: 1.55;
+  color: var(--gris);
+}
+
+.compara__leyenda {
+  font-family: var(--mono);
+  font-size: clamp(10px, calc(10px + 2 * (100vw - 360px) / 1152), 12px);
+  line-height: 1.32;
+  color: var(--gris-claro);
+}
+
+.compara__marco table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.compara__marco th,
+.compara__marco td {
+  padding: clamp(12px, calc(12px + 8 * (100vw - 360px) / 1152), 20px)
+    clamp(10px, calc(10px + 6 * (100vw - 360px) / 1152), 16px);
+  font-size: clamp(12px, calc(12px + 2 * (100vw - 360px) / 1152), 14px);
+  line-height: 1.41;
+  color: var(--tinta);
+}
+
+.compara__marco thead th {
+  padding-block: 12px;
+  background: var(--superficie);
+  font-size: clamp(10px, calc(10px + 1 * (100vw - 360px) / 1152), 11px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+.compara__marco tbody th {
+  font-weight: 500;
+}
+
+.compara__marco tbody tr + tr th,
+.compara__marco tbody tr + tr td {
+  border-top: 1px solid var(--linea);
+}
+
+/* Las filas de TinyQ van en negrita: son las que hay que buscar. */
+.compara__fila--nuestra th,
+.compara__fila--nuestra td {
+  font-weight: 600;
+}
+
+/* Con el prefijo del marco: sin el, `.compara__marco td` pesa mas y el color
+   se quedaba en tinta, asi que la leyenda "en azul" mentia. */
+.compara__marco .compara__dano {
+  color: var(--gris);
+}
+
+.compara__marco .compara__fila--nuestra .compara__dano {
+  color: var(--azul);
+}
+
+/* El menor daño de cada fila, que es lo que la tabla viene a decir. */
+.compara__marco .compara__mejor {
+  color: var(--azul);
+  font-weight: 600;
+}
+
+@media (min-width: 560px) {
+  .compara__marco {
+    border: 1px solid var(--linea);
+    border-radius: var(--r-l);
+    overflow: hidden;
+  }
+}
+
+/* Debajo de 560 las cuatro columnas no caben ni en un panel a ancho
+   completo: cada fila pasa a tarjeta con las celdas etiquetadas, igual que
+   la tabla de benchmarks. */
+@media (max-width: 559px) {
+  .compara__marco thead {
+    display: none;
+  }
+
+  .compara__marco tbody tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-bottom: 10px;
+    padding: 14px;
+    border: 1px solid var(--linea);
+    border-radius: var(--r-m);
+  }
+
+  .compara__marco tbody tr + tr th,
+  .compara__marco tbody tr + tr td {
+    border-top: 0;
+  }
+
+  .compara__marco tbody th {
+    grid-column: 1 / -1;
+    padding: 0 0 4px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .compara__marco tbody td {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 4px 0;
+  }
+
+  .compara__marco tbody td::before {
+    content: attr(data-col);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--gris);
+  }
+}
