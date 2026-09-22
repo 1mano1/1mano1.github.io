@@ -18,16 +18,18 @@
   background: var(--tinta);
 }
 
+/* El pip install es largo de verdad (77 caracteres) y por debajo de 900 no
+   cabe. Se parte en varias lineas: antes se deslizaba dentro de su caja, y
+   deslizar con el dedo mueve la pagina, no la caja, asi que en un telefono
+   media orden no se leia nunca. */
 .comandos__linea {
   flex: 1;
-  /* El pip install es largo de verdad (77 caracteres): por debajo de 1100 no
-     cabe y se desliza dentro de su caja en vez de ensanchar la pagina. */
   min-width: 0;
-  overflow-x: auto;
   font-size: clamp(12px, calc(12px + 2 * (100vw - 360px) / 1152), 14px);
   line-height: 1.32;
   color: var(--blanco);
-  white-space: nowrap;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .comandos__signo {
@@ -67,9 +69,11 @@
   gap: clamp(12px, calc(12px + 8 * (100vw - 360px) / 1152), 20px);
 }
 
-/* Dos por fila a partir de 1000, el mismo corte que el resto de la pagina.
-   Abajo de ahi la caja del comando ya no deja sitio al boton de copiar. */
-@media (min-width: 1000px) {
+/* Dos por fila a partir de 1140. El Figma las pone en dos desde 1000, pero
+   ahi la caja se queda en 225px para comandos de 304: se partian en tres
+   renglones. A 1140 cada tarjeta da 476 y solo se parte el `export`, que
+   mide 429 y es el mas largo con diferencia. */
+@media (min-width: 1140px) {
   .comandos__tarjetas {
     grid-template-columns: 1fr 1fr;
   }
@@ -120,23 +124,17 @@
   background: var(--superficie);
 }
 
+/* Se parte igual que la orden de instalacion, y por lo mismo. No es solo
+   cosa de moviles: entre 1000 y 1100, con las tarjetas ya en dos columnas,
+   `tinyq export ... --out qwen3b.gguf` se quedaba a la mitad. */
 .comandos__cmd {
   flex: 1;
   min-width: 0;
-  overflow-x: auto;
   font-size: 13px;
   line-height: 1.32;
   color: var(--tinta);
-  white-space: nowrap;
-}
-
-/* Debajo de 700 ningun comando cabe entero y hay que deslizarlo. Cortado a
-   filo parece un error de maquetado; desvanecido se entiende que sigue. En
-   desktop el degradado cae en el hueco vacio que deja el texto, asi que no
-   se nota. */
-.comandos__cmd,
-.comandos__linea {
-  mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 /* Las descripciones miden distinto (dos y tres lineas): pegada abajo, las
@@ -149,16 +147,30 @@
 }
 
 /* En movil el boton de copiar ocupa 94 de los 288 que quedan dentro de la
-   tarjeta y el comando se queda en un hilo. Se va abajo, a la derecha. */
-@media (max-width: 559px) {
-  .comandos__caja {
+   tarjeta y el comando se queda en un hilo, asi que el boton se va abajo a
+   la derecha y el comando se lleva el ancho entero.
+
+   El `flex: 1` heredado de la fila hacia algo peor que estrechar: dentro de
+   una caja en columna eso es alto, y combinado con el `overflow-x` que habia
+   antes varios navegadores moviles le daban altura cero. De ahi que en
+   algunos telefonos el comando no apareciera. */
+@media (max-width: 699px) {
+  .comandos__caja,
+  .comandos__barra {
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
     padding: 12px;
   }
 
-  .comandos__caja .copiar {
+  .comandos__caja .copiar,
+  .comandos__barra .copiar {
     align-self: flex-end;
+  }
+
+  /* En una caja en columna `flex: 1` es alto, no ancho. */
+  .comandos__cmd,
+  .comandos__linea {
+    flex: none;
   }
 }

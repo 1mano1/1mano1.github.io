@@ -15,9 +15,11 @@
   top: 50%;
   left: 50%;
   /* El origen en el centro hace que el -50% se mida sobre el lienzo sin
-     escalar, asi que el dibujo queda centrado sea cual sea la escala. */
+     escalar, asi que el dibujo queda centrado sea cual sea la escala.
+     --desplaza lo corre para centrar por el chip en vez de por el lienzo; va
+     detras del escalado, o sea en pixeles de pantalla. */
   transform-origin: center;
-  transform: translate(-50%, -50%) scale(var(--escala, 1));
+  transform: translate(-50%, -50%) translateX(var(--desplaza, 0px)) scale(var(--escala, 1));
 }
 
 .chipq__pieza,
