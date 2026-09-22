@@ -43,17 +43,22 @@
 
 /* ---- tarjetas flotantes ---- */
 
-/* La sombra y el borde salen del volcado: van en el style de cada chip. */
+/* La sombra y el borde salen del volcado: van en el style de cada chip.
+   El ancho lo pone el contenido y el del volcado queda como minimo, que es
+   como se comporta un auto-layout de Figma. */
 .ilus__chip {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  width: max-content;
   transition:
     opacity 300ms var(--sale),
     top 1200ms var(--entra-sale);
 }
 
-.ilus__grupo,
-.ilus__punto,
-.ilus__chip-txt {
-  position: absolute;
+.ilus__grupo {
+  display: flex;
+  flex-direction: column;
 }
 
 .ilus__chip-txt {
@@ -61,6 +66,8 @@
 }
 
 .ilus__punto {
+  display: block;
+  flex: none;
   border-radius: 50%;
 }
 

@@ -93,12 +93,13 @@
   color: var(--gris-claro);
 }
 
-/* La linea mas larga mide 62 caracteres y a 15px no cabe por debajo de
-   1100: se desliza dentro de la caja en vez de ensanchar la pagina. */
+/* La linea mas larga mide 62 caracteres y en movil la caja da 304px para los
+   398 que pide: se quedaba fuera una cuarta parte del codigo, deslizandose
+   dentro de la caja. Partido se lee entero, y los saltos de linea de verdad
+   siguen ahi, asi que copiarlo sigue dando el script que corre. */
 .uso__pre {
-  overflow-x: auto;
-  /* Igual que los comandos: cortado a filo parece un error de maquetado. */
-  mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
   font-size: clamp(12px, calc(12px + 3 * (100vw - 360px) / 1152), 15px);
   line-height: 1.65;
   color: var(--superficie);

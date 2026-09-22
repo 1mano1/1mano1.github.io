@@ -204,11 +204,15 @@
   gap: 10px;
 }
 
-/* Desde tablet los botones caben en fila y los metadatos se les pegan
-   encima, como esta dibujado el escritorio. */
+/* Desde tablet los botones caben en fila.
+
+   El hueco no es 0 aunque en el Figma lo parezca: ese pie es un auto layout
+   vertical con `itemSpacing: 24`, pero quedo con alto fijo 68 = 20 del
+   renglon de metadatos + 48 de los botones, y con `SPACE_BETWEEN` los 24 se
+   aplastaron a cero. El diseño pide 24, asi que van 24. */
 @media (min-width: 560px) {
   .panel__pie {
-    gap: 0;
+    gap: 24px;
   }
 
   .panel__botones {
@@ -272,6 +276,25 @@
 
 .terminal__linea {
   min-height: 1.55em;
+}
+
+/* En un telefono la linea mas larga (53 caracteres) pide 404px y la caja da
+   276: un tercio de la salida no se veia nunca, porque deslizar la consola
+   con el dedo mueve la pagina antes que la caja. Partida se lee entera, y
+   solo se parten las dos lineas de comando: la tabla de resultados mide 29
+   caracteres y ni se acerca al borde, asi que sigue cuadrada. La sangria
+   mete la continuacion dos espacios, como envuelve una terminal de verdad. */
+@media (max-width: 699px) {
+  .terminal {
+    overflow-x: visible;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .terminal__linea {
+    padding-left: 2ch;
+    text-indent: -2ch;
+  }
 }
 
 /* Los tres botones de la ventana los dibuja el ::before del bloque. */

@@ -39,16 +39,20 @@ const enPaso = (p, paso) => (paso === 'inicio' ? porNombre[p.name] || p : p)
  * Pinta un descendiente cualquiera de un chip: texto, punto o el frame que
  * los agrupa. Va recursivo porque los chips anidan los dos textos dentro de
  * otro frame, y quedarse en el primer nivel los dejaba en blanco.
+ *
+ * Dentro del chip los hijos van en flujo, no posicionados: el volcado trae
+ * los anchos de los rotulos de Figma ("Corre en Android", 115px) y los
+ * rotulos de verdad son mas largos ("el formato de llama.cpp", 132px), asi
+ * que colocarlos por coordenadas los pegaba al borde o los sacaba. Del
+ * volcado se conserva lo unico que sigue siendo cierto: los huecos.
  */
 function Nodo({ n }) {
-  const base = { left: px(n.x), top: px(n.y), opacity: n.opacity }
-
   if (n.type === 'TEXT') {
     return (
       <span
         className="ilus__chip-txt"
         style={{
-          ...base,
+          opacity: n.opacity,
           color: n.fill,
           fontFamily: fam(n.font),
           fontWeight: n.weight,
@@ -65,18 +69,40 @@ function Nodo({ n }) {
     return (
       <span
         className="ilus__punto"
-        style={{ ...base, width: px(n.w), height: px(n.h), background: n.fill }}
+        style={{ opacity: n.opacity, width: px(n.w), height: px(n.h), background: n.fill }}
       />
     )
   }
 
+  const hijos = n.children || []
   return (
-    <div className="ilus__grupo" style={{ ...base, width: px(n.w), height: px(n.h) }}>
-      {(n.children || []).map((h, i) => (
+    <div className="ilus__grupo" style={{ opacity: n.opacity, gap: px(hueco(hijos, 'y')) }}>
+      {hijos.map((h, i) => (
         <Nodo key={i} n={h} />
       ))}
     </div>
   )
+}
+
+/** Separacion entre el primer hijo y el segundo, en el eje que se pida. */
+function hueco(hijos, eje) {
+  if (hijos.length < 2) return 0
+  const [a, b] = hijos
+  return Math.max(0, b[eje] - (a[eje] + a[eje === 'x' ? 'w' : 'h']))
+}
+
+/**
+ * El aire que Figma dejo alrededor del contenido del chip: 15px a la
+ * izquierda y 17 a la derecha en los dos chips grandes. Se deduce de las
+ * coordenadas en vez de escribirse, asi que sigue siendo el del diseno
+ * aunque el texto cambie de largo.
+ */
+function relleno(p) {
+  const hijos = p.children || []
+  const bordes = (eje, lado) => hijos.map((h) => h[eje] + (lado ? h[eje === 'x' ? 'w' : 'h'] : 0))
+  return `${Math.min(...bordes('y'))}px ${p.w - Math.max(...bordes('x', true))}px ${
+    p.h - Math.max(...bordes('y', true))
+  }px ${Math.min(...bordes('x'))}px`
 }
 
 function Pieza({ p, paso }) {
@@ -123,14 +149,20 @@ function Pieza({ p, paso }) {
   }
 
   if (p.name.startsWith('chip')) {
+    // El chip crece hacia dentro del lienzo: el que esta pegado al borde
+    // derecho se ancla por ahi para no desbordarse cuando el texto es mas
+    // largo que lo dibujado.
+    const derecha = LIENZO - (s.x + p.w)
     return (
       <div
         className={`ilus__chip ${p.name === 'chip0' ? 'ilus__chip--oscuro' : ''}`}
         style={{
-          left: px(s.x),
+          ...(s.x < derecha ? { left: px(s.x) } : { right: px(derecha) }),
           top: px(s.y),
-          width: px(s.w),
-          height: px(s.h),
+          minWidth: px(s.w),
+          minHeight: px(s.h),
+          padding: relleno(p),
+          gap: px(hueco(p.children || [], 'x')),
           opacity: s.opacity,
           background: s.fill,
           borderRadius: px(p.radius || 12),

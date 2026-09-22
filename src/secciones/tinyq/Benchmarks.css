@@ -203,7 +203,11 @@
 @media (max-width: 619px) {
   .bench {
     --col-modelo: 0px;
-    --respiro: 64px;
+    /* Con 64 la pista se quedaba en dos tercios del ancho y la grafica salia
+       apretada contra la izquierda. La barra mas larga (6.79 GB de un eje de
+       8) acaba en el 85%, asi que con 28 su etiqueta todavia cabe: es el caso
+       que manda y esta comprobado midiendo las nueve. */
+    --respiro: 28px;
   }
 
   .bench__grupo {
