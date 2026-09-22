@@ -1,20 +1,33 @@
 import { useEffect, useState } from 'react'
+import { MARCA, encajeCuadrado } from '../lib/marca'
+
+/* La caja de Figma 19:6: 28 de lado y 8 de radio. Dentro ya no van los cuatro
+   cuadritos del boceto sino el monograma IR, colocado por la regla de aire
+   libre de la guia de marca en vez de a ojo. */
+const CAJA = 28
+const RADIO = 8
+const { escala, x, y } = encajeCuadrado(CAJA)
 
 /**
- * Logo: caja de 28 con cuatro cuadritos de 6. Coordenadas literales de
- * Figma 19:6 — el primero es azul y el ultimo tiene el radio mas grande.
+ * Logo: el monograma en blanco sobre la caja oscura, con el acento azul.
  *
  * Va en un viewBox y no en divs con porcentajes: el padding en % se
  * resuelve contra el ancho del padre, no contra el del propio logo.
  */
 export function Logo({ className = '' }) {
   return (
-    <svg className={`logo ${className}`} viewBox="0 0 28 28" aria-hidden="true" focusable="false">
-      <rect width="28" height="28" rx="8" fill="var(--tinta)" />
-      <rect x="6" y="6" width="6" height="6" rx="1.5" fill="var(--azul)" />
-      <rect x="16" y="6" width="6" height="6" rx="1.5" fill="var(--blanco)" />
-      <rect x="6" y="16" width="6" height="6" rx="1.5" fill="var(--blanco)" />
-      <rect x="16" y="16" width="6" height="6" rx="3" fill="var(--blanco)" />
+    <svg
+      className={`logo ${className}`}
+      viewBox={`0 0 ${CAJA} ${CAJA}`}
+      aria-hidden="true"
+      focusable="false"
+    >
+      <rect width={CAJA} height={CAJA} rx={RADIO} fill="var(--tinta)" />
+      <g transform={`translate(${x} ${y}) scale(${escala})`}>
+        <path d={MARCA.trazos.barra} fill="var(--blanco)" />
+        <path d={MARCA.trazos.r} fill="var(--blanco)" />
+        <path d={MARCA.trazos.acento} fill="var(--azul)" />
+      </g>
     </svg>
   )
 }
