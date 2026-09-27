@@ -53,6 +53,8 @@ const DISENOS = [
     alto: 420,
     altoMovil: 292,
     fondo: '#eef2ff',
+    figma:
+      'https://www.figma.com/design/cGRHV8LUUJjCiRz6YtQcyc/Pulso-%E2%80%94-App-de-finanzas',
   },
   {
     id: 'clima',
@@ -65,6 +67,7 @@ const DISENOS = [
     alto: 420,
     altoMovil: 382,
     fondo: '#fff3e6',
+    figma: 'https://www.figma.com/design/R54Glow3b22v9roJi02U9y/Nimbo-%E2%80%94-Widget-de-clima',
   },
   {
     id: 'dashboard',
@@ -77,6 +80,7 @@ const DISENOS = [
     alto: 300,
     altoMovil: 300,
     fondo: '#0e0f12',
+    figma: 'https://www.figma.com/design/1X1ejfuclZGv45Jer9HPWR/Observa-%E2%80%94-Dashboard-de-ML',
   },
   {
     id: 'landing',
@@ -89,6 +93,7 @@ const DISENOS = [
     alto: 300,
     altoMovil: 300,
     fondo: '#eef7f1',
+    figma: 'https://www.figma.com/design/tTjldbN1U4qZ2q8YW8pZHe/Brisa-%E2%80%94-Landing-SaaS',
   },
   {
     id: 'sistema',
@@ -101,6 +106,7 @@ const DISENOS = [
     alto: 300,
     altoMovil: 300,
     fondo: '#f5f6f8',
+    figma: 'https://www.figma.com/design/AqBh78GJgGLxOy9EmQT5OJ/%C3%81tomo-%E2%80%94-Design-system',
   },
 ]
 
@@ -162,23 +168,30 @@ export default function Disenos() {
                   '--fondo': d.fondo,
                 }}
               >
-                <div className="tarjeta-dis__miniatura">
-                  <img
-                    src={`/disenos/${d.id}.png`}
-                    alt={d.alt}
-                    width={d.img.ancho}
-                    height={d.img.alto}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-
-                <div className="tarjeta-dis__pie">
-                  <div className="tarjeta-dis__textos">
-                    <h3 className="tarjeta-dis__titulo">{d.titulo}</h3>
-                    <p className="tarjeta-dis__meta">{d.meta}</p>
+                <a
+                  className="tarjeta-dis__enlace"
+                  href={d.figma}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="tarjeta-dis__miniatura">
+                    <img
+                      src={`/disenos/${d.id}.png`}
+                      alt={d.alt}
+                      width={d.img.ancho}
+                      height={d.img.alto}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
-                </div>
+
+                  <div className="tarjeta-dis__pie">
+                    <div className="tarjeta-dis__textos">
+                      <h3 className="tarjeta-dis__titulo">{d.titulo}</h3>
+                      <p className="tarjeta-dis__meta">{d.meta}</p>
+                    </div>
+                  </div>
+                </a>
               </li>
             )
           })}
