@@ -1,5 +1,4 @@
-/* Ilustracion de cuantizacion — Figma 40:1468.
-   El lienzo mide 560x560 en coordenadas de Figma y se escala al hueco. */
+/* Ilustracion de cuantizacion. Figma 40:1468. */
 
 .ilus {
   position: relative;
@@ -43,9 +42,7 @@
 
 /* ---- tarjetas flotantes ---- */
 
-/* La sombra y el borde salen del volcado: van en el style de cada chip.
-   El ancho lo pone el contenido y el del volcado queda como minimo, que es
-   como se comporta un auto-layout de Figma. */
+/* La sombra y el borde salen del volcado. */
 .ilus__chip {
   display: flex;
   box-sizing: border-box;
@@ -126,9 +123,7 @@
   }
 }
 
-/* La vuelta al estado inicial es un DISSOLVE: funde, no mueve. La barra y
-   las tarjetas tenian el mismo problema que las celdas —1200ms de viaje con
-   solo 600ms de estancia en inicio, asi que salian a medias y se devolvian—. */
+/* La vuelta al estado inicial es un DISSOLVE. */
 .ilus[data-paso='inicio'] .ilus__rect {
   transition:
     width 0ms,

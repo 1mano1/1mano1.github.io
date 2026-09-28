@@ -175,10 +175,7 @@ svg {
   transform: translateY(0);
 }
 
-/* ---------- revelado al hacer scroll ----------
-   En Figma cada seccion tiene los estados Oculta -> Visible: el contenido
-   sube 40px y aparece, con SMART_ANIMATE de 700ms y EASE_OUT. Aqui lo
-   dispara un IntersectionObserver (ver lib/useRevelar.js). */
+/* ---------- revelado al hacer scroll ---------- */
 
 .revelar {
   opacity: 0;
@@ -202,10 +199,7 @@ svg {
   }
 }
 
-/* ---------- iconos ----------
-   La forma sale del SVG exportado y el color del texto, asi que el mismo
-   archivo sirve en negro sobre blanco y en blanco sobre azul. Estaban en
-   OpenSource.css hasta que la seccion de redes empezo a usar los dos. */
+/* ---------- iconos ---------- */
 
 .icono-github,
 .icono-enlace {

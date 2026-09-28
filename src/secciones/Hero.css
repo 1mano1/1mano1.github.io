@@ -1,4 +1,4 @@
-/* Hero — Figma 76:4198 (desktop) / 53:2169 (movil) */
+/* Hero. Figma 76:4198 (desktop) / 53:2169 (movil) */
 
 .hero {
   /* desktop 100px arriba y 140px abajo; movil 28 / 64 */
@@ -19,7 +19,7 @@
   align-items: flex-start;
 }
 
-/* ---- pildora "Nuevo · tinyq" ---- */
+/* ---- pildora "Nuevo · Octuma" ---- */
 
 .hero__aviso {
   display: inline-flex;

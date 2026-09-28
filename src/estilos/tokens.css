@@ -1,7 +1,4 @@
-/* Tokens sacados del archivo de Figma "Portafolio V3".
-   Los valores no se inventan: salen de figma_data.json (ver tools/fig.py).
-   Las escalas fluidas interpolan entre el diseno movil (360px) y el
-   desktop (1512px), que son los dos anchos que estan dibujados. */
+/* Tokens sacados del archivo de Figma "Portafolio V3". */
 
 :root {
   /* ---- color ---- */

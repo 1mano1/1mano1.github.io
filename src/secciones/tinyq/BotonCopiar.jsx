@@ -1,13 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-/**
- * Boton de copiar de la pagina de tinyq. Figma 204:6002 (icono) y 209:6424.
- *
- * Sale cinco veces —el comando del hero y los cuatro de la seccion de
- * comandos—, asi que vive aparte. Si el navegador no deja escribir en el
- * portapapeles (pasa fuera de https) el boton lo dice en vez de quedarse
- * callado fingiendo que copio.
- */
+/* Boton de copiar de la pagina de Octuma. */
 export default function BotonCopiar({ texto, className = '' }) {
   const [estado, setEstado] = useState('listo')
   const reloj = useRef(null)

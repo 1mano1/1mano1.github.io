@@ -1,4 +1,4 @@
-/* Comandos — Figma 192:5996 */
+/* Comandos. Figma 192:5996 */
 
 .comandos__instalacion {
   display: flex;
@@ -6,8 +6,7 @@
   gap: 12px;
 }
 
-/* La unica caja oscura de la pagina, como en el Figma: es el paso que hay
-   que dar primero y se distingue de los cuatro comandos. */
+/* La unica caja oscura de la pagina, como en el Figma. */
 .comandos__barra {
   display: flex;
   align-items: center;
@@ -18,10 +17,7 @@
   background: var(--tinta);
 }
 
-/* El pip install es largo de verdad (77 caracteres) y por debajo de 900 no
-   cabe. Se parte en varias lineas: antes se deslizaba dentro de su caja, y
-   deslizar con el dedo mueve la pagina, no la caja, asi que en un telefono
-   media orden no se leia nunca. */
+/* El pip install es largo de verdad (77 caracteres) y por debajo de 900 no cabe. */
 .comandos__linea {
   flex: 1;
   min-width: 0;
@@ -37,11 +33,7 @@
   color: var(--gris-claro);
 }
 
-/* Variante del boton para la caja oscura: el borde y el texto claros, y el
-   fondo transparente para que se vea el negro de la barra.
-   Doblada (.copiar.copiar--oscuro) a proposito: pesa lo mismo que .copiar,
-   que vive en HeroTinyq.css y se importa despues, asi que suelta perdia el
-   fondo blanco y el boton se veia claro sobre la barra negra. */
+/* Variante del boton para la caja oscura. */
 .copiar.copiar--oscuro {
   border-color: #2e3038;
   background: transparent;
@@ -69,10 +61,7 @@
   gap: clamp(12px, calc(12px + 8 * (100vw - 360px) / 1152), 20px);
 }
 
-/* Dos por fila a partir de 1140. El Figma las pone en dos desde 1000, pero
-   ahi la caja se queda en 225px para comandos de 304: se partian en tres
-   renglones. A 1140 cada tarjeta da 476 y solo se parte el `export`, que
-   mide 429 y es el mas largo con diferencia. */
+/* Dos por fila a partir de 1140. */
 @media (min-width: 1140px) {
   .comandos__tarjetas {
     grid-template-columns: 1fr 1fr;
@@ -124,9 +113,7 @@
   background: var(--superficie);
 }
 
-/* Se parte igual que la orden de instalacion, y por lo mismo. No es solo
-   cosa de moviles: entre 1000 y 1100, con las tarjetas ya en dos columnas,
-   `tinyq export ... --out qwen3b.gguf` se quedaba a la mitad. */
+/* Se parte igual que la orden de instalacion, y por lo mismo. */
 .comandos__cmd {
   flex: 1;
   min-width: 0;
@@ -137,8 +124,7 @@
   overflow-wrap: anywhere;
 }
 
-/* Las descripciones miden distinto (dos y tres lineas): pegada abajo, las
-   cuatro cajas de comando quedan a la misma altura. */
+/* Las descripciones miden distinto (dos y tres lineas). */
 .comandos__que {
   margin-top: auto;
   font-size: clamp(13px, calc(13px + 2 * (100vw - 360px) / 1152), 15px);
@@ -146,14 +132,7 @@
   color: var(--gris);
 }
 
-/* En movil el boton de copiar ocupa 94 de los 288 que quedan dentro de la
-   tarjeta y el comando se queda en un hilo, asi que el boton se va abajo a
-   la derecha y el comando se lleva el ancho entero.
-
-   El `flex: 1` heredado de la fila hacia algo peor que estrechar: dentro de
-   una caja en columna eso es alto, y combinado con el `overflow-x` que habia
-   antes varios navegadores moviles le daban altura cero. De ahi que en
-   algunos telefonos el comando no apareciera. */
+/* En movil el boton de copiar ocupa 94 de los 288 que quedan dentro de la tarjeta, y el comando no cabe. */
 @media (max-width: 699px) {
   .comandos__caja,
   .comandos__barra {

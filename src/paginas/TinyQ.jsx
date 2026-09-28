@@ -22,12 +22,7 @@ import '../secciones/tinyq/QueEsCuantizar.css'
 import '../secciones/tinyq/SeccionTq.css'
 import '../secciones/tinyq/Uso.css'
 
-/**
- * Pagina de tinyq. Figma 95:5999 ("tinyq — Desktop") y 196:1461 (movil).
- *
- * Se entra desde el boton "Leer documentacion" del panel de open source y
- * desde el chip del hero del portafolio.
- */
+/* Pagina de Octuma (antes TinyQ). */
 export default function TinyQ() {
   return (
     <>

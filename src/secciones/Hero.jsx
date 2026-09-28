@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { revelado, useRevelar } from '../lib/useRevelar'
 import IlustracionCuantizacion from './IlustracionCuantizacion'
 
-/** Hero — Figma 76:4198 (desktop) y 53:2169 (movil). */
+/** Hero. Figma 76:4198 (desktop) y 53:2169 (movil). */
 export default function Hero() {
   const [ref, visible] = useRevelar()
 
@@ -10,10 +10,10 @@ export default function Hero() {
     <section className="hero" id="inicio" ref={ref}>
       <div className="hero__caja contenedor">
         <div {...revelado(visible, 'hero__texto')}>
-          <Link className="hero__aviso" to="/tinyq">
+          <Link className="hero__aviso" to="/octuma">
             <span className="hero__aviso-etiqueta">Nuevo</span>
-            <span className="hero__aviso-largo">tinyq v0.1 — cuantización INT4 open source →</span>
-            <span className="hero__aviso-corto">tinyq v0.1 open source →</span>
+            <span className="hero__aviso-largo">Octuma v0.1: cuantización INT4 open source →</span>
+            <span className="hero__aviso-corto">Octuma v0.1 open source →</span>
           </Link>
 
           <h1 className="hero__titulo">
@@ -35,9 +35,6 @@ export default function Hero() {
             <a className="boton boton--primario" href="#proyectos">
               Ver proyectos
             </a>
-            {/* TODO(Imanol): el PDF no existe todavia. Va en
-                app/public/cv-imanol-rodriguez.pdf; hasta entonces el boton baja
-                un 404. */}
             <a className="boton boton--secundario" href="/cv-imanol-rodriguez.pdf" download>
               Descargar CV
             </a>

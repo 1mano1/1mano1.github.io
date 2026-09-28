@@ -2,16 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { revelado, useRevelar } from '../../lib/useRevelar'
 
-/**
- * CTA. Figma 52:2192.
- *
- * Cierra la pagina y hace de pie: en el Figma no hay nada despues, por eso
- * esta seccion lleva la linea de la licencia y la autoria.
- *
- * El boton de Star no dice cuantas hay. La cifra del portafolio ("1.2k")
- * estaba inventada y se quito; aqui no se vuelve a poner una.
- */
-const REPO = 'https://github.com/1mano1/TinyQ'
+const REPO = 'https://github.com/1mano1/octuma'
 
 export default function Cta() {
   const [ref, visible] = useRevelar()
@@ -38,7 +29,7 @@ export default function Cta() {
         </div>
 
         <div {...revelado(visible, 'ctatq__pie', 120)}>
-          <span>tinyq · MIT License</span>
+          <span>Octuma · MIT License</span>
           <span>Hecho por Imanol Rodríguez</span>
         </div>
       </div>

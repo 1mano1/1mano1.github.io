@@ -1,7 +1,6 @@
-/* Comparativa — Figma 190:5996 (desktop) / 199:1461 (movil) */
+/* Comparativa. Figma 190:5996 (desktop) / 199:1461 (movil) */
 
-/* Dos paneles de igual alto. Se parten en 1000, el mismo corte que usan las
-   tarjetas del resto de la pagina. */
+/* Dos paneles de igual alto. */
 .compara__tablas {
   display: grid;
   grid-template-columns: 1fr;
@@ -45,8 +44,7 @@
   color: var(--gris);
 }
 
-/* La nota de cada panel se pega abajo para que las dos queden alineadas
-   aunque las tablas midan distinto. */
+/* La nota de cada panel se pega abajo para que las dos queden alineadas aunque las tablas midan distinto. */
 .compara__nota {
   margin-top: auto;
   font-size: clamp(13px, calc(13px + 2 * (100vw - 360px) / 1152), 15px);
@@ -95,14 +93,13 @@
   border-top: 1px solid var(--linea);
 }
 
-/* Las filas de TinyQ van en negrita: son las que hay que buscar. */
+/* Las filas de Octuma van en negrita: son las que hay que buscar. */
 .compara__fila--nuestra th,
 .compara__fila--nuestra td {
   font-weight: 600;
 }
 
-/* Con el prefijo del marco: sin el, `.compara__marco td` pesa mas y el color
-   se quedaba en tinta, asi que la leyenda "en azul" mentia. */
+/* Con el prefijo del marco. */
 .compara__marco .compara__dano {
   color: var(--gris);
 }
@@ -125,9 +122,7 @@
   }
 }
 
-/* Debajo de 560 las cuatro columnas no caben ni en un panel a ancho
-   completo: cada fila pasa a tarjeta con las celdas etiquetadas, igual que
-   la tabla de benchmarks. */
+/* Debajo de 560 las cuatro columnas no caben ni en un panel a ancho completo. */
 @media (max-width: 559px) {
   .compara__marco thead {
     display: none;

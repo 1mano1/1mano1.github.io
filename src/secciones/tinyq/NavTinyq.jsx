@@ -20,13 +20,7 @@ function Estrella() {
   )
 }
 
-/**
- * Nav de la pagina de tinyq. Figma 49:2158 (desktop) y 196:1463 (movil).
- *
- * No es el nav del portafolio: aqui la marca es una miga de pan que dice de
- * donde vienes, porque esta pagina se abre desde la seccion de open source y
- * sin la miga no hay forma de volver.
- */
+/* Nav de la pagina de Octuma. */
 export default function NavTinyq() {
   const [desplazado, setDesplazado] = useState(false)
 
@@ -57,14 +51,12 @@ export default function NavTinyq() {
             /
           </span>
           <span className="navtq__actual" aria-current="page">
-            tinyq
+            Octuma
           </span>
         </div>
 
-        {/* En movil la miga no cabe entera: el nombre se acorta y el titulo
-            de la pagina se va a la otra esquina, como esta dibujado. */}
         <span className="navtq__aqui mono" aria-hidden="true">
-          tinyq
+          octuma
         </span>
 
         <nav className="navtq__enlaces" aria-label="Secciones de esta página">
@@ -77,7 +69,7 @@ export default function NavTinyq() {
 
         <a
           className="boton boton--tinta navtq__star"
-          href="https://github.com/1mano1/TinyQ"
+          href="https://github.com/1mano1/octuma"
           target="_blank"
           rel="noreferrer"
         >

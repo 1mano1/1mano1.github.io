@@ -1,16 +1,4 @@
-/**
- * El monograma IR, en un lienzo de 665.4 x 634.2.
- *
- * Los trazos salen de `marca.py`, el script que reconstruyo el logo ajustando
- * rectas y circunferencias al PNG original con precision subpixel en vez de
- * calcar el mapa de bits: el dibujo cubre el 98.3% del original, medido como
- * IoU contra el bitmap. Vive fuera de este repo, en `Portafolio/tools/`,
- * junto con el resto de utilidades de captura y medicion.
- *
- * `barra` es el grosor de la barra vertical, y es tambien la "x" del aire
- * libre: la guia de marca pide 1x por los cuatro lados. De ahi sale sola la
- * caja de cualquier icono cuadrado, sin numeros inventados.
- */
+/* El monograma IR, en un lienzo de 665.4 x 634.2. */
 export const MARCA = {
   ancho: 665.4,
   alto: 634.2,
@@ -28,11 +16,7 @@ export const MARCA = {
   },
 }
 
-/**
- * Como colocar la marca dentro de una caja cuadrada de `lado` respetando el
- * aire libre. El ancho manda porque la marca es un poco mas ancha que alta:
- * lado = ancho + 2x, asi que la escala es lado / (ancho + 2 * barra).
- */
+/* Como colocar la marca dentro de una caja cuadrada de `lado` respetando el aire libre. */
 export function encajeCuadrado(lado) {
   const escala = lado / (MARCA.ancho + 2 * MARCA.barra)
   return {

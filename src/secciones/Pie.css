@@ -1,8 +1,6 @@
 /* Pie de pagina. Figma 28:77 (desktop) / 56:3330 (movil) */
 
-/* El relleno de arriba es el hueco que Figma deja entre el panel azul y esta
-   linea (40 en movil, 100 en desktop); el de abajo es el que cierra la
-   pagina. Estaban en Contacto hasta que el pie salio de `<main>`. */
+/* El relleno de arriba es el hueco que Figma deja entre el panel azul y esta linea (40 en movil. */
 .pie {
   padding-top: clamp(40px, calc(40px + 60 * (100vw - 360px) / 1152), 100px);
   padding-bottom: clamp(32px, calc(32px + 16 * (100vw - 360px) / 1152), 48px);
@@ -23,5 +21,22 @@
   .pie__interior {
     flex-direction: row;
     justify-content: space-between;
+  }
+}
+
+.pie__cookies {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .pie__cookies:hover {
+    color: var(--tinta);
   }
 }

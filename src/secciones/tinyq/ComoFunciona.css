@@ -1,7 +1,6 @@
-/* Cómo funciona — Figma 84:6075 (desktop) / 197:1461 (movil) */
+/* Cómo funciona. Figma 84:6075 (desktop) / 197:1461 (movil) */
 
-/* Mismo corte que "Que es cuantizar": a menos de 1000 las tres tarjetas se
-   aprietan y la descripcion se parte en cuatro lineas. */
+/* Mismo corte que "Que es cuantizar". */
 .comofunciona__pasos {
   display: grid;
   grid-template-columns: 1fr;
@@ -24,10 +23,7 @@
   overflow: hidden;
 }
 
-/* El movil dibujado cambia la ilustracion por una tira de 43px con una linea
-   en mono. Aqui se escala la misma del desktop: es la que lleva el dato, y
-   mantener un solo dibujo evita que las dos versiones se desfasen. La
-   proporcion es la del lienzo del Figma, asi que nada se recorta. */
+/* El movil dibujado cambia la ilustracion por una tira de 43px con una linea en mono. */
 .pasotq__ilustracion {
   width: 100%;
   aspect-ratio: 408.67 / 200;
@@ -68,8 +64,7 @@
   flex-direction: column;
   gap: 12px;
   padding: clamp(20px, calc(20px + 8 * (100vw - 360px) / 1152), 28px);
-  /* Menos arriba, y va bajando: el renglon del numero ya trae mucho aire
-     propio (32px de fuente en una caja de 42). El Figma le pone 8. */
+  /* Menos arriba, y va bajando. */
   padding-top: clamp(8px, calc(14px - 6 * (100vw - 360px) / 1152), 14px);
 }
 
@@ -79,8 +74,7 @@
   gap: clamp(10px, calc(10px + 4 * (100vw - 360px) / 1152), 14px);
 }
 
-/* Azul mas claro que --azul-300: el numero es una marca de orden, no un dato
-   que haya que leer antes que el titulo. */
+/* Azul mas claro que --azul-300. */
 .pasotq__num {
   font-size: clamp(24px, calc(24px + 8 * (100vw - 360px) / 1152), 32px);
   font-weight: 700;
@@ -102,8 +96,7 @@
   color: var(--gris);
 }
 
-/* Empuja el enlace al fondo para que los tres queden a la misma altura
-   aunque las descripciones midan distinto. */
+/* Empuja el enlace al fondo para que los tres queden a la misma altura aunque las descripciones midan distinto. */
 .pasotq__mas {
   margin-top: auto;
   padding-top: 4px;

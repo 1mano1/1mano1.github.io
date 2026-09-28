@@ -1,4 +1,4 @@
-/* Uso — Figma 52:2157 */
+/* Uso. Figma 52:2157 */
 
 .uso__interior {
   display: grid;
@@ -7,11 +7,7 @@
   align-items: center;
 }
 
-/* 400 de texto y 792 de codigo, con 80 de hueco: los mismos 1272.
-   El corte no es el 1000 del resto de la pagina: ahi el contenedor mide 849
-   y al codigo le quedaban 390, con la linea mas larga deslizandose mas de lo
-   que se veia. Desde 1180 le tocan 520, que es lo que ocupan sus 62
-   caracteres. */
+/* 400 de texto y 792 de codigo, con 80 de hueco. */
 @media (min-width: 1180px) {
   .uso__interior {
     grid-template-columns: 400px 1fr;
@@ -25,8 +21,7 @@
   min-width: 0;
 }
 
-/* 44px en desktop, uno menos que los 48 del resto de titulos de la pagina:
-   compite con el bloque de codigo al lado y a 48 se parte en tres lineas. */
+/* 44px en desktop, uno menos que los 48 del resto de titulos de la pagina. */
 .uso__titulo {
   font-size: clamp(30px, calc(30px + 14 * (100vw - 360px) / 1152), 44px);
   font-weight: 600;
@@ -48,8 +43,7 @@
   padding-top: 8px;
 }
 
-/* Arriba y no al centro: en movil varias ocupan dos lineas y la palomita
-   se quedaba flotando a media altura en vez de junto a la primera. */
+/* Arriba y no al centro. */
 .uso__ventaja {
   display: flex;
   align-items: flex-start;
@@ -93,10 +87,7 @@
   color: var(--gris-claro);
 }
 
-/* La linea mas larga mide 62 caracteres y en movil la caja da 304px para los
-   398 que pide: se quedaba fuera una cuarta parte del codigo, deslizandose
-   dentro de la caja. Partido se lee entero, y los saltos de linea de verdad
-   siguen ahi, asi que copiarlo sigue dando el script que corre. */
+/* La linea mas larga mide 62 caracteres y en movil la caja da 304px para los 398 que pide. */
 .uso__pre {
   white-space: pre-wrap;
   overflow-wrap: anywhere;

@@ -1,27 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import datos from '../data/heroIlustracion.json'
 
-/**
- * Ilustracion de cuantizacion del hero (Figma 40:1468, variantes
- * Paso=Inicio y Paso=Cuantizado).
- *
- * Ciclo del prototipo de Figma:
- *   Cuantizado --3.5s--> DISSOLVE 300ms --> Inicio
- *   Inicio     --0.6s--> SMART_ANIMATE 1200ms EASE_IN_AND_OUT --> Cuantizado
- *
- * Las 64 celdas INT4 (i0..i63) nacen encima de la rejilla FP16 y vuelan a la
- * derecha encogiendose de 22 a 16px; la barra INT4 pasa de 464 a 175px y los
- * textos de INT4 aparecen.
- *
- * Los numeros del dibujo (15.2 GB, 5.7 GB, -62%, +1.8%) y el ancho de la
- * barra salen de runs/qwen7b__fp16 y runs/qwen7b__gptq-int4: 175 = 464 x
- * 5.749/15.231. En Figma decian 16 GB, 4.3 GB, -73% y "98.6% de precision",
- * que no es ni una medicion de TinyQ ni de un modelo que se haya corrido.
- *
- * Se dibuja en un lienzo fijo de 560x560 con los valores en px tal cual estan
- * en Figma, y se escala con transform. Es lo mismo que hace el diseno movil,
- * donde la ilustracion mide 320px (= 560 x 0.571).
- */
+/* Ilustracion de cuantizacion del hero (Figma 40:1468, variantes Paso=Inicio y Paso=Cuantizado). */
 
 const LIENZO = 560
 const { inicio, cuantizado } = datos
@@ -35,17 +15,7 @@ const fam = (f) => (f === 'JetBrains Mono' ? 'var(--mono)' : 'var(--fuente)')
 /** La misma pieza en el paso que toque. */
 const enPaso = (p, paso) => (paso === 'inicio' ? porNombre[p.name] || p : p)
 
-/**
- * Pinta un descendiente cualquiera de un chip: texto, punto o el frame que
- * los agrupa. Va recursivo porque los chips anidan los dos textos dentro de
- * otro frame, y quedarse en el primer nivel los dejaba en blanco.
- *
- * Dentro del chip los hijos van en flujo, no posicionados: el volcado trae
- * los anchos de los rotulos de Figma ("Corre en Android", 115px) y los
- * rotulos de verdad son mas largos ("el formato de llama.cpp", 132px), asi
- * que colocarlos por coordenadas los pegaba al borde o los sacaba. Del
- * volcado se conserva lo unico que sigue siendo cierto: los huecos.
- */
+/* Pinta un descendiente cualquiera de un chip. */
 function Nodo({ n }) {
   if (n.type === 'TEXT') {
     return (
@@ -91,12 +61,7 @@ function hueco(hijos, eje) {
   return Math.max(0, b[eje] - (a[eje] + a[eje === 'x' ? 'w' : 'h']))
 }
 
-/**
- * El aire que Figma dejo alrededor del contenido del chip: 15px a la
- * izquierda y 17 a la derecha en los dos chips grandes. Se deduce de las
- * coordenadas en vez de escribirse, asi que sigue siendo el del diseno
- * aunque el texto cambie de largo.
- */
+/* El aire que Figma dejo alrededor del contenido del chip. */
 function relleno(p) {
   const hijos = p.children || []
   const bordes = (eje, lado) => hijos.map((h) => h[eje] + (lado ? h[eje === 'x' ? 'w' : 'h'] : 0))
@@ -149,9 +114,7 @@ function Pieza({ p, paso }) {
   }
 
   if (p.name.startsWith('chip')) {
-    // El chip crece hacia dentro del lienzo: el que esta pegado al borde
-    // derecho se ancla por ahi para no desbordarse cuando el texto es mas
-    // largo que lo dibujado.
+    // El chip crece hacia dentro del lienzo.
     const derecha = LIENZO - (s.x + p.w)
     return (
       <div
@@ -257,10 +220,7 @@ export default function IlustracionCuantizacion() {
                 background: c.color,
                 borderRadius: px(c.radius || 4),
                 opacity: c.opacity,
-                // Solo las INT4 viajan, y solo a la ida: la vuelta al inicio
-                // es un DISSOLVE en el prototipo, no mueve nada. Animandola
-                // tambien 1200ms se quedaba a mitad de camino y se devolvia,
-                // porque en inicio solo se esta 600ms.
+                // Solo las INT4 viajan, y solo a la ida.
                 transitionDuration: esInt4 && paso === 'cuantizado' ? '1200ms' : '0ms',
               }}
             >

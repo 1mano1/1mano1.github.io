@@ -1,8 +1,4 @@
-/* Piezas que comparten todas las secciones de la pagina de tinyq.
-
-   No usan las del portafolio (.rotulo, .titulo-seccion) porque esta pagina
-   esta dibujada un punto mas chica: el rotulo va a 13 en vez de 12 y el h2 a
-   48 en vez de 52. Son dos escalas distintas del mismo sistema. */
+/* Piezas que comparten todas las secciones de la pagina de Octuma. */
 
 .sectq {
   padding-block: clamp(64px, calc(64px + 56 * (100vw - 360px) / 1152), 120px);
@@ -36,9 +32,7 @@
   color: var(--azul);
 }
 
-/* 32 en movil y 48 en desktop. El interlineado del Figma (67.68 sobre 48)
-   es 1.41, que para un titular deja demasiado aire; el movil usa 1.1 y es
-   el que se sigue. */
+/* 32 en movil y 48 en desktop. */
 .sectq__titulo {
   font-size: clamp(32px, calc(32px + 16 * (100vw - 360px) / 1152), 48px);
   font-weight: 600;
@@ -54,8 +48,7 @@
   color: var(--gris);
 }
 
-/* Linea de procedencia debajo de una tabla o un grupo de tarjetas: de donde
-   salio el numero. Va en mono porque siempre nombra un archivo. */
+/* Linea de procedencia debajo de una tabla o un grupo de tarjetas. */
 .sectq__fuente {
   font-family: var(--mono);
   font-size: clamp(11px, calc(11px + 2 * (100vw - 360px) / 1152), 13px);

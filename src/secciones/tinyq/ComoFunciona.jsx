@@ -1,22 +1,8 @@
 import { revelado, useRevelar } from '../../lib/useRevelar'
 import { IlustracionCalibrar, IlustracionEvaluar, IlustracionGrupos } from './IlustracionesPaso'
 
-/**
- * Cómo funciona. Figma 84:6075 (desktop) y 197:1461 (movil).
- *
- * Los tres pasos son los que hace `tinyq quantize` con sus valores por
- * defecto, comprobados en src/tinyq/cli.py: 128 ventanas de 2048 tokens,
- * grupos de 32, metodo gptq con awq encendido.
- *
- * El Figma de desktop dice "de 64 en 64" y el de movil "de 32 en 32". Manda
- * el codigo: `--group` vale 32 desde que el exportador a GGUF lo exige. El
- * barrido de la tabla de mas abajo si se midio con 64, y por eso la seccion
- * de "Que es cuantizar" lo aclara en su linea de procedencia.
- *
- * Los "Saber mas" apuntan a secciones que existen en el README del repo; no
- * hay paginas propias que inventar.
- */
-const REPO = 'https://github.com/1mano1/TinyQ'
+/* Cómo funciona. */
+const REPO = 'https://github.com/1mano1/octuma'
 
 const PASOS = [
   {
@@ -56,13 +42,8 @@ export default function ComoFunciona() {
           <h2 className="sectq__titulo">Tres pasos, un comando</h2>
         </div>
 
-        {/* El Figma dice "con los valores que ganaron el barrido". No es
-            exacto: el barrido se corrio con grupos de 64 y la CLI usa 32. Lo
-            que si gana en los cuatro modelos es el metodo, y eso es lo que
-            queda dicho. */}
         <p {...revelado(visible, 'sectq__intro', 60)}>
-          El comando hace los tres pasos seguidos con GPTQ + AWQ, el método que gana el barrido en
-          los cuatro modelos medidos. No hay nada que elegir.
+          Un solo comando hace los tres pasos con GPTQ + AWQ, el método con mejor resultado en los cuatro modelos medidos.
         </p>
 
         <ul className="comofunciona__pasos">

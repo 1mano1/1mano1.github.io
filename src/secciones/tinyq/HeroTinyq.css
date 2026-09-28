@@ -1,10 +1,6 @@
-/* Hero de tinyq — Figma 49:2175 (desktop) / 196:1466 (movil) */
+/* Hero de Octuma. Figma 49:2175 (desktop) / 196:1466 (movil) */
 
-/* El movil dibuja esta pagina con otro lenguaje visual que el desktop
-   (chips azules rellenos, botones capsula, comando en negro) y ademas solo
-   tiene 6 de las 10 secciones. Se sigue el desktop y se encoge, que es lo
-   que hace el resto del sitio; del movil se toman las decisiones de
-   reparto: alineado a la izquierda, chips que envuelven y botones abajo. */
+/* El movil dibuja esta pagina con otro lenguaje visual que el desktop (chips azules rellenos. */
 .herotq {
   padding-top: clamp(24px, calc(24px + 48 * (100vw - 360px) / 1152), 72px);
   padding-bottom: 56px;
@@ -22,9 +18,7 @@
   gap: 8px;
 }
 
-/* 13px en desktop y 11 en movil: a 13 los cuatro chips suman 346 y se
-   parten en dos filas dentro de los 320 utiles. El movil dibujado los tiene
-   a 10px justo por eso, en una sola fila. */
+/* 13px en desktop y 11 en movil. */
 .herotq__chip {
   padding: 5px clamp(10px, calc(10px + 2 * (100vw - 360px) / 1152), 12px);
   border: 1px solid var(--linea);
@@ -34,8 +28,7 @@
   color: var(--gris);
 }
 
-/* 34px en movil y 64 en desktop. No usa --t-h1 (40 → 68) porque este
-   titular es mas largo que el del portafolio y a 40 se come tres lineas. */
+/* 34px en movil y 64 en desktop. */
 .herotq__titulo {
   font-size: clamp(34px, calc(34px + 30 * (100vw - 360px) / 1152), 64px);
   font-weight: 600;
@@ -71,8 +64,7 @@
   border: 1px solid var(--linea);
   border-radius: var(--r-m);
   background: var(--superficie);
-  /* El comando es largo: si no cabe se desliza dentro de su caja en vez de
-     ensanchar la pagina. */
+  /* El comando es largo. */
   min-width: 0;
   overflow-x: auto;
 }
@@ -85,6 +77,9 @@
   line-height: 1.32;
   color: var(--tinta);
   white-space: nowrap;
+  /* En movil el comando no cabe. */
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
 .herotq__signo {
@@ -92,8 +87,7 @@
   color: var(--gris-claro);
 }
 
-/* En movil van a mitades: sueltos suman 317 de los 320 que hay, y basta
-   que una fuente redondee distinto para que el segundo caiga solo. */
+/* En movil van a mitades. */
 .herotq__botones {
   display: grid;
   grid-template-columns: 1fr 1fr;

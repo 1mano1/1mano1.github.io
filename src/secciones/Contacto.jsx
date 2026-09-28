@@ -1,19 +1,5 @@
 import { revelado, useRevelar } from '../lib/useRevelar'
 
-/**
- * Contacto. Figma 84:5759 (desktop) y 56:3322 (movil).
- *
- * Un panel azul con el titular y los dos botones. Es la unica seccion sin
- * rotulo numerado. La linea de creditos que Figma dibuja aqui debajo esta
- * en `Pie.jsx`, fuera de `<main>`, que es donde le toca.
- *
- * El correo es el que dio Imanol. Antes decia `hola@imanolr.dev`, un dominio
- * que no existe: el boton principal del portafolio rebotaba.
- *
- * TODO(Imanol): el segundo boton estaba dibujado como "Agendar llamada" hacia
- * cal.com/imanolr, que da 404. Mientras no haya calendario apunta a LinkedIn,
- * que si responde. Si algun dia hay agenda, se cambian las dos constantes.
- */
 const CORREO = 'ima.roguez11@gmail.com'
 const SEGUNDA = {
   texto: 'Escríbeme por LinkedIn',

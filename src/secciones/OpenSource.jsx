@@ -3,18 +3,7 @@ import ChipTinyq from './ChipTinyq'
 import Terminal from './Terminal'
 import { revelado, useRevelar } from '../lib/useRevelar'
 
-/**
- * 02 — Open source. Figma 73:3272 (desktop) y 54:2896 (movil).
- *
- * Tres bloques debajo de la cabecera: la ilustracion del chip, el panel del
- * proyecto destacado (info + terminal) y la fila de tres repos.
- *
- * Los tres repos del Figma (droid-llm, fastapi-ml-kit, rbx-inventory) no
- * existen, y sus estrellas tampoco: los 21 repos publicos de 1mano1 tienen
- * cero. Aqui van tres de verdad, sin contador. Del panel se cayo el "73% de
- * memoria" (el modelo entero baja 59%, no 73: los que bajan 3.66x son los
- * pesos) y ONNX, que no esta en el codigo.
- */
+/* 02 — Open source. */
 
 const PASOS = [
   { n: '1', titulo: 'Calibra', texto: 'Pasa 128 ventanas de texto para ver el rango real de cada capa.' },
@@ -68,12 +57,12 @@ export default function OpenSource() {
               <span className="panel__marca">
                 <span className="icono-github" aria-hidden="true" />
               </span>
-              <span className="panel__ruta mono">1mano1 / TinyQ</span>
+              <span className="panel__ruta mono">1mano1 / octuma</span>
               <span className="panel__licencia mono">MIT</span>
             </div>
 
             <div className="panel__intro">
-              <h3 className="panel__titulo">tinyq</h3>
+              <h3 className="panel__titulo">Octuma</h3>
               <p className="panel__texto">
                 Librería en Python que cuantiza modelos de lenguaje a 8 y 4 bits con un solo
                 comando. Un Qwen de 3B pasa de 6.79 a 2.76 GB perdiendo 2.4% de calidad, y sale
@@ -97,18 +86,16 @@ export default function OpenSource() {
                   <span className="panel__punto" style={{ background: '#3572a5' }} />
                   Python
                 </li>
-                <li>60 tests</li>
-                <li className="mono">v0.1.0</li>
+                <li>66 tests</li>
+                <li className="mono">v0.1.3</li>
               </ul>
 
               <div className="panel__botones">
-                <a className="boton boton--repo" href="https://github.com/1mano1/TinyQ">
+                <a className="boton boton--repo" href="https://github.com/1mano1/octuma">
                   <span className="icono-github" aria-hidden="true" />
                   Ver repositorio
                 </a>
-                {/* Este si es interno: la pagina de tinyq es lo que explica el
-                    proyecto. El README de GitHub ya cuelga del boton de al lado. */}
-                <Link className="boton boton--docs" to="/tinyq">
+                <Link className="boton boton--docs" to="/octuma">
                   Leer documentación
                 </Link>
               </div>
@@ -118,31 +105,41 @@ export default function OpenSource() {
           <Terminal />
         </article>
 
-        <div className="open__repos">
-          {REPOS.map((r, i) => (
-            <a
-              href={`https://github.com/1mano1/${r.nombre}`}
-              key={r.nombre}
-              {...revelado(visible, 'tarjeta-repo', 240 + i * 80)}
-            >
-              <span className="tarjeta-repo__cabecera">
-                <span className="tarjeta-repo__nombre mono">
-                  <span className="icono-github" aria-hidden="true" />
-                  {r.nombre}
-                </span>
-                <span className="icono-enlace" aria-hidden="true" />
-              </span>
-
-              <span className="tarjeta-repo__texto">{r.texto}</span>
-
-              <span className="tarjeta-repo__meta">
-                <span className="tarjeta-repo__lenguaje">
-                  <span className="panel__punto" style={{ background: r.color }} />
-                  {r.lenguaje}
-                </span>
-              </span>
+        <div className="open__otros">
+          <div {...revelado(visible, 'open__otros-cabecera', 200)}>
+            <h3 className="open__otros-titulo">Otros repositorios</h3>
+            <a className="open__todos" href="https://github.com/1mano1">
+              Ver todos en GitHub
+              <span aria-hidden="true">→</span>
             </a>
-          ))}
+          </div>
+
+          <div className="open__repos">
+            {REPOS.map((r, i) => (
+              <a
+                href={`https://github.com/1mano1/${r.nombre}`}
+                key={r.nombre}
+                {...revelado(visible, 'tarjeta-repo', 240 + i * 80)}
+              >
+                <span className="tarjeta-repo__cabecera">
+                  <span className="tarjeta-repo__nombre mono">
+                    <span className="icono-github" aria-hidden="true" />
+                    {r.nombre}
+                  </span>
+                  <span className="icono-enlace" aria-hidden="true" />
+                </span>
+
+                <span className="tarjeta-repo__texto">{r.texto}</span>
+
+                <span className="tarjeta-repo__meta">
+                  <span className="tarjeta-repo__lenguaje">
+                    <span className="panel__punto" style={{ background: r.color }} />
+                    {r.lenguaje}
+                  </span>
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

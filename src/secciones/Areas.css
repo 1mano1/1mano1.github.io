@@ -130,8 +130,7 @@
     gap: 20px;
   }
 
-  /* A partir de aqui todas las tarjetas de una fila miden lo mismo y el
-     space-between reparte el sobrante, igual que el h:fill de Figma. */
+  /* A partir de aqui todas las tarjetas de una fila miden lo mismo y el space-between reparte lo que sobra. */
   .tarjeta-area {
     gap: 0;
   }

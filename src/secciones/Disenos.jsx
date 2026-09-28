@@ -3,28 +3,10 @@ import { useState } from 'react'
 import LogoFigma from './LogoFigma'
 import { revelado, useRevelar } from '../lib/useRevelar'
 
-/**
- * 04 — Diseño. Figma 73:3844 (desktop) y 56:3052 (movil).
- *
- * Las cinco miniaturas son maquetas dibujadas en Figma (telefonos girados,
- * degradados, graficas), asi que van como PNG exportado a 2x y no como HTML:
- * rehacerlas a mano seria reimplementar cinco apps de mentira. El titulo y la
- * categoria si son texto.
- *
- * El pie llevaba un corazon con 128 y un ojo con 2.4k, copiados del dibujo.
- * Ninguno de estos diseños esta publicado en Figma Community, asi que esos
- * numeros no salen de ningun lado y se fueron.
- *
- * El diseno movil de esta seccion esta oculto en el archivo de Figma: todo
- * lo que cuelga de 56:3052 exporta un PNG de 1x1. Las medidas salen del
- * volcado de `design-ref/spec/disenos.mobile.txt`, que si las tiene, y en
- * movil se reusa el render de desktop recortado por los lados, que es lo
- * mismo que hace el diseno con cuatro de las cinco maquetas.
- */
+/* 04 — Diseño. */
 
-/* TODO(Imanol): la URL del perfil real. El boton esta dibujado como "Ver
-   perfil en Figma Community" y hoy apunta al directorio, no a un perfil. */
-const FIGMA_PERFIL = 'https://www.figma.com/community'
+/* El perfil de Community donde estan publicados los cinco disenos. */
+const FIGMA_PERFIL = 'https://www.figma.com/@imanolrdz'
 
 const FILTROS = [
   { id: 'todos', texto: 'Todos' },
@@ -34,13 +16,7 @@ const FILTROS = [
   { id: 'sistemas', texto: 'Sistemas de diseño' },
 ]
 
-/* `alto` y `fondo` son los de Figma: la miniatura tiene altura fija y su
-   relleno es el mismo color con el que se exporto el PNG. `columnas` es
-   cuantas columnas de la galeria ocupa la tarjeta.
-   `altoMovil` es la altura del movil dibujado, salvo en Pulso: ahi el diseno
-   redibuja los telefonos y no se puede exportar, asi que 292 es la altura a
-   la que el arte de desktop entra completo y los deja de 167 de ancho,
-   contra los 163 que mide el movil de Figma. */
+/* `alto` y `fondo` son los de Figma. */
 const DISENOS = [
   {
     id: 'banca',
@@ -53,21 +29,20 @@ const DISENOS = [
     alto: 420,
     altoMovil: 292,
     fondo: '#eef2ff',
-    figma:
-      'https://www.figma.com/design/cGRHV8LUUJjCiRz6YtQcyc/Pulso-%E2%80%94-App-de-finanzas',
+    figma: 'https://www.figma.com/community/file/1686205705929795504',
   },
   {
     id: 'clima',
     titulo: 'Nimbo · Widget de clima',
     meta: 'App móvil · Componentes',
     filtro: 'movil',
-    alt: 'Widget de clima de Colima con la temperatura y el pronóstico de cinco días',
+    alt: 'Widget de clima de Mérida con la temperatura y el pronóstico de cinco días',
     img: { ancho: 392, alto: 420 },
     columnas: 1,
     alto: 420,
     altoMovil: 382,
     fondo: '#fff3e6',
-    figma: 'https://www.figma.com/design/R54Glow3b22v9roJi02U9y/Nimbo-%E2%80%94-Widget-de-clima',
+    figma: 'https://www.figma.com/community/file/1686207688042591161',
   },
   {
     id: 'dashboard',
@@ -80,7 +55,7 @@ const DISENOS = [
     alto: 300,
     altoMovil: 300,
     fondo: '#0e0f12',
-    figma: 'https://www.figma.com/design/1X1ejfuclZGv45Jer9HPWR/Observa-%E2%80%94-Dashboard-de-ML',
+    figma: 'https://www.figma.com/community/file/1686209291573876671',
   },
   {
     id: 'landing',
@@ -93,7 +68,7 @@ const DISENOS = [
     alto: 300,
     altoMovil: 300,
     fondo: '#eef7f1',
-    figma: 'https://www.figma.com/design/tTjldbN1U4qZ2q8YW8pZHe/Brisa-%E2%80%94-Landing-SaaS',
+    figma: 'https://www.figma.com/community/file/1686210078288540613',
   },
   {
     id: 'sistema',
@@ -106,7 +81,7 @@ const DISENOS = [
     alto: 300,
     altoMovil: 300,
     fondo: '#f5f6f8',
-    figma: 'https://www.figma.com/design/AqBh78GJgGLxOy9EmQT5OJ/%C3%81tomo-%E2%80%94-Design-system',
+    figma: 'https://www.figma.com/community/file/1686208607363343291',
   },
 ]
 

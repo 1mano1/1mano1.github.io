@@ -1,16 +1,5 @@
 import { revelado, useRevelar } from '../../lib/useRevelar'
 
-/**
- * Benchmarks. Figma 84:6396 (desktop) y 198:1461 (movil).
- *
- * Todo sale de C:/TinyQ/runs/qwen*__*w20s2048_float16.json: los bytes de
- * `memory_bytes.total` y la perplejidad tal cual. Los GB, los porcentajes y
- * el ancho de las barras se calculan aqui, asi que no hay ningun numero
- * escrito dos veces.
- *
- * El Figma dice 4.2 GB para el INT8 del 3B; los bytes exactos son
- * 4 149 432 320, o sea 4.1. Se deja el calculado.
- */
 const MODELOS = [
   {
     id: '0.5b',
@@ -40,15 +29,13 @@ const MODELOS = [
     id: '7b',
     nombre: 'Qwen2.5 7B',
     metodo: 'GPTQ',
-    /* Sin INT8: del 7B solo hay cuatro corridas y ninguna es de 8 bits.
-       Tampoco hace falta, porque el 7B no entra en la grafica. */
+    /* Sin INT8. */
     fp16: { bytes: 15230824448, ppl: 7.14562145750649 },
     int4: { bytes: 5748764672, ppl: 7.271729472538426 },
   },
 ]
 
-/* La grafica llega hasta 8 GB, asi que el 7B (15.2) no cabe y solo sale en la
-   tabla. Es como esta dibujada. */
+/* La grafica llega hasta 8 GB, asi que el 7B (15.2) no cabe y solo sale en la tabla. */
 const TOPE_GB = 8
 const MARCAS = [0, 2, 4, 6, 8]
 const EN_GRAFICA = ['3b', '1.5b', '0.5b']
@@ -89,8 +76,7 @@ export default function Benchmarks() {
         </div>
 
         <p {...revelado(visible, 'sectq__intro', 90)}>
-          Perplejidad en wikitext-2, 20 ventanas de 2048 tokens sin solape. Más bajo es mejor, y
-          solo se compara contra el FP16 del mismo modelo.
+          Perplejidad en wikitext-2, 20 ventanas de 2048 tokens. Menos es mejor.
         </p>
 
         <div {...revelado(visible, 'bench__grafica', 120)}>
@@ -109,10 +95,6 @@ export default function Benchmarks() {
                       const ancho = (gb(m[f.id].bytes) / TOPE_GB) * 100
                       return (
                         <div key={f.id} className="bench__fila">
-                          {/* El ancho va siempre puesto, no atado a `visible`:
-                              si el observador no llega a disparar, la grafica
-                              sigue diciendo la verdad. Crecer es solo un
-                              adorno y lo pone el CSS. */}
                           <span
                             className={`bench__barra bench__barra--${f.id}`}
                             style={{ width: `${ancho}%` }}
@@ -178,8 +160,7 @@ export default function Benchmarks() {
         </div>
 
         <p {...revelado(visible, 'sectq__fuente', 240)}>
-          El 7B va con GPTQ solo porque las corridas con AWQ se quedaron sin memoria. Los datos
-          crudos están en runs/ del repositorio.
+          El 7B se cuantizó solo con GPTQ. Datos completos en el repositorio.
         </p>
       </div>
     </section>

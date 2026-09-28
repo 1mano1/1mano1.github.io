@@ -1,19 +1,12 @@
 import { revelado, useRevelar } from '../../lib/useRevelar'
 import BotonCopiar from './BotonCopiar'
 
-const CHIPS = ['0.1.0', 'MIT', 'GPTQ + AWQ', 'GGUF · .tq']
-const COMANDO = 'tinyq quantize Qwen/Qwen2.5-3B-Instruct'
-const REPO = 'https://github.com/1mano1/TinyQ'
+/* La version es la de C:/octuma/src/octuma/__init__.py y la que hay en PyPI. */
+const CHIPS = ['0.1.3', 'MIT', 'GPTQ + AWQ', 'GGUF · .tq']
+const COMANDO = 'octuma quantize Qwen/Qwen2.5-3B-Instruct'
+const REPO = 'https://github.com/1mano1/octuma'
 
-/**
- * Hero de tinyq. Figma 49:2175 (desktop) y 196:1466 (movil).
- *
- * El titular dibujado decia "2.6x mas chicos, perdiendo 2.4% de calidad",
- * que son dos modelos distintos: el 2.65x es el 7B (que pierde 1.8%) y el
- * 2.4% es el 3B (que encoge 2.46x). Aqui va el 3B entero, que es el modelo
- * del resto de la pagina: 6.79 GB -> 2.76 GB y 8.347 -> 8.549 de perplejidad
- * (runs/qwen3b__gptq-awq-int4__w20s2048_float16.json).
- */
+/* Hero de Octuma. */
 export default function HeroTinyq() {
   const [ref, visible] = useRevelar()
 

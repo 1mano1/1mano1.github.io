@@ -1,17 +1,13 @@
-/* Benchmarks — Figma 84:6396 (desktop) / 198:1461 (movil) */
+/* Benchmarks. Figma 84:6396 (desktop) / 198:1461 (movil) */
 
-/* Ancho de la columna con el nombre del modelo, a la izquierda del eje. Se
-   usa tanto en las barras como en la rejilla y las marcas, para que las tres
-   cosas arranquen en el mismo pixel. */
+/* Ancho de la columna con el nombre del modelo, a la izquierda del eje. */
 .bench {
   --col-modelo: clamp(86px, calc(86px + 64 * (100vw - 360px) / 1152), 150px);
-  /* Aire a la derecha del eje para que quepan "6.8 GB −59%" y la marca de
-     8 GB. En el Figma el eje termina en 1140 de 1272 por lo mismo. */
+  /* Aire a la derecha del eje para que quepan "6.8 GB −59%" y la marca de 8 GB. */
   --respiro: clamp(74px, calc(74px + 58 * (100vw - 360px) / 1152), 132px);
 }
 
-/* El titulo y la leyenda comparten renglon en desktop; en movil la leyenda
-   baja debajo del titulo. */
+/* El titulo y la leyenda comparten renglon en desktop; en movil la leyenda baja debajo del titulo. */
 .bench__cabecera {
   display: flex;
   flex-wrap: wrap;
@@ -118,8 +114,7 @@
   border-radius: 0 4px 4px 0;
 }
 
-/* Crecen al entrar. Va como animacion y no como transicion para que el ancho
-   real este puesto desde el primer render. */
+/* Crecen al entrar. */
 .bench__grafica.es-visible .bench__barra {
   animation: bench-crecer var(--t-revelar) var(--sale) both;
   animation-delay: var(--retraso, 0ms);
@@ -197,16 +192,11 @@
   transform: translateX(-50%);
 }
 
-/* Debajo de 620 la columna del nombre se come la pista: quedan 160px para
-   8 GB y las marcas se encabalgan. El nombre pasa arriba de sus tres barras
-   y del eje solo quedan 0, 4 y 8. */
+/* Debajo de 620 la columna del nombre se come la pista. */
 @media (max-width: 619px) {
   .bench {
     --col-modelo: 0px;
-    /* Con 64 la pista se quedaba en dos tercios del ancho y la grafica salia
-       apretada contra la izquierda. La barra mas larga (6.79 GB de un eje de
-       8) acaba en el 85%, asi que con 28 su etiqueta todavia cabe: es el caso
-       que manda y esta comprobado midiendo las nueve. */
+    /* Con 64 la pista se quedaba en dos tercios del ancho y la grafica salia apretada contra la izquierda. */
     --respiro: 28px;
   }
 
@@ -280,8 +270,7 @@
   }
 }
 
-/* Debajo de 820 las siete columnas no caben. Cada fila pasa a ser una
-   tarjeta con las celdas etiquetadas, que es como esta dibujado el movil. */
+/* Debajo de 820 las siete columnas no caben. */
 @media (max-width: 819px) {
   .bench__tabla thead {
     display: none;

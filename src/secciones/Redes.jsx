@@ -1,28 +1,7 @@
 import LogoFigma from './LogoFigma'
 import { revelado, useRevelar } from '../lib/useRevelar'
 
-/**
- * 05 — En línea. Figma 73:4270 (desktop) y 56:3260 (movil).
- *
- * Seis tarjetas iguales: un mosaico de 52 con la marca, dos lineas de texto y
- * la flecha de enlace externo. Los logotipos van dibujados en SVG y no como
- * imagen porque son formas planas de cuatro o cinco piezas.
- *
- * Las cuentas buenas, comprobadas el 2026-09-22: GitHub (`1mano1`), Hugging
- * Face (`Imanol11`) y Kaggle (`imanolr11`) responden 200. LinkedIn devuelve
- * 999 a cualquier peticion automatica —es su bloqueo de bots, no un perfil
- * que falte—, y la URL la dio Imanol.
- *
- * TODO(Imanol): faltan dos, y las dos siguen con lo que puso el diseno:
- *   figma.com/@imanolr          403, bloquea bots: no se sabe si existe
- *   roblox.com/users/profile    es la URL de ejemplo, sin id de usuario
- * El `@imanolr` no es un usuario verificado. Hay que poner el bueno o quitar
- * la tarjeta antes de publicar el sitio.
- *
- * Los contadores dibujados en la tarjeta de GitHub ("24 repos · 1.6k ★") no
- * estan aqui a proposito: son inventados, igual que el "Star 1.2k" que hubo
- * que quitar del portafolio de Figma. Si se quieren, salen de la API.
- */
+/* 05 — En línea. */
 
 /* Las marcas: `tono` es el fondo del mosaico y `tinta` el color del glifo. */
 
@@ -34,10 +13,7 @@ function MarcaLinkedIn() {
   return <span className="tarjeta-red__letra">in</span>
 }
 
-/* Un circulo con dos ojos y media elipse de boca (Figma I33:757;28:41..44).
-   La boca esta dibujada como elipse de 12x8 pero se renderiza a la mitad:
-   medida sobre el PNG del diseno ocupa y 32..35, o sea solo la parte de
-   abajo, asi que va como arco y no como elipse entera. */
+/* Un circulo con dos ojos y media elipse de boca (Figma I33:757;28:41..44). */
 function MarcaHuggingFace() {
   return (
     <svg width="32" height="32" viewBox="10 10 32 32" fill="none" aria-hidden="true">
@@ -49,10 +25,7 @@ function MarcaHuggingFace() {
   )
 }
 
-/* Cuadrado girado con un hueco cuadrado dentro. Los 29.39 que da Figma son la
-   caja del grupo ya girado: el lado real es 29.39 / (cos16 + sen16) = 23.5, y
-   el hueco es la cuarta parte. Los 16 grados salen de medir las esquinas
-   blancas en el PNG del diseno (15.95 por un lado, 16.7 por el otro). */
+/* Cuadrado girado con un hueco cuadrado dentro. */
 function MarcaRoblox() {
   return (
     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
@@ -91,8 +64,8 @@ const REDES = [
     id: 'figma',
     nombre: 'Figma',
     meta: 'Diseños y prototipos',
-    cuenta: '@imanolr',
-    url: 'https://www.figma.com/@imanolr',
+    cuenta: '@imanolrdz',
+    url: 'https://www.figma.com/@imanolrdz',
     tono: '#0e0f12',
     marca: () => <LogoFigma ancho={18} />,
   },

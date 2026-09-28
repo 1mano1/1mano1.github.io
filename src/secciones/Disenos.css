@@ -5,9 +5,7 @@
   padding-bottom: clamp(64px, calc(64px + 76 * (100vw - 360px) / 1152), 140px);
 }
 
-/* En movil el orden dibujado es titulo, filtros, tarjetas y al final el
-   boton de Figma; en desktop el boton sube a la derecha del titulo. Es la
-   misma pieza movida con `order`, no dos botones repetidos en el HTML. */
+/* En movil el orden dibujado es titulo, filtros. */
 .dis__interior {
   display: grid;
   grid-template-columns: 1fr;
@@ -21,8 +19,7 @@
   order: 1;
 }
 
-/* Los 14 de relleno bajo la cabecera del movil (el hueco hasta los filtros
-   son 24 + 14); en desktop el hueco de 48 ya es el del diseno. */
+/* Los 14 de relleno bajo la cabecera del movil (el hueco hasta los filtros son 24 + 14). */
 @media (max-width: 699px) {
   .dis__titulos {
     padding-bottom: 14px;
@@ -61,8 +58,7 @@
 
 /* ---- filtros ---- */
 
-/* En movil la fila mide 573 dentro de 320 y el diseno la deja cortada: aqui
-   se desliza. La barra se oculta porque el corte ya avisa de que hay mas. */
+/* En movil la fila mide 573 dentro de 320 y el diseno la deja cortada. */
 .dis__filtros-carril {
   order: 2;
   overflow-x: auto;
@@ -79,9 +75,7 @@
   width: max-content;
 }
 
-/* El chip activo de Figma no lleva borde y mide 38 en vez de 40, asi que la
-   fila queda 1px desalineada. Aqui el borde va transparente: mismos 40 en
-   todos y el mismo color de fondo que el dibujado. */
+/* El chip activo de Figma no lleva borde y mide 38 en vez de 40, asi que la fila queda 1px desalineada. */
 .dis__filtro {
   padding: 9px 16px;
   border: 1px solid var(--linea);
@@ -120,8 +114,7 @@
 
 /* ---- galeria ---- */
 
-/* Sin estirar: a dos columnas quedan emparejadas una tarjeta de 481 y otra
-   de 361, y estirar la corta solo le cuelga un hueco vacio debajo. */
+/* Sin estirar. */
 .dis__galeria {
   display: grid;
   grid-template-columns: 1fr;
@@ -130,8 +123,7 @@
   gap: 24px;
 }
 
-/* Dos columnas antes que tres para que la tarjeta ancha no quede de 800px
-   de ancho con 300 de alto en las pantallas intermedias. */
+/* Dos columnas antes que tres para que la tarjeta ancha no quede de 800px de ancho con 300 de alto. */
 @media (min-width: 720px) {
   .dis__galeria {
     grid-template-columns: repeat(2, 1fr);
@@ -142,27 +134,21 @@
   }
 }
 
-/* Con tres columnas iguales y hueco de 24, la tarjeta ancha sale de 792 y
-   la de al lado de 384; el diseno las dibuja 784 y 392 porque usa dos filas
-   sueltas con reparto 2:1. Son 8px, y a cambio los filtros pueden reordenar
-   la galeria: con dos filas fijas en el HTML, filtrar no tendria donde caer. */
+/* Con tres columnas iguales y hueco de 24, la tarjeta ancha sale de 792 y la de al lado de 384. */
 @media (min-width: 1200px) {
   .dis__galeria {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* `min-width: 0` para que el arte que sobra no ensanche la columna: sin esto
-   el minimo de la rejilla es el ancho de la maqueta y la tarjeta de Pulso se
-   sale de la pantalla en vez de recortarse. */
+/* `min-width. */
 .tarjeta-dis {
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
 
-/* La tarjeta entera abre el archivo de Figma, asi que el enlace envuelve al
-   arte y al pie y es el que lleva la columna con el hueco de 16. */
+/* La tarjeta entera abre el archivo de Figma. */
 .tarjeta-dis__enlace {
   display: flex;
   flex-direction: column;
@@ -172,20 +158,10 @@
   text-decoration: none;
 }
 
-/* El arte manda la altura y nunca se deforma: ocupa el alto del recuadro, el
-   ancho lo saca de su proporcion, y lo que no cabe se recorta por los lados
-   —igual que la ilustracion de Proyectos—. Asi, con la tarjeta mas ancha que
-   el arte (1512) sobra fondo, que es el mismo color que trae el PNG dentro y
-   no se ve; y con la tarjeta mas estrecha (768..1440 y todo el movil) se
-   recorta por los lados, que es justo lo que hace el movil dibujado: el panel
-   del dashboard pasa de estar metido 28px a tocar los bordes.
-   Sin `object-fit`, que mide sobre el tamaño intrinseco del PNG: estan
-   exportados a 2x y con `none` el arte salia al doble. */
+/* El arte manda la altura y nunca se deforma. */
 .tarjeta-dis__miniatura {
   display: grid;
-  /* La columna va fijada al ancho del recuadro: en `auto` crece hasta el arte
-     y entonces "centrado" es centrado dentro del arte, o sea que el recorte
-     se lo lleva todo el lado derecho en vez de repartirse. */
+  /* La columna va fijada al ancho del recuadro. */
   grid-template-columns: minmax(0, 1fr);
   place-items: center;
   overflow: hidden;
@@ -194,15 +170,12 @@
   background: var(--fondo);
 }
 
-/* El ancho va calculado y no en `auto`: el navegador resuelve el ancho antes
-   que el alto, asi que con `auto` cae en el tamaño intrinseco del PNG —que
-   esta exportado a 2x— y el arte sale al doble. */
+/* El ancho va calculado y no en `auto`. */
 .tarjeta-dis__miniatura img {
   width: calc(var(--alto-movil) * var(--proporcion));
   height: var(--alto-movil);
   max-width: none;
-  /* No esta en el diseno: las tarjetas son lo unico clicable de la seccion
-     y sin esto no hay ninguna senal de que responden. */
+  /* No esta en el diseno. */
   transition: transform var(--t-boton) var(--sale);
 }
 
