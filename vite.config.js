@@ -3,13 +3,19 @@ import { resolve } from 'node:path'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
-/* GitHub Pages sirve archivos, no sabe de las rutas de React Router. */
+/* GitHub Pages sirve archivos, no sabe de las rutas de React Router: cada ruta
+   lleva su copia del index (Pages sirve /octuma desde octuma.html con 200) y
+   404.html cubre todo lo demas. */
+const RUTAS = ['octuma', 'octuma-app', 'tinyq']
+
 function fallbackSpa() {
   return {
     name: 'fallback-spa',
     closeBundle() {
       const dist = resolve(import.meta.dirname, 'dist')
-      copyFileSync(resolve(dist, 'index.html'), resolve(dist, '404.html'))
+      const index = resolve(dist, 'index.html')
+      copyFileSync(index, resolve(dist, '404.html'))
+      for (const ruta of RUTAS) copyFileSync(index, resolve(dist, `${ruta}.html`))
     },
   }
 }

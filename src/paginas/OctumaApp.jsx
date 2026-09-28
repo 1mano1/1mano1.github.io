@@ -131,7 +131,7 @@ export default function OctumaApp() {
           <div className="contenedor oapp-hero__interior">
             <div {...revelado(visible, 'oapp-hero__texto')}>
               <div className="oapp-hero__marca">
-                <img src="/octuma-app/logo.png" alt="" width="88" height="88" />
+                <img src="/ilustraciones/octuma-app/logo.png" alt="" width="88" height="88" />
                 <span>Octuma App</span>
               </div>
               <h1 className="oapp-hero__titulo">
@@ -154,7 +154,7 @@ export default function OctumaApp() {
 
             <div {...revelado(visible, 'oapp-hero__imagen', 160)}>
               <img
-                src="/octuma-app/hero.png"
+                src="/ilustraciones/octuma-app/hero.png"
                 alt="Tres pantallas de Octuma App: una conversación, el inicio con el pulpo del logo y la bienvenida"
                 width="1800"
                 height="1140"
@@ -308,7 +308,7 @@ export default function OctumaApp() {
 
       <footer className="oapp-cierre" ref={refCierre}>
         <div {...revelado(visibleCierre, 'contenedor oapp-cierre__interior')}>
-          <img src="/octuma-app/logo.png" alt="" width="64" height="64" loading="lazy" />
+          <img src="/ilustraciones/octuma-app/logo.png" alt="" width="64" height="64" loading="lazy" />
           <h2>Octuma App llegará a Google Play.</h2>
           <p>
             Los modelos se preparan con Octuma, la librería open source que los comprime.
