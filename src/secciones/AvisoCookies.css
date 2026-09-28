@@ -1,0 +1,88 @@
+.cookies {
+  position: fixed;
+  z-index: 50;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 440px;
+  padding: 18px 20px;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: var(--r-l);
+  background: var(--tinta);
+  box-shadow: 0 18px 48px -12px rgb(0 0 0 / 0.45);
+  color: var(--blanco);
+  animation: cookies-entra 420ms var(--sale) both;
+}
+
+@media (min-width: 700px) {
+  .cookies {
+    right: auto;
+    bottom: 24px;
+    left: 24px;
+  }
+}
+
+.cookies__texto {
+  font-size: var(--t-chico);
+  line-height: 1.5;
+  color: rgb(255 255 255 / 0.82);
+}
+
+.cookies__botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.cookies__boton {
+  padding: 9px 16px;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: var(--r-chip);
+  background: transparent;
+  font: inherit;
+  font-size: var(--t-chico);
+  font-weight: 600;
+  color: var(--blanco);
+  cursor: pointer;
+  transition:
+    background-color var(--t-hover) var(--sale),
+    border-color var(--t-hover) var(--sale);
+}
+
+.cookies__boton--si {
+  border-color: var(--azul);
+  background: var(--azul);
+}
+
+@media (hover: hover) {
+  .cookies__boton:hover {
+    border-color: rgb(255 255 255 / 0.4);
+    background: rgb(255 255 255 / 0.06);
+  }
+
+  .cookies__boton--si:hover {
+    border-color: var(--azul-medio);
+    background: var(--azul-medio);
+  }
+}
+
+.cookies__boton:focus-visible {
+  outline: 2px solid var(--azul-300);
+  outline-offset: 2px;
+}
+
+@keyframes cookies-entra {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cookies {
+    animation: none;
+  }
+}

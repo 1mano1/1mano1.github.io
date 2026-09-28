@@ -1,16 +1,6 @@
 import { revelado, useRevelar } from '../lib/useRevelar'
 
-/**
- * 01 — Áreas. Figma 73:3104 (desktop) y 53:2851 (movil).
- *
- * Cada tarjeta es un componente con estados Default y Hover: el icono
- * invierte fondo y glifo, el borde se vuelve azul y aparece una sombra.
- * Los dos SVG de cada icono son los exportados de Figma.
- *
- * Los chips decian ONNX y TFLite: ninguno de los dos aparece en el codigo de
- * tinyq, que exporta .tq y GGUF y nada mas. Y "sin perder precision" no es
- * cierto —se pierde entre 1.8% y 5.2% segun el modelo—, asi que ya no lo dice.
- */
+/* 01 — Áreas. */
 const TARJETAS = [
   {
     icono: 'backend',
@@ -30,8 +20,8 @@ const TARJETAS = [
     icono: 'android',
     titulo: 'Apps Android',
     texto:
-      'Apps nativas en Kotlin con modelos de IA corriendo directo en el teléfono, sin depender de la nube.',
-    chips: ['Kotlin', 'Compose', 'llama.cpp'],
+      'Apps en Kotlin y en Flutter con modelos de IA corriendo directo en el teléfono, sin depender de la nube.',
+    chips: ['Kotlin', 'Flutter', 'llama.cpp'],
   },
   {
     icono: 'roblox',

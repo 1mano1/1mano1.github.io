@@ -106,8 +106,7 @@
   flex-direction: column;
 }
 
-/* En movil el paso va en dos lineas: [n] Titulo arriba y el texto debajo
-   ocupando todo el ancho, no sangrado bajo el titulo. */
+/* En movil el paso va en dos lineas. */
 .paso {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -147,8 +146,7 @@
   color: var(--gris);
 }
 
-/* Desde tablet el titulo y el texto del paso van en la misma linea, como
-   en el diseno de escritorio. */
+/* Desde tablet el titulo y el texto del paso van en la misma linea, como en el diseno de escritorio. */
 @media (min-width: 560px) {
   .paso {
     grid-template-columns: auto auto 1fr;
@@ -204,12 +202,7 @@
   gap: 10px;
 }
 
-/* Desde tablet los botones caben en fila.
-
-   El hueco no es 0 aunque en el Figma lo parezca: ese pie es un auto layout
-   vertical con `itemSpacing: 24`, pero quedo con alto fijo 68 = 20 del
-   renglon de metadatos + 48 de los botones, y con `SPACE_BETWEEN` los 24 se
-   aplastaron a cero. El diseño pide 24, asi que van 24. */
+/* Desde tablet los botones caben en fila. */
 @media (min-width: 560px) {
   .panel__pie {
     gap: 24px;
@@ -278,12 +271,7 @@
   min-height: 1.55em;
 }
 
-/* En un telefono la linea mas larga (53 caracteres) pide 404px y la caja da
-   276: un tercio de la salida no se veia nunca, porque deslizar la consola
-   con el dedo mueve la pagina antes que la caja. Partida se lee entera, y
-   solo se parten las dos lineas de comando: la tabla de resultados mide 29
-   caracteres y ni se acerca al borde, asi que sigue cuadrada. La sangria
-   mete la continuacion dos espacios, como envuelve una terminal de verdad. */
+/* En un telefono la linea mas larga (53 caracteres) pide 404px y la caja da 276. */
 @media (max-width: 699px) {
   .terminal {
     overflow-x: visible;
@@ -311,6 +299,54 @@
       no-repeat,
     radial-gradient(circle 5.5px at 5.5px 5.5px, #28c840 100%, transparent 0) 36px 0 / 11px 11px
       no-repeat;
+}
+
+/* ---- otros repositorios: rotulo y enlace a GitHub ---- */
+
+.open__otros {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.open__otros-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+
+.open__otros-titulo {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.41;
+  color: var(--tinta);
+}
+
+.open__todos {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.41;
+  color: var(--tinta);
+  transition: color var(--t-hover) var(--sale);
+}
+
+.open__todos span {
+  transition: transform var(--t-hover) var(--sale);
+}
+
+@media (hover: hover) {
+  .open__todos:hover {
+    color: var(--azul);
+  }
+
+  .open__todos:hover span {
+    transform: translateX(3px);
+  }
 }
 
 /* ---- tarjetas de repo (Figma 37:898 / 37:927 / 37:956) ---- */

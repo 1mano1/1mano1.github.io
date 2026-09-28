@@ -1,16 +1,12 @@
 /* 05 — En línea. Figma 73:4270 (desktop) / 56:3260 (movil) */
 
-/* Fondo blanco, que es el del desktop. El movil la dibuja sobre #f5f6f8 y
-   rompe la alternancia por su cuenta; se sigue al desktop porque Contacto
-   empieza sin relleno arriba y el gris terminaria justo donde arranca el
-   panel azul. */
+/* Fondo blanco, que es el del desktop. */
 .redes {
   padding-top: clamp(64px, calc(64px + 76 * (100vw - 360px) / 1152), 140px);
   padding-bottom: clamp(64px, calc(64px + 76 * (100vw - 360px) / 1152), 140px);
 }
 
-/* 12 de separacion mas 14 de relleno bajo la cabecera en movil; 64 en
-   desktop, donde la cabecera no lleva relleno. Van juntos en un solo hueco. */
+/* 12 de separacion mas 14 de relleno bajo la cabecera en movil; 64 en desktop. */
 .redes__interior {
   display: flex;
   flex-direction: column;
@@ -31,9 +27,7 @@
   gap: clamp(10px, calc(10px + 6 * (100vw - 360px) / 1152), 16px);
 }
 
-/* El movil dibujado no lleva la entradilla: las seis tarjetas dicen lo
-   mismo —que hay codigo en GitHub y modelos en Hugging Face— con el nombre
-   de cada sitio, asi que no se pierde informacion al ocultarla. */
+/* El movil dibujado no lleva la entradilla. */
 .redes__intro {
   display: none;
 }
@@ -58,15 +52,7 @@
 
 /* ---- tarjetas ---- */
 
-/* El hueco entre filas es el de la seccion (64) porque en Figma cada fila de
-   tres es un frame suelto; el de las columnas es 20. A dos columnas no hay
-   nada dibujado y se usa el 20 en los dos sentidos: 64 de aire entre tres
-   filas de tarjetas de 102 dejaria la seccion medio vacia.
-   Los cortes van mas arriba de lo habitual (930 y 1420 en vez de 720 y 1200)
-   porque la columna de texto necesita 211px para que quepa la descripcion
-   mas larga, y de ahi sale el ancho minimo de tarjeta: 385. A 768 con dos
-   columnas la tarjeta se quedaba en 319 y todas las descripciones salian
-   con puntos suspensivos. */
+/* El hueco entre filas es el de la seccion (64) porque en Figma cada fila de tres es un frame suelto. */
 .redes__lista {
   display: grid;
   grid-template-columns: 1fr;
@@ -88,9 +74,7 @@
   }
 }
 
-/* `min-width: 0` para que la meta sin cortar no ensanche la columna: el
-   minimo de la rejilla seria el largo del texto y la tarjeta se saldria de
-   la pantalla en vez de recortar la descripcion. */
+/* `min-width. */
 .tarjeta-red {
   min-width: 0;
 }
@@ -99,11 +83,9 @@
   display: flex;
   align-items: center;
   gap: 18px;
-  /* 16 en movil y 24 en desktop: con el mosaico de 52 salen los 86 y los 102
-     de alto que estan dibujados. */
+  /* 16 en movil y 24 en desktop. */
   padding: 16px;
-  /* La tarjeta que envuelve a dos lineas estira su fila; el enlace llena el
-     alto para que el borde no se quede corto al lado de la de junto. */
+  /* La tarjeta que envuelve a dos lineas estira su fila; el enlace llena el alto para que los bordes coincidan. */
   height: 100%;
   border: 1px solid var(--linea);
   border-radius: 22px;
@@ -128,9 +110,7 @@
   overflow: hidden;
 }
 
-/* Figma dibuja el de Figma 2.5px por encima del centro y el de Roblox 6.5
-   abajo y a la izquierda; aqui los seis van centrados. En un mosaico de 52
-   ese desplazamiento se nota y no parece buscado. */
+/* Figma dibuja el de Figma 2.5px por encima del centro y el de Roblox 6.5 abajo y a la izquierda. */
 .tarjeta-red__github {
   width: 26px;
   height: 26px;
@@ -165,11 +145,7 @@
   color: var(--tinta);
 }
 
-/* A 360 la columna de texto mide 164 y las metas piden entre 168 y 198, asi
-   que algo sobra siempre. Figma lo corta en seco; aqui se encoge solo la
-   descripcion y el usuario nunca se toca, que es el dato que sirve para
-   buscar la cuenta. Dejarlo envolver costaba dos lineas en las seis tarjetas
-   y un corte a media frase ("Código y / experimentos"). */
+/* A 360 la columna de texto mide 164 y las metas piden entre 168 y 198, asi que algo sobra siempre. */
 .tarjeta-red__meta {
   display: flex;
   min-width: 0;
@@ -213,10 +189,7 @@
   color: currentColor;
 }
 
-/* El estado hover de Figma solo pinta el circulo de azul con la flecha en
-   blanco. El borde azul y la sombra no estan dibujados: son los mismos de
-   las otras tarjetas del sitio, que si no, la tarjeta entera se queda
-   quieta mientras el cursor esta encima. */
+/* El estado hover de Figma solo pinta el circulo de azul con la flecha en blanco. */
 @media (hover: hover) {
   .tarjeta-red__enlace:hover {
     border-color: var(--azul);

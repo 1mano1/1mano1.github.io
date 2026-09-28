@@ -1,7 +1,9 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import ArribaAlNavegar from './lib/ArribaAlNavegar'
+import AvisoCookies from './secciones/AvisoCookies'
+import OctumaApp from './paginas/OctumaApp'
 import Portafolio from './paginas/Portafolio'
-import TinyQ from './paginas/TinyQ'
+import Octuma from './paginas/TinyQ'
 
 export default function App() {
   return (
@@ -9,8 +11,12 @@ export default function App() {
       <ArribaAlNavegar />
       <Routes>
         <Route path="/" element={<Portafolio />} />
-        <Route path="/tinyq" element={<TinyQ />} />
+        <Route path="/octuma" element={<Octuma />} />
+        <Route path="/octuma-app" element={<OctumaApp />} />
+        {/* La libreria se llamaba TinyQ: los enlaces viejos siguen llegando. */}
+        <Route path="/tinyq" element={<Navigate to="/octuma" replace />} />
       </Routes>
+      <AvisoCookies />
     </BrowserRouter>
   )
 }

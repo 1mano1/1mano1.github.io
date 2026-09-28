@@ -1,4 +1,4 @@
-/* CTA — Figma 52:2192 */
+/* CTA. Figma 52:2192 */
 
 .ctatq {
   padding-top: clamp(64px, calc(64px + 56 * (100vw - 360px) / 1152), 120px);
@@ -34,9 +34,7 @@
   color: var(--gris);
 }
 
-/* Uno encima del otro en movil. A mitades no caben: "Volver al portafolio"
-   pide 195 de ancho y a 360 solo le tocan 154, con lo que la pagina se iba a
-   390 y se podia deslizar de lado entera. */
+/* Uno encima del otro en movil. */
 .ctatq__botones {
   display: grid;
   gap: 12px;
@@ -57,8 +55,7 @@
   line-height: 21px;
 }
 
-/* Sin raya arriba: el Figma la separa solo con los 80 del hueco. En movil
-   los dos textos no caben en un renglon y bajan uno debajo del otro. */
+/* Sin raya arriba. */
 .ctatq__pie {
   display: flex;
   flex-wrap: wrap;

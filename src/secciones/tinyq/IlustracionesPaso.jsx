@@ -1,11 +1,4 @@
-/**
- * Las tres ilustraciones de "Cómo funciona". Figma 206:6022, 206:7063 y
- * 206:7313, dentro del frame 84:6075.
- *
- * Van en SVG con el lienzo exacto del Figma (408.67x200) para poder escalarlas
- * sin recalcular nada. Los numeros que aparecen dibujados salen de constantes,
- * no del SVG a mano.
- */
+/* Las tres ilustraciones de "Cómo funciona". */
 
 const AZUL_50 = '#e3e8ff'
 const AZUL_300 = '#9aaeff'
@@ -49,8 +42,7 @@ export function IlustracionCalibrar() {
 
 /* --- 02 Cuantizar por grupos: cuatro bloques, una escala cada uno --- */
 
-/* Cada letra es un tono: a el mas claro, d el mas oscuro. Transcritos del
-   Figma tal cual; son 64 pesos de adorno, no datos. */
+/* Cada letra es un tono. */
 const BLOQUES = [
   'badb cbdb bbdc bcca',
   'dcda abdc dbbc accc',
@@ -105,8 +97,7 @@ export function IlustracionGrupos() {
 
 /* --- 03 Evaluar y exportar: la perplejidad medida y los dos formatos --- */
 
-/* runs/qwen3b__fp16__w20s2048_float16.json y __gptq-awq-int4__: 8.347 y 8.549.
-   El ancho de la barra es la proporcion entre las dos, no un dibujo. */
+/* runs/qwen3b__fp16__w20s2048_float16.json y __gptq-awq-int4__. */
 const MEDIDAS = [
   { id: 'fp16', etiqueta: 'FP16', ppl: 8.347, color: AZUL_300 },
   { id: 'int4', etiqueta: 'INT4', ppl: 8.549, color: AZUL_OSCURO },

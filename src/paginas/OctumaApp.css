@@ -1,0 +1,673 @@
+/* Pagina de Octuma App. */
+
+.oapp {
+  --oa-fondo: #080a14;
+  --oa-elevado: #111425;
+  --oa-hundido: #05060d;
+  --oa-borde: #1e2236;
+  --oa-borde-fuerte: #2e3450;
+  --oa-texto: #f2f4ff;
+  --oa-secundario: #9ba3c4;
+  --oa-tenue: #757e9f;
+  --oa-acento: #5b7cff;
+  --oa-acento-suave: #18203f;
+  --oa-sobre-suave: #8aa3ff;
+  --oa-cian: #4db3ff;
+  --oa-violeta: #9b6bff;
+  --oa-ok: #35c27d;
+
+  min-height: 100vh;
+  background: var(--oa-fondo);
+  color: var(--oa-texto);
+}
+
+.oapp ::selection {
+  background: var(--oa-acento);
+  color: var(--oa-fondo);
+}
+
+.oapp-rotulo {
+  font-size: var(--t-mini);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--oa-sobre-suave);
+}
+
+/* ---- nav ---- */
+
+.oapp-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--oa-borde);
+  background: rgb(8 10 20 / 0.82);
+  backdrop-filter: blur(12px);
+}
+
+.oapp-nav__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 64px;
+}
+
+.oapp-nav__miga {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  font-size: var(--t-chico);
+  color: var(--oa-tenue);
+  white-space: nowrap;
+}
+
+.oapp-nav__miga a {
+  color: var(--oa-secundario);
+  transition: color var(--t-hover) var(--sale);
+}
+
+.oapp-nav__miga [aria-current] {
+  font-weight: 600;
+  color: var(--oa-texto);
+}
+
+.oapp-nav__ir {
+  flex: none;
+  font-size: var(--t-chico);
+  font-weight: 600;
+  color: var(--oa-texto);
+}
+
+@media (hover: hover) {
+  .oapp-nav__miga a:hover,
+  .oapp-nav__ir:hover {
+    color: var(--oa-sobre-suave);
+  }
+}
+
+@media (max-width: 520px) {
+  .oapp-nav__medio {
+    display: none;
+  }
+}
+
+/* ---- hero ---- */
+
+.oapp-hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(48px, calc(48px + 48 * (100vw - 360px) / 1152), 96px);
+}
+
+/* Los telefonos se funden con el fondo en vez de cortarse en seco. */
+.oapp-hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: clamp(120px, 22vw, 260px);
+  background: linear-gradient(180deg, rgb(8 10 20 / 0) 0%, rgb(8 10 20 / 0.7) 55%, var(--oa-fondo) 100%);
+  pointer-events: none;
+}
+
+/* El resplandor va en CSS y no en la imagen. */
+.oapp-hero__brillo {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  width: min(1100px, 140vw);
+  aspect-ratio: 1;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgb(91 124 255 / 0.55),
+    rgb(77 179 255 / 0.18) 55%,
+    transparent
+  );
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.oapp-hero__interior {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(32px, calc(32px + 24 * (100vw - 360px) / 1152), 56px);
+  text-align: center;
+}
+
+.oapp-hero__texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  max-width: 780px;
+}
+
+.oapp-hero__marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--oa-secundario);
+}
+
+.oapp-hero__marca img {
+  width: 44px;
+  height: 44px;
+}
+
+.oapp-hero__titulo {
+  font-size: var(--t-h1);
+  line-height: var(--t-h1-lh);
+  letter-spacing: var(--t-h1-ls);
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.oapp-hero__titulo em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--oa-cian), var(--oa-acento) 45%, var(--oa-violeta));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.oapp-hero__bajada {
+  max-width: 620px;
+  font-size: var(--t-cuerpo);
+  line-height: 1.55;
+  color: var(--oa-secundario);
+  text-wrap: pretty;
+}
+
+.oapp-hero__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.oapp-pastilla {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: 1px solid var(--oa-borde-fuerte);
+  border-radius: var(--r-chip);
+  background: rgb(17 20 37 / 0.7);
+  font-size: var(--t-chico);
+  color: var(--oa-texto);
+}
+
+.oapp-pastilla__punto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--oa-ok);
+  box-shadow: 0 0 0 4px rgb(53 194 125 / 0.18);
+}
+
+.oapp-boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--r-chip);
+  background: var(--oa-acento);
+  font-size: var(--t-chico);
+  font-weight: 600;
+  color: var(--oa-fondo);
+  transition:
+    background var(--t-hover) var(--sale),
+    transform var(--t-hover) var(--sale);
+}
+
+.oapp-boton--claro {
+  background: var(--oa-texto);
+}
+
+@media (hover: hover) {
+  .oapp-boton:hover {
+    background: var(--oa-sobre-suave);
+    transform: translateY(-1px);
+  }
+
+  .oapp-boton--claro:hover {
+    background: #ffffff;
+  }
+}
+
+/* La imagen se sale un poco por abajo a proposito. */
+.oapp-hero__imagen {
+  width: min(100%, 1100px);
+  margin-bottom: clamp(-60px, -4vw, -16px);
+}
+
+.oapp-hero__imagen img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* En un telefono los tres telefonos del dibujo quedan diminutos. */
+@media (max-width: 640px) {
+  .oapp-hero__imagen {
+    width: 165%;
+    max-width: none;
+  }
+}
+
+/* ---- secciones ---- */
+
+/* Sin lineas entre secciones. */
+.oapp-sec {
+  position: relative;
+  padding-block: clamp(64px, calc(64px + 56 * (100vw - 360px) / 1152), 120px);
+}
+
+.oapp-sec--hundida {
+  background: linear-gradient(
+    180deg,
+    var(--oa-fondo) 0%,
+    var(--oa-hundido) 22%,
+    var(--oa-hundido) 78%,
+    var(--oa-fondo) 100%
+  );
+}
+
+.oapp-sec__cabecera {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 760px;
+  margin-bottom: clamp(32px, calc(32px + 24 * (100vw - 360px) / 1152), 56px);
+}
+
+.oapp-sec__titulo {
+  font-size: var(--t-h2);
+  line-height: 1.1;
+  letter-spacing: var(--t-h2-ls);
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.oapp-sec__intro {
+  font-size: var(--t-cuerpo);
+  line-height: 1.55;
+  color: var(--oa-secundario);
+  text-wrap: pretty;
+}
+
+.oapp h3 {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--oa-texto);
+}
+
+/* ---- que cambia ---- */
+
+.oapp-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 16px;
+}
+
+.oapp-tarjeta,
+.oapp-modelo {
+  border: 1px solid var(--oa-borde);
+  border-radius: var(--r-xl);
+  background: var(--oa-elevado);
+  transition:
+    opacity var(--t-revelar) var(--sale),
+    transform var(--t-revelar) var(--sale),
+    border-color var(--t-hover) var(--sale),
+    background-color var(--t-hover) var(--sale),
+    box-shadow var(--t-hover) var(--sale);
+  transition-delay: var(--retraso, 0ms), var(--retraso, 0ms), 0ms, 0ms, 0ms;
+}
+
+.oapp-tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px;
+}
+
+@media (hover: hover) {
+  .oapp-tarjeta:hover,
+  .oapp-modelo:hover {
+    border-color: var(--oa-acento);
+    background-color: #141936;
+    box-shadow: 0 18px 48px -12px rgb(91 124 255 / 0.35);
+  }
+}
+
+.oapp-tarjeta p,
+.oapp-paso p,
+.oapp-lista p {
+  font-size: var(--t-base);
+  line-height: 1.55;
+  color: var(--oa-secundario);
+}
+
+/* ---- como funciona ---- */
+
+.oapp-pasos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: clamp(28px, 4vw, 40px);
+  counter-reset: none;
+}
+
+.oapp-paso {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 2px solid var(--oa-borde-fuerte);
+  transition:
+    opacity var(--t-revelar) var(--sale),
+    transform var(--t-revelar) var(--sale),
+    border-color var(--t-hover) var(--sale);
+  transition-delay: var(--retraso, 0ms), var(--retraso, 0ms), 0ms;
+}
+
+.oapp-paso:first-child {
+  border-top-color: var(--oa-acento);
+}
+
+@media (hover: hover) {
+  .oapp-paso:hover {
+    border-top-color: var(--oa-cian);
+  }
+
+  .oapp-paso:hover h3 {
+    color: var(--oa-sobre-suave);
+  }
+}
+
+.oapp-paso h3 {
+  transition: color var(--t-hover) var(--sale);
+}
+
+.oapp-paso__num {
+  font-size: var(--t-chico);
+  color: var(--oa-sobre-suave);
+}
+
+/* ---- modelos ---- */
+
+.oapp-modelos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+}
+
+.oapp-modelo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 28px;
+}
+
+.oapp-modelo__cabeza {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.oapp-modelo__peso {
+  flex: none;
+  padding: 4px 10px;
+  border-radius: var(--r-chip);
+  background: var(--oa-acento-suave);
+  font-size: 12px;
+  color: var(--oa-sobre-suave);
+}
+
+.oapp-modelo__licencia {
+  font-size: var(--t-chico);
+  color: var(--oa-tenue);
+}
+
+.oapp-modelo__licencia span {
+  color: #e0a030;
+}
+
+.oapp-barras {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.oapp-barra {
+  display: grid;
+  grid-template-columns: 64px 1fr 58px;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--t-chico);
+}
+
+.oapp-barra__etq {
+  color: var(--oa-secundario);
+}
+
+.oapp-barra__pista {
+  height: 8px;
+  overflow: hidden;
+  border-radius: var(--r-chip);
+  background: var(--oa-borde);
+}
+
+.oapp-barra__relleno {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 900ms var(--sale) 350ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oapp-barra__relleno {
+    transition: none;
+  }
+}
+
+.oapp-barra--octuma {
+  background: linear-gradient(90deg, var(--oa-cian), var(--oa-acento));
+}
+
+.oapp-barra--q4km {
+  background: var(--oa-tenue);
+}
+
+.oapp-barra__valor {
+  text-align: right;
+  color: var(--oa-texto);
+}
+
+.oapp-fuente {
+  max-width: 760px;
+  margin-top: 24px;
+  font-size: var(--t-chico);
+  line-height: 1.55;
+  color: var(--oa-tenue);
+}
+
+/* ---- privacidad ---- */
+
+.oapp-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(24px, 3vw, 36px) clamp(24px, 4vw, 56px);
+}
+
+.oapp-lista li {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 18px;
+  border-left: 2px solid var(--oa-borde-fuerte);
+  transition:
+    opacity var(--t-revelar) var(--sale),
+    transform var(--t-revelar) var(--sale),
+    border-color var(--t-hover) var(--sale);
+  transition-delay: var(--retraso, 0ms), var(--retraso, 0ms), 0ms;
+}
+
+.oapp-lista li.es-visible {
+  border-left-color: var(--oa-acento);
+}
+
+@media (hover: hover) {
+  .oapp-lista li:hover {
+    border-left-color: var(--oa-cian);
+  }
+}
+
+/* ---- telefonos modestos ---- */
+
+.oapp-dos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .oapp-dos {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 48px;
+  }
+}
+
+.oapp-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.oapp-checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: var(--t-cuerpo);
+  line-height: 1.5;
+  color: var(--oa-texto);
+}
+
+.oapp-check {
+  transition:
+    background-color var(--t-hover) var(--sale),
+    color var(--t-hover) var(--sale);
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: var(--oa-acento-suave);
+  color: var(--oa-sobre-suave);
+}
+
+.oapp-ficha {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--oa-borde);
+  border-radius: var(--r-xl);
+  background: var(--oa-elevado);
+}
+
+.oapp-ficha div {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 18px 24px;
+  border-top: 1px solid var(--oa-borde);
+}
+
+.oapp-ficha div:first-child {
+  border-top: 0;
+}
+
+.oapp-ficha dt {
+  font-size: var(--t-chico);
+  color: var(--oa-tenue);
+}
+
+.oapp-ficha dd {
+  font-size: var(--t-base);
+  line-height: 1.45;
+  color: var(--oa-texto);
+}
+
+@media (hover: hover) {
+  .oapp-checks li:hover .oapp-check {
+    background: var(--oa-acento);
+    color: var(--oa-fondo);
+  }
+
+  .oapp-ficha div:hover {
+    background: #141936;
+  }
+}
+
+.oapp-ficha div {
+  transition: background-color var(--t-hover) var(--sale);
+}
+
+/* ---- cierre ---- */
+
+.oapp-cierre {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(72px, calc(72px + 48 * (100vw - 360px) / 1152), 120px) 40px;
+  background: radial-gradient(60% 70% at 50% 45%, rgb(91 124 255 / 0.2), transparent 70%),
+    var(--oa-fondo);
+}
+
+.oapp-cierre__interior {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+}
+
+.oapp-cierre h2 {
+  font-size: var(--t-h2);
+  line-height: 1.1;
+  letter-spacing: var(--t-h2-ls);
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.oapp-cierre p {
+  max-width: 560px;
+  font-size: var(--t-base);
+  line-height: 1.55;
+  color: var(--oa-secundario);
+}
+
+.oapp-cierre__botones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.oapp-cierre__pie {
+  margin-top: clamp(48px, 6vw, 80px);
+  font-size: var(--t-mini) !important;
+  color: var(--oa-tenue) !important;
+}

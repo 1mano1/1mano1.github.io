@@ -1,8 +1,6 @@
 /* Contacto y pie. Figma 84:5759 (desktop) / 56:3322 (movil) */
 
-/* Arriba no lleva relleno en desktop porque los 140 de Redes ya separan; en
-   movil son 48 sobre los 64 de Redes. Por eso el clamp va al reves que en
-   las demas secciones: baja de 48 a 0 conforme crece la pantalla. */
+/* Arriba no lleva relleno en desktop porque los 140 de Redes ya separan; en movil son 48 sobre los 64 de Redes. */
 .contacto {
   padding-top: clamp(0px, calc(48px - 48 * (100vw - 360px) / 1152), 48px);
 }
@@ -20,8 +18,7 @@
   background: var(--azul);
 }
 
-/* En movil va alineado a la izquierda y ocupa el ancho; en desktop se centra
-   dentro de 760 de los 1056 que quedan libres. */
+/* En movil va alineado a la izquierda y ocupa el ancho; en desktop se centra dentro de 760 de los 1056. */
 .contacto__titulo {
   font-size: clamp(30px, calc(30px + 18 * (100vw - 360px) / 1152), 48px);
   font-weight: 600;

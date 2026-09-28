@@ -1,10 +1,17 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-// La base va antes que App a proposito: App arrastra el CSS de las
-// secciones, y si se cargara despues ganaria los empates de especificidad
-// (`.boton` pisaba a `.boton--repo` y los botones salian mas grandes).
+// La base va antes que App a proposito.
 import './estilos/base.css'
 import App from './App.jsx'
+
+// Si alguien mete el sitio en un iframe ajeno, se sale del marco.
+if (window.top !== window.self) {
+  try {
+    window.top.location.href = window.self.location.href
+  } catch {
+    document.documentElement.style.display = 'none'
+  }
+}
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

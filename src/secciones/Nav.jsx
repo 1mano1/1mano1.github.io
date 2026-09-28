@@ -1,19 +1,11 @@
 import { useEffect, useState } from 'react'
 import { MARCA, encajeCuadrado } from '../lib/marca'
 
-/* La caja de Figma 19:6: 28 de lado y 8 de radio. Dentro ya no van los cuatro
-   cuadritos del boceto sino el monograma IR, colocado por la regla de aire
-   libre de la guia de marca en vez de a ojo. */
+/* La caja de Figma 19:6. */
 const CAJA = 28
 const RADIO = 8
 const { escala, x, y } = encajeCuadrado(CAJA)
 
-/**
- * Logo: el monograma en blanco sobre la caja oscura, con el acento azul.
- *
- * Va en un viewBox y no en divs con porcentajes: el padding en % se
- * resuelve contra el ancho del padre, no contra el del propio logo.
- */
 export function Logo({ className = '' }) {
   return (
     <svg
@@ -36,8 +28,7 @@ const ENLACES = [
   { texto: 'Áreas', href: '#areas' },
   { texto: 'Open source', href: '#open-source' },
   { texto: 'Proyectos', href: '#proyectos' },
-  /* El Figma lo llama "Stack" pero apunta a la seccion de diseño, que es la
-     que existe: no hay ninguna de stack. */
+  /* El Figma lo llama "Stack" pero apunta a la seccion de diseño, que es la que existe. */
   { texto: 'Diseño', href: '#diseno' },
   { texto: 'Contacto', href: '#contacto' },
 ]

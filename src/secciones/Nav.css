@@ -1,4 +1,4 @@
-/* Nav — Figma 19:4 (desktop) y 53:2158 (movil) */
+/* Nav. Figma 19:4 (desktop) y 53:2158 (movil) */
 
 .nav {
   position: sticky;
@@ -131,8 +131,7 @@
 
 /* ---- panel movil ---- */
 
-/* El display del autor le gana al [hidden] del navegador: hay que
-   apagarlo a mano o el panel ocupa sitio con el menu cerrado. */
+/* El display del autor le gana al [hidden] del navegador. */
 .nav__panel[hidden] {
   display: none;
 }

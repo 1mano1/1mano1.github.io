@@ -1,10 +1,4 @@
-/**
- * Logotipo de Figma: cinco piezas de 6x6 en un lienzo de 12x18 (Figma 42:1984).
- * Cada una lleva sus radios, por eso son paths y no rects.
- *
- * El ancho va por prop porque el diseno lo dibuja a dos tamaños: 12x18 en el
- * boton de la seccion 04 y 18x27 en la tarjeta de la 05.
- */
+/* Logotipo de Figma. */
 export default function LogoFigma({ ancho = 12 }) {
   return (
     <svg
