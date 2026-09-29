@@ -31,7 +31,7 @@ const COMANDOS = [
     num: '04',
     titulo: 'Exportar',
     linea: `octuma export ${CARPETA} --out qwen3b.gguf`,
-    que: 'El .gguf que corre en llama.cpp y en Android. verify_gguf.py lo revisa antes de publicarlo.',
+    que: 'Genera el .gguf para llama.cpp y Android. Si clonaste el repositorio, scripts/verify_gguf.py lo revisa antes de publicarlo.',
   },
 ]
 
@@ -63,8 +63,8 @@ export default function Comandos() {
           <p className="comandos__aclaracion">
             Necesita Python 3.10 o mayor. Los extras <span className="mono">hf</span> y{' '}
             <span className="mono">gguf</span> traen transformers y el exportador a GGUF: sin ellos
-            no se puede cuantizar. El paquete, el módulo y el comando se llaman igual,{' '}
-            <span className="mono">octuma</span>.
+            no se puede cuantizar. Si tienes GPU NVIDIA, instala antes PyTorch con CUDA; los pasos
+            están en el README.
           </p>
         </div>
 

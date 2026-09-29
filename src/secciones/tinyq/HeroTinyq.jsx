@@ -1,8 +1,8 @@
 import { revelado, useRevelar } from '../../lib/useRevelar'
 import BotonCopiar from './BotonCopiar'
+import { PYPI, VERSION } from '../../data/octuma'
 
-/* La version es la de C:/octuma/src/octuma/__init__.py y la que hay en PyPI. */
-const CHIPS = ['0.1.3', 'MIT', 'GPTQ + AWQ', 'GGUF · .tq']
+const CHIPS = ['MIT', 'GPTQ + AWQ', 'GGUF · .tq']
 const COMANDO = 'octuma quantize Qwen/Qwen2.5-3B-Instruct'
 const REPO = 'https://github.com/1mano1/octuma'
 
@@ -14,6 +14,11 @@ export default function HeroTinyq() {
     <section className="herotq" ref={ref}>
       <div className="contenedor herotq__interior">
         <ul {...revelado(visible, 'herotq__chips')}>
+          <li className="herotq__chip mono">
+            <a href={PYPI} target="_blank" rel="noreferrer" title="Versión actual en PyPI">
+              v{VERSION}
+            </a>
+          </li>
           {CHIPS.map((c) => (
             <li key={c} className="herotq__chip mono">
               {c}

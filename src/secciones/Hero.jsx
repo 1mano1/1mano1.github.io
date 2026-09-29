@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { revelado, useRevelar } from '../lib/useRevelar'
 import IlustracionCuantizacion from './IlustracionCuantizacion'
+import { VERSION } from '../data/octuma'
 
 /** Hero. Figma 76:4198 (desktop) y 53:2169 (movil). */
 export default function Hero() {
@@ -12,8 +13,8 @@ export default function Hero() {
         <div {...revelado(visible, 'hero__texto')}>
           <Link className="hero__aviso" to="/octuma">
             <span className="hero__aviso-etiqueta">Nuevo</span>
-            <span className="hero__aviso-largo">Octuma v0.1: cuantización INT4 open source →</span>
-            <span className="hero__aviso-corto">Octuma v0.1 open source →</span>
+            <span className="hero__aviso-largo">Octuma v{VERSION}: cuantización INT4 open source →</span>
+            <span className="hero__aviso-corto">Octuma v{VERSION} open source →</span>
           </Link>
 
           <h1 className="hero__titulo">

@@ -21,7 +21,7 @@ const FORMATOS = [
     bytes: 2762166272,
     etiqueta: 'INT4',
     bits: '4 bits por peso',
-    que: 'Solo 16 valores por grupo de 32 pesos. Aquí el método marca la diferencia.',
+    que: 'Solo 16 valores posibles por peso, con una escala cada 32 pesos. Aquí el método decide la calidad.',
   },
 ]
 
@@ -61,7 +61,7 @@ export default function QueEsCuantizar() {
             ))}
           </ul>
           <p {...revelado(visible, 'sectq__fuente', 360)}>
-            Memoria de Qwen2.5 3B en cada formato.
+            Memoria de Qwen2.5 3B en cada formato, medida con grupos de 64.
           </p>
         </div>
 
