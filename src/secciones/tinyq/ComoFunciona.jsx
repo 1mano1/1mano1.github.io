@@ -9,7 +9,7 @@ const PASOS = [
     id: 'calibrar',
     num: '01',
     titulo: 'Calibrar',
-    que: 'Pasa 128 ventanas de 2048 tokens de wikitext-2 por el modelo y anota el rango real de activaciones de cada capa.',
+    que: 'Pasa 128 fragmentos de 2048 tokens de wikitext-2 por el modelo y mide qué entradas pesan más en cada capa.',
     mas: `${REPO}#como-funciona`,
     Ilustracion: IlustracionCalibrar,
   },
@@ -17,7 +17,7 @@ const PASOS = [
     id: 'grupos',
     num: '02',
     titulo: 'Cuantizar por grupos',
-    que: 'Agrupa los pesos de 32 en 32, saca escala y punto cero de cada grupo y redondea a uno de 16 niveles (4 bits).',
+    que: 'Agrupa los pesos de 32 en 32, saca una escala y un punto cero por grupo y redondea cada peso a uno de 16 niveles (4 bits).',
     mas: `${REPO}#por-que-por-grupos-y-asimetrico`,
     Ilustracion: IlustracionGrupos,
   },
@@ -39,11 +39,12 @@ export default function ComoFunciona() {
       <div className="contenedor sectq__interior">
         <div {...revelado(visible, 'sectq__cabecera')}>
           <span className="sectq__rotulo">Cómo funciona</span>
-          <h2 className="sectq__titulo">Tres pasos, un comando</h2>
+          <h2 className="sectq__titulo">De 16 bits a 4, en tres pasos</h2>
         </div>
 
         <p {...revelado(visible, 'sectq__intro', 60)}>
-          Un solo comando hace los tres pasos con GPTQ + AWQ, el método con mejor resultado en los cuatro modelos medidos.
+          <span className="mono">octuma quantize</span> calibra y cuantiza de una vez con GPTQ + AWQ, el método
+          que mejor salió en los cuatro modelos medidos. Medir y exportar son dos comandos más.
         </p>
 
         <ul className="comofunciona__pasos">

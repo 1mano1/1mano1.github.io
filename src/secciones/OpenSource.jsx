@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom'
 import ChipTinyq from './ChipTinyq'
 import Terminal from './Terminal'
 import { revelado, useRevelar } from '../lib/useRevelar'
+import { PRUEBAS, PYPI, REPO, VERSION } from '../data/octuma'
 
 /* 02 — Open source. */
 
 const PASOS = [
-  { n: '1', titulo: 'Calibra', texto: 'Pasa 128 ventanas de texto para ver el rango real de cada capa.' },
+  { n: '1', titulo: 'Calibra', texto: 'Pasa 128 fragmentos de texto por el modelo para medir cada capa.' },
   { n: '2', titulo: 'Cuantiza', texto: 'Agrupa los pesos de 32 en 32 y los baja a 4 bits.' },
   {
     n: '3',
@@ -86,12 +87,16 @@ export default function OpenSource() {
                   <span className="panel__punto" style={{ background: '#3572a5' }} />
                   Python
                 </li>
-                <li>66 tests</li>
-                <li className="mono">v0.1.3</li>
+                <li>{PRUEBAS} pruebas</li>
+                <li className="mono">
+                  <a href={PYPI} target="_blank" rel="noreferrer" title="Versión actual en PyPI">
+                    v{VERSION}
+                  </a>
+                </li>
               </ul>
 
               <div className="panel__botones">
-                <a className="boton boton--repo" href="https://github.com/1mano1/octuma">
+                <a className="boton boton--repo" href={REPO}>
                   <span className="icono-github" aria-hidden="true" />
                   Ver repositorio
                 </a>

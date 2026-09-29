@@ -160,7 +160,8 @@ export default function Benchmarks() {
         </div>
 
         <p {...revelado(visible, 'sectq__fuente', 240)}>
-          El 7B se cuantizó solo con GPTQ. Datos completos en el repositorio.
+          El 7B se cuantizó solo con GPTQ: con AWQ no cupo en la memoria del servidor. Todo se midió
+          con grupos de 64, y los datos completos están en el repositorio.
         </p>
       </div>
     </section>

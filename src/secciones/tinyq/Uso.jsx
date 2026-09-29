@@ -19,8 +19,8 @@ const LINEAS = [
 ]
 
 const VENTAJAS = [
-  'Compatible con modelos de Hugging Face',
-  'INT8, INT4 y cuantización mixta por capa',
+  'Modelos de Hugging Face tipo Llama y Qwen',
+  'INT4, INT8 y precisión mixta por capa',
   'Exporta a GGUF para llama.cpp y Android',
 ]
 
@@ -44,7 +44,7 @@ export default function Uso() {
           <span className="sectq__rotulo">Uso</span>
           <h2 className="uso__titulo">También desde Python</h2>
           <p className="uso__bajada">
-            Úsalo en tus scripts o pipelines de entrenamiento. La API es pequeña: cargar, cuantizar y guardar.
+            Si prefieres usarlo desde tu código, son tres pasos: cargar el modelo, cuantizarlo y guardarlo.
           </p>
           <ul className="uso__ventajas">
             {VENTAJAS.map((v) => (
