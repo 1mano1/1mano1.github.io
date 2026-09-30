@@ -224,6 +224,12 @@ svg {
   transition: color var(--t-hover) var(--sale);
 }
 
+.flecha {
+  display: inline-block;
+  flex: none;
+  vertical-align: -0.125em;
+}
+
 /* Utilidad: solo para lectores de pantalla */
 .solo-lectores {
   position: absolute;

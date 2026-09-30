@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { REPO } from '../../data/octuma'
+import Flecha from '../Flecha'
 import { useTextos } from '../../lib/idioma'
 import SelectorIdioma from '../SelectorIdioma'
 
@@ -49,7 +50,7 @@ export default function NavTinyq() {
       <div className="navtq__barra contenedor">
         <div className="navtq__miga">
           <Link className="navtq__volver" to="/">
-            <span aria-hidden="true">←</span>
+            <Flecha izquierda />
             {/* El movil dibujado dice "Portafolio" y el desktop el nombre. */}
             <span className="navtq__volver-largo">Imanol Rodríguez</span>
             <span className="navtq__volver-corto">{t.portafolio}</span>

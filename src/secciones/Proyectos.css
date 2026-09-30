@@ -149,7 +149,7 @@
   transition: color var(--t-hover) var(--sale);
 }
 
-.tarjeta-proy__enlace span {
+.tarjeta-proy__enlace .flecha {
   transition: transform var(--t-hover) var(--sale);
 }
 
@@ -158,7 +158,7 @@
     color: var(--azul);
   }
 
-  .tarjeta-proy__enlace:hover span {
+  .tarjeta-proy__enlace:hover .flecha {
     transform: translateX(3px);
   }
 }

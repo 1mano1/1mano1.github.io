@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { REPO } from '../../data/octuma'
+import Flecha from '../Flecha'
 import { useTextos } from '../../lib/idioma'
 import { revelado, useRevelar } from '../../lib/useRevelar'
 
@@ -43,7 +44,7 @@ export default function Cta() {
               <span aria-hidden="true">★</span> {t.star}
             </a>
             <Link className="boton boton--secundario ctatq__boton" to="/">
-              <span aria-hidden="true">←</span> {t.volver}
+              <Flecha izquierda /> {t.volver}
             </Link>
           </div>
         </div>

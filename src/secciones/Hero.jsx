@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
 import { revelado, useRevelar } from '../lib/useRevelar'
 import IlustracionCuantizacion from './IlustracionCuantizacion'
+import Flecha from './Flecha'
 import { VERSION } from '../data/octuma'
 import { useTextos } from '../lib/idioma'
 
 const TEXTOS = {
   es: {
     nuevo: 'Nuevo',
-    avisoLargo: `Octuma v${VERSION}: cuantización INT4 open source →`,
-    avisoCorto: `Octuma v${VERSION} open source →`,
+    avisoLargo: `Octuma v${VERSION}: cuantización INT4 open source`,
+    avisoCorto: `Octuma v${VERSION} open source`,
     titulo: ['Backend, IA y modelos que ', 'caben en tu bolsillo', '.'],
     largo:
       'Soy Imanol, desarrollador backend con un pie en el frontend. Entreno, cuantizo y despliego modelos de machine learning, construyo apps Android y de vez en cuando juegos en Roblox.',
@@ -19,8 +20,8 @@ const TEXTOS = {
   },
   en: {
     nuevo: 'New',
-    avisoLargo: `Octuma v${VERSION}: open source INT4 quantization →`,
-    avisoCorto: `Octuma v${VERSION} open source →`,
+    avisoLargo: `Octuma v${VERSION}: open source INT4 quantization`,
+    avisoCorto: `Octuma v${VERSION} open source`,
     titulo: ['Backend, AI and models that ', 'fit in your pocket', '.'],
     largo:
       "I'm Imanol, a backend developer with one foot in the frontend. I train, quantize and deploy machine learning models, build Android apps and, now and then, Roblox games.",
@@ -44,6 +45,7 @@ export default function Hero() {
             <span className="hero__aviso-etiqueta">{t.nuevo}</span>
             <span className="hero__aviso-largo">{t.avisoLargo}</span>
             <span className="hero__aviso-corto">{t.avisoCorto}</span>
+            <Flecha tamano={12} />
           </Link>
 
           <h1 className="hero__titulo">

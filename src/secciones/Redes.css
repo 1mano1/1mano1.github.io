@@ -52,7 +52,6 @@
 
 /* ---- tarjetas ---- */
 
-/* El hueco entre filas es el de la seccion (64) porque en Figma cada fila de tres es un frame suelto. */
 .redes__lista {
   display: grid;
   grid-template-columns: 1fr;
@@ -69,8 +68,6 @@
 @media (min-width: 1420px) {
   .redes__lista {
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 20px;
-    row-gap: 64px;
   }
 }
 

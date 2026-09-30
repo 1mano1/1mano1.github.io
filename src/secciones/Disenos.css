@@ -158,36 +158,19 @@
   text-decoration: none;
 }
 
-/* El arte manda la altura y nunca se deforma. */
+/* Cada imagen trae su fondo y sus esquinas, asi que se escala entera al ancho de la tarjeta. */
 .tarjeta-dis__miniatura {
-  display: grid;
-  /* La columna va fijada al ancho del recuadro. */
-  grid-template-columns: minmax(0, 1fr);
-  place-items: center;
   overflow: hidden;
-  height: var(--alto-movil);
+  aspect-ratio: var(--proporcion);
   border-radius: 20px;
   background: var(--fondo);
 }
 
-/* El ancho va calculado y no en `auto`. */
 .tarjeta-dis__miniatura img {
-  width: calc(var(--alto-movil) * var(--proporcion));
-  height: var(--alto-movil);
-  max-width: none;
-  /* No esta en el diseno. */
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--t-boton) var(--sale);
-}
-
-@media (min-width: 720px) {
-  .tarjeta-dis__miniatura {
-    height: var(--alto);
-  }
-
-  .tarjeta-dis__miniatura img {
-    width: calc(var(--alto) * var(--proporcion));
-    height: var(--alto);
-  }
 }
 
 @media (hover: hover) {

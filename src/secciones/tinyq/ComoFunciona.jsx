@@ -1,4 +1,5 @@
 import { REPO } from '../../data/octuma'
+import Flecha from '../Flecha'
 import { useTextos } from '../../lib/idioma'
 import { revelado, useRevelar } from '../../lib/useRevelar'
 import { IlustracionCalibrar, IlustracionEvaluar, IlustracionGrupos } from './IlustracionesPaso'
@@ -100,7 +101,7 @@ export default function ComoFunciona() {
                   </div>
                   <p className="pasotq__que">{que}</p>
                   <a className="pasotq__mas" href={mas}>
-                    {t.mas} <span aria-hidden="true">→</span>
+                    {t.mas} <Flecha />
                   </a>
                 </div>
               </li>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { useTextos } from '../lib/idioma'
 import { revelado, useRevelar } from '../lib/useRevelar'
+import Flecha from '../secciones/Flecha'
 import SelectorIdioma from '../secciones/SelectorIdioma'
 import './OctumaApp.css'
 
@@ -209,7 +210,7 @@ export default function OctumaApp() {
         <div className="contenedor oapp-nav__barra">
           <nav className="oapp-nav__miga" aria-label={t.miga}>
             <Link to="/">
-              <span aria-hidden="true">←</span> {t.portafolio}
+              <Flecha izquierda /> {t.portafolio}
             </Link>
             <span aria-hidden="true">/</span>
             <Link to="/#proyectos" className="oapp-nav__medio">
@@ -391,7 +392,7 @@ export default function OctumaApp() {
               {t.libreria}
             </Link>
             <Link className="oapp-boton" to="/">
-              <span aria-hidden="true">←</span> {t.volver}
+              <Flecha izquierda /> {t.volver}
             </Link>
           </div>
           <p className="oapp-cierre__pie">{t.hecho}</p>

@@ -11,15 +11,13 @@ const FIGMA_PERFIL = 'https://www.figma.com/@imanolrdz'
 
 const FILTROS = ['todos', 'movil', 'web', 'dashboards', 'sistemas']
 
-/* `alto` y `fondo` son los de Figma. */
+/* `fondo` es el de Figma. */
 const DISENOS = [
   {
     id: 'banca',
     filtro: 'movil',
     img: { ancho: 784, alto: 420 },
     columnas: 2,
-    alto: 420,
-    altoMovil: 292,
     fondo: '#eef2ff',
     figma: 'https://www.figma.com/community/file/1686205705929795504',
   },
@@ -28,8 +26,6 @@ const DISENOS = [
     filtro: 'movil',
     img: { ancho: 392, alto: 420 },
     columnas: 1,
-    alto: 420,
-    altoMovil: 382,
     fondo: '#fff3e6',
     figma: 'https://www.figma.com/community/file/1686207688042591161',
   },
@@ -38,8 +34,6 @@ const DISENOS = [
     filtro: 'dashboards',
     img: { ancho: 384, alto: 300 },
     columnas: 1,
-    alto: 300,
-    altoMovil: 300,
     fondo: '#0e0f12',
     figma: 'https://www.figma.com/community/file/1686209291573876671',
   },
@@ -48,8 +42,6 @@ const DISENOS = [
     filtro: 'web',
     img: { ancho: 384, alto: 300 },
     columnas: 1,
-    alto: 300,
-    altoMovil: 300,
     fondo: '#eef7f1',
     figma: 'https://www.figma.com/community/file/1686210078288540613',
   },
@@ -58,8 +50,6 @@ const DISENOS = [
     filtro: 'sistemas',
     img: { ancho: 384, alto: 300 },
     columnas: 1,
-    alto: 300,
-    altoMovil: 300,
     fondo: '#f5f6f8',
     figma: 'https://www.figma.com/community/file/1686208607363343291',
   },
@@ -201,8 +191,6 @@ export default function Disenos() {
                 style={{
                   ...rev.style,
                   '--columnas': d.columnas,
-                  '--alto': `${d.alto}px`,
-                  '--alto-movil': `${d.altoMovil}px`,
                   '--proporcion': d.img.ancho / d.img.alto,
                   '--fondo': d.fondo,
                 }}

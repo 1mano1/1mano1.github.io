@@ -53,6 +53,10 @@
     top 1200ms var(--entra-sale);
 }
 
+.ilus__chip--realce {
+  transform: scale(var(--realce, 1));
+}
+
 .ilus__grupo {
   display: flex;
   flex-direction: column;

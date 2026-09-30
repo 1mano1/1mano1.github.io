@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ChipTinyq from './ChipTinyq'
+import Flecha from './Flecha'
 import Terminal from './Terminal'
 import { useTextos } from '../lib/idioma'
 import { revelado, useRevelar } from '../lib/useRevelar'
@@ -135,7 +136,7 @@ export default function OpenSource() {
             <h3 className="open__otros-titulo">{t.otros}</h3>
             <a className="open__todos" href="https://github.com/1mano1">
               {t.todos}
-              <span aria-hidden="true">→</span>
+              <Flecha />
             </a>
           </div>
 
