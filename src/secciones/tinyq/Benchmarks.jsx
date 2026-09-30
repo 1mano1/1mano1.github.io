@@ -1,3 +1,4 @@
+import { useTextos } from '../../lib/idioma'
 import { revelado, useRevelar } from '../../lib/useRevelar'
 
 const MODELOS = [
@@ -51,11 +52,28 @@ const dosGb = (bytes) => `${gb(bytes).toFixed(2)} GB`
 const recorte = (m) => `−${Math.round((1 - m.int4.bytes / m.fp16.bytes) * 100)}%`
 const perdida = (m) => `+${((m.int4.ppl / m.fp16.ppl - 1) * 100).toFixed(1)}%`
 
-const COLUMNAS = ['Modelo', 'Mem. FP16', 'Mem. INT4', 'PPL FP16', 'PPL INT4', 'Pérdida', 'Método']
+const TEXTOS = {
+  es: {
+    titulo: 'Memoria por modelo',
+    intro: 'Perplejidad en wikitext-2, 20 ventanas de 2048 tokens. Menos es mejor.',
+    columnas: ['Modelo', 'Mem. FP16', 'Mem. INT4', 'PPL FP16', 'PPL INT4', 'Pérdida', 'Método'],
+    fuente:
+      'El 7B se cuantizó solo con GPTQ: con AWQ no cupo en la memoria del servidor. Todo se midió con grupos de 64, y los datos completos están en el repositorio.',
+  },
+  en: {
+    titulo: 'Memory per model',
+    intro: 'Perplexity on wikitext-2, 20 windows of 2048 tokens. Lower is better.',
+    columnas: ['Model', 'FP16 mem.', 'INT4 mem.', 'FP16 PPL', 'INT4 PPL', 'Loss', 'Method'],
+    fuente:
+      "The 7B was quantized with GPTQ only: with AWQ it didn't fit in the server's memory. Everything was measured with groups of 64, and the full data is in the repository.",
+  },
+}
 
 export default function Benchmarks() {
   const [ref, visible] = useRevelar()
   const grafica = EN_GRAFICA.map((id) => MODELOS.find((m) => m.id === id))
+  const t = useTextos(TEXTOS)
+  const [, cMemFp16, cMemInt4, cPplFp16, cPplInt4, cPerdida, cMetodo] = t.columnas
 
   return (
     <section className="sectq bench" id="benchmarks" ref={ref}>
@@ -63,7 +81,7 @@ export default function Benchmarks() {
         <div className="bench__cabecera">
           <div {...revelado(visible, 'sectq__cabecera')}>
             <span className="sectq__rotulo">Benchmarks</span>
-            <h2 className="sectq__titulo">Memoria por modelo</h2>
+            <h2 className="sectq__titulo">{t.titulo}</h2>
           </div>
           <ul {...revelado(visible, 'bench__leyenda', 60)}>
             {FORMATOS.map((f) => (
@@ -76,7 +94,7 @@ export default function Benchmarks() {
         </div>
 
         <p {...revelado(visible, 'sectq__intro', 90)}>
-          Perplejidad en wikitext-2, 20 ventanas de 2048 tokens. Menos es mejor.
+          {t.intro}
         </p>
 
         <div {...revelado(visible, 'bench__grafica', 120)}>
@@ -124,7 +142,7 @@ export default function Benchmarks() {
           <table>
             <thead>
               <tr>
-                {COLUMNAS.map((c) => (
+                {t.columnas.map((c) => (
                   <th key={c} className="mono">
                     {c}
                   </th>
@@ -135,22 +153,22 @@ export default function Benchmarks() {
               {MODELOS.map((m) => (
                 <tr key={m.id}>
                   <th scope="row">{m.nombre}</th>
-                  <td className="mono" data-col="Mem. FP16">
+                  <td className="mono" data-col={cMemFp16}>
                     {dosGb(m.fp16.bytes)}
                   </td>
-                  <td className="mono" data-col="Mem. INT4">
+                  <td className="mono" data-col={cMemInt4}>
                     {dosGb(m.int4.bytes)}
                   </td>
-                  <td className="mono" data-col="PPL FP16">
+                  <td className="mono" data-col={cPplFp16}>
                     {m.fp16.ppl.toFixed(3)}
                   </td>
-                  <td className="mono" data-col="PPL INT4">
+                  <td className="mono" data-col={cPplInt4}>
                     {m.int4.ppl.toFixed(3)}
                   </td>
-                  <td className="mono bench__perdida" data-col="Pérdida">
+                  <td className="mono bench__perdida" data-col={cPerdida}>
                     {perdida(m)}
                   </td>
-                  <td className="mono" data-col="Método">
+                  <td className="mono" data-col={cMetodo}>
                     {m.metodo}
                   </td>
                 </tr>
@@ -160,8 +178,7 @@ export default function Benchmarks() {
         </div>
 
         <p {...revelado(visible, 'sectq__fuente', 240)}>
-          El 7B se cuantizó solo con GPTQ: con AWQ no cupo en la memoria del servidor. Todo se midió
-          con grupos de 64, y los datos completos están en el repositorio.
+          {t.fuente}
         </p>
       </div>
     </section>

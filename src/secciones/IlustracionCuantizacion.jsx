@@ -1,5 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import datos from '../data/heroIlustracion.json'
+import { useIdioma } from '../lib/idioma'
+import { textoDibujo } from '../lib/textosDibujos'
 
 /* Ilustracion de cuantizacion del hero (Figma 40:1468, variantes Paso=Inicio y Paso=Cuantizado). */
 
@@ -17,6 +19,7 @@ const enPaso = (p, paso) => (paso === 'inicio' ? porNombre[p.name] || p : p)
 
 /* Pinta un descendiente cualquiera de un chip. */
 function Nodo({ n }) {
+  const { idioma } = useIdioma()
   if (n.type === 'TEXT') {
     return (
       <span
@@ -30,7 +33,7 @@ function Nodo({ n }) {
           lineHeight: px(n.lineHeight || n.size * 1.2),
         }}
       >
-        {n.text}
+        {textoDibujo(n.text, idioma)}
       </span>
     )
   }
@@ -72,6 +75,7 @@ function relleno(p) {
 
 function Pieza({ p, paso }) {
   const s = enPaso(p, paso)
+  const { idioma } = useIdioma()
 
   if (p.type === 'TEXT') {
     return (
@@ -88,7 +92,7 @@ function Pieza({ p, paso }) {
           lineHeight: px(p.lineHeight || p.size * 1.2),
         }}
       >
-        {p.text}
+        {textoDibujo(p.text, idioma)}
       </span>
     )
   }

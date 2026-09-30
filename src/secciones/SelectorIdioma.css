@@ -1,0 +1,64 @@
+/* Boton ES | EN. En claro para los menus blancos y --oscuro para Octuma App. */
+.idioma {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+  background: var(--blanco);
+  flex-shrink: 0;
+}
+
+.idioma__opcion {
+  min-width: 34px;
+  min-height: 30px;
+  padding: 0 9px;
+  border: 0;
+  border-radius: 7px;
+  background: none;
+  color: var(--gris);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.idioma__opcion[aria-pressed='true'] {
+  background: var(--tinta);
+  color: var(--blanco);
+}
+
+.idioma__opcion:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 1px;
+}
+
+@media (hover: hover) {
+  .idioma__opcion[aria-pressed='false']:hover {
+    color: var(--tinta);
+  }
+}
+
+.idioma--oscuro {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: transparent;
+}
+
+.idioma--oscuro .idioma__opcion {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.idioma--oscuro .idioma__opcion[aria-pressed='true'] {
+  background: var(--blanco);
+  color: var(--tinta);
+}
+
+@media (hover: hover) {
+  .idioma--oscuro .idioma__opcion[aria-pressed='false']:hover {
+    color: var(--blanco);
+  }
+}

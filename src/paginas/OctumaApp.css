@@ -72,6 +72,20 @@
   color: var(--oa-texto);
 }
 
+.oapp-nav__acciones {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 14px;
+}
+
+/* En pantallas angostas el enlace no cabe junto al idioma. */
+@media (max-width: 420px) {
+  .oapp-nav__ir {
+    display: none;
+  }
+}
+
 .oapp-nav__ir {
   flex: none;
   font-size: var(--t-chico);

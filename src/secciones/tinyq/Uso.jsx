@@ -1,3 +1,4 @@
+import { useTextos } from '../../lib/idioma'
 import { revelado, useRevelar } from '../../lib/useRevelar'
 
 const LINEAS = [
@@ -6,9 +7,9 @@ const LINEAS = [
   { t: 'from octuma.quantizer import QuantConfig, quantize_model', c: 'import' },
   { t: 'from octuma.export.tq import save_quantized', c: 'import' },
   { t: '' },
-  { t: 'MODELO = "Qwen/Qwen2.5-3B-Instruct"' },
-  { t: 'tok   = AutoTokenizer.from_pretrained(MODELO)' },
-  { t: 'model = AutoModelForCausalLM.from_pretrained(MODELO)' },
+  { t: 'MODEL = "Qwen/Qwen2.5-3B-Instruct"' },
+  { t: 'tok   = AutoTokenizer.from_pretrained(MODEL)' },
+  { t: 'model = AutoModelForCausalLM.from_pretrained(MODEL)' },
   { t: '' },
   { t: 'calib  = load_wikitext2(tok, n_samples=128)' },
   { t: 'cfg    = QuantConfig(bits=4, group_size=32, awq=True)' },
@@ -18,11 +19,28 @@ const LINEAS = [
   { t: 'print(report.summary())', com: '  # q_gb, compression, worst_layer' },
 ]
 
-const VENTAJAS = [
-  'Modelos de Hugging Face tipo Llama y Qwen',
-  'INT4, INT8 y precisión mixta por capa',
-  'Exporta a GGUF para llama.cpp y Android',
-]
+const TEXTOS = {
+  es: {
+    rotulo: 'Uso',
+    titulo: 'También desde Python',
+    bajada: 'Si prefieres usarlo desde tu código, son tres pasos: cargar el modelo, cuantizarlo y guardarlo.',
+    ventajas: [
+      'Modelos de Hugging Face tipo Llama y Qwen',
+      'INT4, INT8 y precisión mixta por capa',
+      'Exporta a GGUF para llama.cpp y Android',
+    ],
+  },
+  en: {
+    rotulo: 'Usage',
+    titulo: 'From Python too',
+    bajada: 'If you’d rather use it from your own code, it takes three steps: load the model, quantize it and save it.',
+    ventajas: [
+      'Hugging Face models like Llama and Qwen',
+      'INT4, INT8 and per-layer mixed precision',
+      'Exports to GGUF for llama.cpp and Android',
+    ],
+  },
+}
 
 function Palomita() {
   return (
@@ -36,18 +54,17 @@ function Palomita() {
 
 export default function Uso() {
   const [ref, visible] = useRevelar()
+  const t = useTextos(TEXTOS)
 
   return (
     <section className="sectq sectq--gris uso" id="uso" ref={ref}>
       <div className="contenedor uso__interior">
         <div {...revelado(visible, 'uso__texto')}>
-          <span className="sectq__rotulo">Uso</span>
-          <h2 className="uso__titulo">También desde Python</h2>
-          <p className="uso__bajada">
-            Si prefieres usarlo desde tu código, son tres pasos: cargar el modelo, cuantizarlo y guardarlo.
-          </p>
+          <span className="sectq__rotulo">{t.rotulo}</span>
+          <h2 className="uso__titulo">{t.titulo}</h2>
+          <p className="uso__bajada">{t.bajada}</p>
           <ul className="uso__ventajas">
-            {VENTAJAS.map((v) => (
+            {t.ventajas.map((v) => (
               <li key={v} className="uso__ventaja">
                 <Palomita />
                 {v}

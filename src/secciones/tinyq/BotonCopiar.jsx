@@ -1,9 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { useTextos } from '../../lib/idioma'
+
+const TEXTOS = {
+  es: { listo: 'Copiar', copiado: 'Copiado', error: 'Copia a mano' },
+  en: { listo: 'Copy', copiado: 'Copied', error: 'Copy it by hand' },
+}
+
 /* Boton de copiar de la pagina de Octuma. */
 export default function BotonCopiar({ texto, className = '' }) {
   const [estado, setEstado] = useState('listo')
   const reloj = useRef(null)
+  const t = useTextos(TEXTOS)
 
   useEffect(() => () => clearTimeout(reloj.current), [])
 
@@ -23,7 +31,7 @@ export default function BotonCopiar({ texto, className = '' }) {
       className={`copiar ${className}`}
       type="button"
       onClick={copiar}
-      aria-label={`Copiar: ${texto}`}
+      aria-label={`${t.listo}: ${texto}`}
     >
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
         <rect
@@ -47,7 +55,7 @@ export default function BotonCopiar({ texto, className = '' }) {
         />
       </svg>
       <span className="copiar__texto">
-        {estado === 'copiado' ? 'Copiado' : estado === 'error' ? 'Copia a mano' : 'Copiar'}
+        {t[estado]}
       </span>
     </button>
   )

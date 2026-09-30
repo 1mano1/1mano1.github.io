@@ -1,4 +1,5 @@
 import LogoFigma from './LogoFigma'
+import { useTextos } from '../lib/idioma'
 import { revelado, useRevelar } from '../lib/useRevelar'
 
 /* 05 — En línea. */
@@ -45,7 +46,6 @@ const REDES = [
   {
     id: 'github',
     nombre: 'GitHub',
-    meta: 'Código y experimentos',
     cuenta: '@1mano1',
     url: 'https://github.com/1mano1',
     tono: '#0e0f12',
@@ -54,7 +54,6 @@ const REDES = [
   {
     id: 'linkedin',
     nombre: 'LinkedIn',
-    meta: 'Experiencia y CV',
     cuenta: 'Imanol Rodríguez',
     url: 'https://www.linkedin.com/in/imanol-rodr%C3%ADguez-627985390/',
     tono: '#0a66c2',
@@ -63,7 +62,6 @@ const REDES = [
   {
     id: 'figma',
     nombre: 'Figma',
-    meta: 'Diseños y prototipos',
     cuenta: '@imanolrdz',
     url: 'https://www.figma.com/@imanolrdz',
     tono: '#0e0f12',
@@ -72,7 +70,6 @@ const REDES = [
   {
     id: 'huggingface',
     nombre: 'Hugging Face',
-    meta: 'Modelos cuantizados',
     cuenta: 'Imanol11',
     url: 'https://huggingface.co/Imanol11',
     tono: '#fff4d6',
@@ -81,7 +78,6 @@ const REDES = [
   {
     id: 'roblox',
     nombre: 'Roblox',
-    meta: 'Juegos publicados',
     cuenta: 'ImanolDev',
     url: 'https://www.roblox.com/users/profile',
     tono: '#0e0f12',
@@ -90,7 +86,6 @@ const REDES = [
   {
     id: 'kaggle',
     nombre: 'Kaggle',
-    meta: 'Notebooks y datasets',
     cuenta: 'imanolr11',
     url: 'https://www.kaggle.com/imanolr11',
     tono: '#e6f7fd',
@@ -98,21 +93,48 @@ const REDES = [
   },
 ]
 
+const TEXTOS = {
+  es: {
+    rotulo: '05 — EN LÍNEA',
+    titulo: 'Dónde encontrarme',
+    intro: 'Código en GitHub, diseños en Figma, modelos en Hugging Face y lo profesional en LinkedIn.',
+    meta: {
+      github: 'Código y experimentos',
+      linkedin: 'Experiencia y CV',
+      figma: 'Diseños y prototipos',
+      huggingface: 'Modelos cuantizados',
+      roblox: 'Juegos publicados',
+      kaggle: 'Notebooks y datasets',
+    },
+  },
+  en: {
+    rotulo: '05 — ONLINE',
+    titulo: 'Where to find me',
+    intro: 'Code on GitHub, designs on Figma, models on Hugging Face and the professional side on LinkedIn.',
+    meta: {
+      github: 'Code and experiments',
+      linkedin: 'Experience and CV',
+      figma: 'Designs and prototypes',
+      huggingface: 'Quantized models',
+      roblox: 'Published games',
+      kaggle: 'Notebooks and datasets',
+    },
+  },
+}
+
 export default function Redes() {
   const [ref, visible] = useRevelar()
+  const t = useTextos(TEXTOS)
 
   return (
     <section className="redes" id="redes" ref={ref}>
       <div className="contenedor redes__interior">
         <div {...revelado(visible, 'redes__cabecera')}>
           <div className="redes__titulos">
-            <p className="rotulo">05 — EN LÍNEA</p>
-            <h2 className="titulo-seccion">Dónde encontrarme</h2>
+            <p className="rotulo">{t.rotulo}</p>
+            <h2 className="titulo-seccion">{t.titulo}</h2>
           </div>
-          <p className="redes__intro">
-            Código en GitHub, diseños en Figma, modelos en Hugging Face y lo profesional en
-            LinkedIn.
-          </p>
+          <p className="redes__intro">{t.intro}</p>
         </div>
 
         <ul className="redes__lista">
@@ -137,7 +159,7 @@ export default function Redes() {
                       <span className="tarjeta-red__punto" aria-hidden="true">
                         ·
                       </span>
-                      <span className="tarjeta-red__que">{r.meta}</span>
+                      <span className="tarjeta-red__que">{t.meta[r.id]}</span>
                     </span>
                   </span>
 

@@ -1,5 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
 import datosPanel from '../data/chipTinyq.json'
+import { useIdioma } from '../lib/idioma'
+import { textoDibujo } from '../lib/textosDibujos'
 
 /* Ilustracion del chip de Octuma (Figma 27:2). */
 
@@ -7,6 +9,7 @@ const px = (v) => `${v}px`
 const fam = (f) => (f === 'JetBrains Mono' ? 'var(--mono)' : 'var(--fuente)')
 
 function Pieza({ p, anclaje }) {
+  const { idioma } = useIdioma()
   const base = {
     left: px(p.x),
     top: px(p.y),
@@ -41,7 +44,7 @@ function Pieza({ p, anclaje }) {
           letterSpacing: p.ls ? px(p.ls) : undefined,
         }}
       >
-        {p.text}
+        {textoDibujo(p.text, idioma)}
       </span>
     )
   }

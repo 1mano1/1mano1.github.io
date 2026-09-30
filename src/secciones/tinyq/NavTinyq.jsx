@@ -1,12 +1,24 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const ENLACES = [
-  { texto: 'Cómo funciona', href: '#como-funciona' },
-  { texto: 'Benchmarks', href: '#benchmarks' },
-  { texto: 'Comparativa', href: '#comparativa' },
-  { texto: 'Comandos', href: '#comandos' },
-]
+import { REPO } from '../../data/octuma'
+import { useTextos } from '../../lib/idioma'
+import SelectorIdioma from '../SelectorIdioma'
+
+const DESTINOS = ['#como-funciona', '#benchmarks', '#comparativa', '#comandos']
+
+const TEXTOS = {
+  es: {
+    enlaces: ['Cómo funciona', 'Benchmarks', 'Comparativa', 'Comandos'],
+    portafolio: 'Portafolio',
+    secciones: 'Secciones de esta página',
+  },
+  en: {
+    enlaces: ['How it works', 'Benchmarks', 'Comparison', 'Commands'],
+    portafolio: 'Portfolio',
+    secciones: 'Sections on this page',
+  },
+}
 
 /** Estrella del boton de GitHub. Figma 206:7809. */
 function Estrella() {
@@ -23,6 +35,7 @@ function Estrella() {
 /* Nav de la pagina de Octuma. */
 export default function NavTinyq() {
   const [desplazado, setDesplazado] = useState(false)
+  const t = useTextos(TEXTOS)
 
   useEffect(() => {
     const alScroll = () => setDesplazado(window.scrollY > 8)
@@ -39,7 +52,7 @@ export default function NavTinyq() {
             <span aria-hidden="true">←</span>
             {/* El movil dibujado dice "Portafolio" y el desktop el nombre. */}
             <span className="navtq__volver-largo">Imanol Rodríguez</span>
-            <span className="navtq__volver-corto">Portafolio</span>
+            <span className="navtq__volver-corto">{t.portafolio}</span>
           </Link>
           <span className="navtq__separador" aria-hidden="true">
             /
@@ -55,27 +68,24 @@ export default function NavTinyq() {
           </span>
         </div>
 
-        <span className="navtq__aqui mono" aria-hidden="true">
-          octuma
-        </span>
-
-        <nav className="navtq__enlaces" aria-label="Secciones de esta página">
-          {ENLACES.map((e) => (
-            <a key={e.href} className="navtq__enlace" href={e.href}>
-              {e.texto}
+        <nav className="navtq__enlaces" aria-label={t.secciones}>
+          {DESTINOS.map((href, i) => (
+            <a key={href} className="navtq__enlace" href={href}>
+              {t.enlaces[i]}
             </a>
           ))}
         </nav>
 
-        <a
-          className="boton boton--tinta navtq__star"
-          href="https://github.com/1mano1/octuma"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Estrella />
-          Star
-        </a>
+        <div className="navtq__acciones">
+          <span className="navtq__aqui mono" aria-hidden="true">
+            octuma
+          </span>
+          <SelectorIdioma />
+          <a className="boton boton--tinta navtq__star" href={REPO} target="_blank" rel="noreferrer">
+            <Estrella />
+            Star
+          </a>
+        </div>
       </div>
     </header>
   )

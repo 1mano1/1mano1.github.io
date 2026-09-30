@@ -9,11 +9,30 @@ import {
   leerConsentimiento,
   registrarVista,
 } from '../lib/analiticas'
+import { useTextos } from '../lib/idioma'
 import './AvisoCookies.css'
+
+const TEXTOS = {
+  es: {
+    region: 'Aviso de cookies',
+    texto:
+      'Uso cookies de Google Analytics para saber cuántas personas visitan el sitio y qué páginas ven. Solo se activan si aceptas.',
+    rechazar: 'Rechazar',
+    aceptar: 'Aceptar',
+  },
+  en: {
+    region: 'Cookie notice',
+    texto:
+      'I use Google Analytics cookies to know how many people visit the site and which pages they see. They only turn on if you accept.',
+    rechazar: 'Decline',
+    aceptar: 'Accept',
+  },
+}
 
 /* Aviso de cookies y envio de vistas de pagina. Sin GA_ID no pinta nada. */
 export default function AvisoCookies() {
   const { pathname } = useLocation()
+  const t = useTextos(TEXTOS)
   const [eleccion, setEleccion] = useState(() => (GA_ID ? leerConsentimiento() : 'sin-analiticas'))
 
   useEffect(() => {
@@ -40,21 +59,18 @@ export default function AvisoCookies() {
   }
 
   return (
-    <div className="cookies" role="region" aria-label="Aviso de cookies">
-      <p className="cookies__texto">
-        Uso cookies de Google Analytics para saber cuántas personas visitan el sitio y qué páginas
-        ven. Solo se activan si aceptas.
-      </p>
+    <div className="cookies" role="region" aria-label={t.region}>
+      <p className="cookies__texto">{t.texto}</p>
       <div className="cookies__botones">
         <button type="button" className="cookies__boton" onClick={() => elegir('rechazadas')}>
-          Rechazar
+          {t.rechazar}
         </button>
         <button
           type="button"
           className="cookies__boton cookies__boton--si"
           onClick={() => elegir('aceptadas')}
         >
-          Aceptar
+          {t.aceptar}
         </button>
       </div>
     </div>
