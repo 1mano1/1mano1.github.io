@@ -19,6 +19,21 @@ npm run lint       # oxlint
 npm run build      # genera dist/
 ```
 
+## Idiomas
+
+Todo el sitio está en español e inglés, con el botón ES | EN de los menús. La
+elección se guarda en el navegador; sin elección previa se usa el idioma del
+navegador. Cada componente define sus textos en un objeto `TEXTOS` con las
+claves `es` y `en`, y los lee con `useTextos` (`src/lib/idioma.js`). Los textos
+que vienen dentro de los dibujos exportados de Figma se traducen en
+`src/lib/textosDibujos.js`.
+
+## Octuma
+
+La versión de Octuma que muestra el sitio, el número de pruebas y los enlaces
+a PyPI y GitHub viven en `src/data/octuma.js`. Al publicar una versión nueva
+se cambian ahí.
+
 ## Las cifras
 
 Los GB, porcentajes y anchos de barra se calculan en cada componente a partir
