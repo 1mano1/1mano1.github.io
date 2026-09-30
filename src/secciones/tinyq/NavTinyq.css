@@ -121,6 +121,13 @@
   }
 }
 
+/* Nombre (movil), idioma y estrella, juntos a la derecha. */
+.navtq__acciones {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .navtq__star {
   display: none;
   gap: 8px;
@@ -146,5 +153,17 @@
   .navtq__enlaces,
   .navtq__star {
     display: flex;
+  }
+
+  .navtq__enlace {
+    white-space: nowrap;
+  }
+}
+
+/* Con la miga completa, el idioma y la estrella, los atajos a las secciones
+   solo caben desde 1200. */
+@media (min-width: 900px) and (max-width: 1199px) {
+  .navtq__enlaces {
+    display: none;
   }
 }

@@ -1,5 +1,26 @@
 /* Las tres ilustraciones de "Cómo funciona". */
 
+import { useTextos } from '../../lib/idioma'
+
+const TEXTOS = {
+  es: {
+    calibrar: 'Histograma de activaciones con el rango calibrado marcado en el centro',
+    rango: 'rango calibrado',
+    grupos: 'Cuatro grupos de pesos, cada uno con su propia escala',
+    grupo: 'grupo de 32 pesos → 1 escala',
+    evaluar: 'Perplejidad de Qwen2.5 3B: 8.35 en FP16 y 8.55 en INT4',
+    perplejidad: 'Perplejidad · Qwen2.5 3B',
+  },
+  en: {
+    calibrar: 'Histogram of activations with the calibrated range marked in the middle',
+    rango: 'calibrated range',
+    grupos: 'Four groups of weights, each with its own scale',
+    grupo: 'group of 32 weights → 1 scale',
+    evaluar: 'Qwen2.5 3B perplexity: 8.35 in FP16 and 8.55 in INT4',
+    perplejidad: 'Perplexity · Qwen2.5 3B',
+  },
+}
+
 const AZUL_50 = '#e3e8ff'
 const AZUL_300 = '#9aaeff'
 const AZUL_MEDIO = '#5b78ff'
@@ -14,8 +35,9 @@ const ULTIMA_DENTRO = 12
 const SUELO = 160
 
 export function IlustracionCalibrar() {
+  const t = useTextos(TEXTOS)
   return (
-    <svg className="pasotq__svg" viewBox="0 0 408.67 200" role="img" aria-label="Histograma de activaciones con el rango calibrado marcado en el centro">
+    <svg className="pasotq__svg" viewBox="0 0 408.67 200" role="img" aria-label={t.calibrar}>
       {ALTURAS.map((alto, i) => {
         const dentro = i >= PRIMERA_DENTRO && i <= ULTIMA_DENTRO
         return (
@@ -34,7 +56,7 @@ export function IlustracionCalibrar() {
       <line x1="113.83" y1="34" x2="113.83" y2="164" stroke="#0e0f12" strokeWidth="1.5" />
       <line x1="266.83" y1="34" x2="266.83" y2="164" stroke="#0e0f12" strokeWidth="1.5" />
       <text x="201.33" y="27" textAnchor="middle" className="pasotq__texto-svg">
-        rango calibrado
+        {t.rango}
       </text>
     </svg>
   )
@@ -54,10 +76,11 @@ const ESCALAS = ['s=0.012', 's=0.016', 's=0.020', 's=0.024']
 const BLOQUE_ELEGIDO = 1
 
 export function IlustracionGrupos() {
+  const t = useTextos(TEXTOS)
   return (
-    <svg className="pasotq__svg" viewBox="0 0 408.67 200" role="img" aria-label="Cuatro bloques de 16 pesos, cada uno con su propia escala">
+    <svg className="pasotq__svg" viewBox="0 0 408.67 200" role="img" aria-label={t.grupos}>
       <text x="112.33" y="33" className="pasotq__texto-svg">
-        grupo de 32 pesos → 1 escala
+        {t.grupo}
       </text>
       {BLOQUES.map((bloque, b) => {
         const x0 = 43.33 + b * 76
@@ -110,10 +133,11 @@ const FORMATOS = [
 ]
 
 export function IlustracionEvaluar() {
+  const t = useTextos(TEXTOS)
   return (
-    <svg className="pasotq__svg" viewBox="0 0 408.67 200" role="img" aria-label="Perplejidad de Qwen2.5 3B: 8.35 en FP16 y 8.55 en INT4">
+    <svg className="pasotq__svg" viewBox="0 0 408.67 200" role="img" aria-label={t.evaluar}>
       <text x="40" y="35" className="pasotq__texto-svg">
-        Perplejidad · Qwen2.5 3B
+        {t.perplejidad}
       </text>
       {MEDIDAS.map((m, i) => {
         const ancho = (m.ppl / PEOR) * BARRA_MAX

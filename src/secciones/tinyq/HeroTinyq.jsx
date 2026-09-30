@@ -1,21 +1,45 @@
 import { revelado, useRevelar } from '../../lib/useRevelar'
 import BotonCopiar from './BotonCopiar'
-import { PYPI, VERSION } from '../../data/octuma'
+import { PYPI, REPO, VERSION } from '../../data/octuma'
+import { useIdioma, useTextos } from '../../lib/idioma'
 
 const CHIPS = ['MIT', 'GPTQ + AWQ', 'GGUF · .tq']
 const COMANDO = 'octuma quantize Qwen/Qwen2.5-3B-Instruct'
-const REPO = 'https://github.com/1mano1/octuma'
+
+const TEXTOS = {
+  es: {
+    version: 'Versión actual en PyPI',
+    titulo: ['Modelos ', '2.5× más chicos', ', perdiendo 2.4% de calidad.'],
+    bajada:
+      'Librería de Python que cuantiza modelos de lenguaje a INT4 e INT8 con GPTQ + AWQ, mide cuánta calidad se perdió y exporta a GGUF para llama.cpp y Android, o a .tq para PyTorch.',
+    github: 'Ver en GitHub',
+    docs: 'Documentación',
+  },
+  en: {
+    version: 'Current version on PyPI',
+    titulo: ['Models ', '2.5× smaller', ', losing 2.4% of quality.'],
+    bajada:
+      'A Python library that quantizes language models to INT4 and INT8 with GPTQ + AWQ, measures how much quality was lost, and exports to GGUF for llama.cpp and Android, or to .tq for PyTorch.',
+    github: 'View on GitHub',
+    docs: 'Documentation',
+  },
+}
+
+/* El README en ingles vive en README.en.md. */
+const README = { es: `${REPO}#readme`, en: `${REPO}/blob/main/README.en.md` }
 
 /* Hero de Octuma. */
 export default function HeroTinyq() {
   const [ref, visible] = useRevelar()
+  const t = useTextos(TEXTOS)
+  const { idioma } = useIdioma()
 
   return (
     <section className="herotq" ref={ref}>
       <div className="contenedor herotq__interior">
         <ul {...revelado(visible, 'herotq__chips')}>
           <li className="herotq__chip mono">
-            <a href={PYPI} target="_blank" rel="noreferrer" title="Versión actual en PyPI">
+            <a href={PYPI} target="_blank" rel="noreferrer" title={t.version}>
               v{VERSION}
             </a>
           </li>
@@ -27,13 +51,12 @@ export default function HeroTinyq() {
         </ul>
 
         <h1 {...revelado(visible, 'herotq__titulo', 60)}>
-          Modelos <em>2.5× más chicos</em>, perdiendo 2.4% de calidad.
+          {t.titulo[0]}
+          <em>{t.titulo[1]}</em>
+          {t.titulo[2]}
         </h1>
 
-        <p {...revelado(visible, 'herotq__bajada', 120)}>
-          Librería de Python que cuantiza modelos de lenguaje a INT4 e INT8 con GPTQ + AWQ, mide
-          cuánta calidad se perdió y exporta a GGUF para llama.cpp y Android, o a .tq para PyTorch.
-        </p>
+        <p {...revelado(visible, 'herotq__bajada', 120)}>{t.bajada}</p>
 
         <div {...revelado(visible, 'herotq__acciones', 180)}>
           <div className="herotq__comando">
@@ -49,15 +72,15 @@ export default function HeroTinyq() {
           <div className="herotq__botones">
             <a className="boton boton--primario herotq__boton" href={REPO} target="_blank" rel="noreferrer">
               <span className="icono-github herotq__github" aria-hidden="true" />
-              Ver en GitHub
+              {t.github}
             </a>
             <a
               className="boton boton--secundario herotq__boton"
-              href={`${REPO}#readme`}
+              href={README[idioma]}
               target="_blank"
               rel="noreferrer"
             >
-              Documentación
+              {t.docs}
             </a>
           </div>
         </div>

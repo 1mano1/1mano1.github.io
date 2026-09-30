@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import { useTextos } from '../lib/idioma'
 import { MARCA, encajeCuadrado } from '../lib/marca'
+import SelectorIdioma from './SelectorIdioma'
 
 /* La caja de Figma 19:6. */
 const CAJA = 28
@@ -24,18 +26,30 @@ export function Logo({ className = '' }) {
   )
 }
 
-const ENLACES = [
-  { texto: 'Áreas', href: '#areas' },
-  { texto: 'Open source', href: '#open-source' },
-  { texto: 'Proyectos', href: '#proyectos' },
-  /* El Figma lo llama "Stack" pero apunta a la seccion de diseño, que es la que existe. */
-  { texto: 'Diseño', href: '#diseno' },
-  { texto: 'Contacto', href: '#contacto' },
-]
+/* El Figma llama "Stack" al enlace de diseño, pero apunta a la seccion de diseño, que es la que existe. */
+const TEXTOS = {
+  es: {
+    enlaces: ['Áreas', 'Open source', 'Proyectos', 'Diseño', 'Contacto'],
+    secciones: 'Secciones',
+    contacto: 'Contáctame',
+    abrir: 'Abrir menú',
+    cerrar: 'Cerrar menú',
+  },
+  en: {
+    enlaces: ['Areas', 'Open source', 'Projects', 'Design', 'Contact'],
+    secciones: 'Sections',
+    contacto: 'Contact me',
+    abrir: 'Open menu',
+    cerrar: 'Close menu',
+  },
+}
+const DESTINOS = ['#areas', '#open-source', '#proyectos', '#diseno', '#contacto']
 
 export default function Nav() {
   const [abierto, setAbierto] = useState(false)
   const [desplazado, setDesplazado] = useState(false)
+  const t = useTextos(TEXTOS)
+  const enlaces = DESTINOS.map((href, i) => ({ href, texto: t.enlaces[i] }))
 
   useEffect(() => {
     const alScroll = () => setDesplazado(window.scrollY > 8)
@@ -69,29 +83,33 @@ export default function Nav() {
           </span>
         </a>
 
-        <nav className="nav__enlaces" aria-label="Secciones">
-          {ENLACES.map((e) => (
+        <nav className="nav__enlaces" aria-label={t.secciones}>
+          {enlaces.map((e) => (
             <a key={e.href} className="nav__enlace" href={e.href}>
               {e.texto}
             </a>
           ))}
         </nav>
 
-        <a className="boton boton--tinta nav__cta" href="#contacto">
-          Contáctame
-        </a>
+        <div className="nav__acciones">
+          <SelectorIdioma />
 
-        <button
-          className="nav__menu"
-          type="button"
-          aria-expanded={abierto}
-          aria-controls="menu-movil"
-          aria-label={abierto ? 'Cerrar menú' : 'Abrir menú'}
-          onClick={() => setAbierto((v) => !v)}
-        >
-          <span className={`nav__raya ${abierto ? 'nav__raya--uno' : ''}`} />
-          <span className={`nav__raya ${abierto ? 'nav__raya--dos' : ''}`} />
-        </button>
+          <a className="boton boton--tinta nav__cta" href="#contacto">
+            {t.contacto}
+          </a>
+
+          <button
+            className="nav__menu"
+            type="button"
+            aria-expanded={abierto}
+            aria-controls="menu-movil"
+            aria-label={abierto ? t.cerrar : t.abrir}
+            onClick={() => setAbierto((v) => !v)}
+          >
+            <span className={`nav__raya ${abierto ? 'nav__raya--uno' : ''}`} />
+            <span className={`nav__raya ${abierto ? 'nav__raya--dos' : ''}`} />
+          </button>
+        </div>
       </div>
 
       <div
@@ -99,7 +117,7 @@ export default function Nav() {
         className={`nav__panel ${abierto ? 'nav__panel--abierto' : ''}`}
         hidden={!abierto}
       >
-        {ENLACES.map((e) => (
+        {enlaces.map((e) => (
           <a key={e.href} className="nav__panel-enlace" href={e.href} onClick={() => setAbierto(false)}>
             {e.texto}
           </a>
@@ -109,7 +127,7 @@ export default function Nav() {
           href="#contacto"
           onClick={() => setAbierto(false)}
         >
-          Contáctame
+          {t.contacto}
         </a>
       </div>
     </header>

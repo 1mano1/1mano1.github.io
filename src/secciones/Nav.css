@@ -97,6 +97,13 @@
   display: none;
 }
 
+/* Idioma, contacto y menu, juntos a la derecha. */
+.nav__acciones {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 /* ---- boton de menu (solo movil, Figma 53:2166) ---- */
 
 .nav__menu {
@@ -185,5 +192,25 @@
 
   .nav__nombre-corto {
     display: none;
+  }
+
+  .nav__enlace {
+    white-space: nowrap;
+  }
+}
+
+/* Entre 900 y 1100 no caben el nombre completo, cinco enlaces, el idioma y el
+   boton de contacto: se usa el nombre corto y los enlaces se juntan. */
+@media (min-width: 900px) and (max-width: 1099px) {
+  .nav__nombre-largo {
+    display: none;
+  }
+
+  .nav__nombre-corto {
+    display: inline;
+  }
+
+  .nav__enlaces {
+    gap: 20px;
   }
 }
