@@ -345,7 +345,7 @@
   transition: color var(--t-hover) var(--sale);
 }
 
-.open__todos span {
+.open__todos .flecha {
   transition: transform var(--t-hover) var(--sale);
 }
 
@@ -354,7 +354,7 @@
     color: var(--azul);
   }
 
-  .open__todos:hover span {
+  .open__todos:hover .flecha {
     transform: translateX(3px);
   }
 }

@@ -120,11 +120,15 @@ function Pieza({ p, paso }) {
   if (p.name.startsWith('chip')) {
     // El chip crece hacia dentro del lienzo.
     const derecha = LIENZO - (s.x + p.w)
+    const izquierda = s.x < derecha
+    // Las tarjetas de texto se agrandan desde su esquina hacia fuera del dibujo.
+    const realce = p.name === 'chip0' ? null : `${izquierda ? 'left' : 'right'} ${s.y < LIENZO / 2 ? 'bottom' : 'top'}`
     return (
       <div
-        className={`ilus__chip ${p.name === 'chip0' ? 'ilus__chip--oscuro' : ''}`}
+        className={`ilus__chip ${p.name === 'chip0' ? 'ilus__chip--oscuro' : 'ilus__chip--realce'}`}
         style={{
-          ...(s.x < derecha ? { left: px(s.x) } : { right: px(derecha) }),
+          ...(izquierda ? { left: px(s.x) } : { right: px(derecha) }),
+          transformOrigin: realce || undefined,
           top: px(s.y),
           minWidth: px(s.w),
           minHeight: px(s.h),
@@ -171,7 +175,10 @@ export default function IlustracionCuantizacion() {
     if (!nodo) return
     const medir = () => {
       const ancho = nodo.getBoundingClientRect().width
-      nodo.style.setProperty('--escala', ancho / LIENZO)
+      const escala = ancho / LIENZO
+      nodo.style.setProperty('--escala', escala)
+      // Las tarjetas crecen un poco mas cuanto mas se encoge el dibujo, con tope.
+      nodo.style.setProperty('--realce', Math.min(1.35, Math.max(1.15, 0.8 / escala)))
     }
     medir()
     const ro = new ResizeObserver(medir)

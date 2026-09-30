@@ -78,8 +78,8 @@ const REDES = [
   {
     id: 'roblox',
     nombre: 'Roblox',
-    cuenta: 'ImanolDev',
-    url: 'https://www.roblox.com/users/profile',
+    cuenta: 'Mane1ay11',
+    url: 'https://www.roblox.com/share?code=f788a0f6b3dbc6478e928ecc84604660&type=Profile',
     tono: '#0e0f12',
     marca: MarcaRoblox,
   },

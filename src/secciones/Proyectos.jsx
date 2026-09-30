@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Flecha from './Flecha'
 import { useTextos } from '../lib/idioma'
 import { revelado, useRevelar } from '../lib/useRevelar'
 
@@ -78,7 +79,7 @@ export default function Proyectos() {
               </Link>
               <Link className="tarjeta-proy__enlace" to="/octuma">
                 {t.libreria}
-                <span aria-hidden="true">→</span>
+                <Flecha />
               </Link>
             </div>
           </div>

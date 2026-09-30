@@ -340,11 +340,8 @@
   background: var(--oa-elevado);
   transition:
     opacity var(--t-revelar) var(--sale),
-    transform var(--t-revelar) var(--sale),
-    border-color var(--t-hover) var(--sale),
-    background-color var(--t-hover) var(--sale),
-    box-shadow var(--t-hover) var(--sale);
-  transition-delay: var(--retraso, 0ms), var(--retraso, 0ms), 0ms, 0ms, 0ms;
+    transform var(--t-revelar) var(--sale);
+  transition-delay: var(--retraso, 0ms);
 }
 
 .oapp-tarjeta {
@@ -352,15 +349,6 @@
   flex-direction: column;
   gap: 10px;
   padding: 28px;
-}
-
-@media (hover: hover) {
-  .oapp-tarjeta:hover,
-  .oapp-modelo:hover {
-    border-color: var(--oa-acento);
-    background-color: #141936;
-    box-shadow: 0 18px 48px -12px rgb(91 124 255 / 0.35);
-  }
 }
 
 .oapp-tarjeta p,
