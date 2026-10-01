@@ -1,27 +1,31 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 import { useTextos } from '../lib/idioma'
-import { MARCA, encajeCuadrado } from '../lib/marca'
+import { MARCA } from '../lib/marca'
 import SelectorIdioma from './SelectorIdioma'
 
-/* La caja de Figma 19:6. */
-const CAJA = 28
-const RADIO = 8
-const { escala, x, y } = encajeCuadrado(CAJA)
+const { lado, radio, trazos, degradado: d } = MARCA
 
 export function Logo({ className = '' }) {
+  // useId trae caracteres que rompen url(#...).
+  const id = `punto-${useId().replace(/[^\w-]/g, '')}`
   return (
     <svg
       className={`logo ${className}`}
-      viewBox={`0 0 ${CAJA} ${CAJA}`}
+      viewBox={`0 0 ${lado} ${lado}`}
       aria-hidden="true"
       focusable="false"
     >
-      <rect width={CAJA} height={CAJA} rx={RADIO} fill="var(--tinta)" />
-      <g transform={`translate(${x} ${y}) scale(${escala})`}>
-        <path d={MARCA.trazos.barra} fill="var(--blanco)" />
-        <path d={MARCA.trazos.r} fill="var(--blanco)" />
-        <path d={MARCA.trazos.acento} fill="var(--azul)" />
-      </g>
+      <defs>
+        <linearGradient id={id} x1={d.x1} y1={d.y1} x2={d.x2} y2={d.y2} gradientUnits="userSpaceOnUse">
+          <stop stopColor={d.desde} />
+          <stop offset="1" stopColor={d.hasta} />
+        </linearGradient>
+      </defs>
+      <rect width={lado} height={lado} rx={radio} fill="var(--tinta)" />
+      <path d={trazos.punto} fill={`url(#${id})`} />
+      <path d={trazos.arco} fill="var(--blanco)" />
+      <path d={trazos.asta} fill="var(--blanco)" />
+      <path d={trazos.pierna} fill="var(--blanco)" />
     </svg>
   )
 }
