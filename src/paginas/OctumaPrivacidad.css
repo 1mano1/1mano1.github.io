@@ -2,7 +2,10 @@
    colores de la app. Usa las variables --oa-* de OctumaApp.css. */
 
 .opriv-cuerpo {
-  max-width: 760px;
+  /* 760 de texto. La canaleta de `.contenedor` va por dentro del ancho, asi
+     que hay que sumarla: sin eso la columna quedaba en unos 530 en
+     escritorio y parecia la vista de celular. */
+  max-width: calc(760px + 2 * var(--canaleta));
   padding-top: 56px;
   padding-bottom: 96px;
 }
