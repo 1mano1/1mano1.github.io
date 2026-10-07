@@ -50,8 +50,8 @@ const TEXTOS = {
             lista: [
               ['Conversaciones', 'Lo que escribes y lo que responde el modelo.'],
               [
-                'Archivos adjuntos',
-                'Las fotos y los documentos (PDF, Word, texto) que adjuntas se copian dentro de la app. Su texto se extrae en el teléfono.',
+                'Documentos adjuntos',
+                'Los documentos que adjuntas (PDF, Word, texto) se copian dentro de la app y su texto se extrae en el teléfono. La app no analiza imágenes.',
               ],
               [
                 'Voz',
@@ -68,7 +68,7 @@ const TEXTOS = {
               ],
             ],
           },
-          'La app no pide tu ubicación, tus contactos, tu calendario ni acceso general a tus archivos. Las fotos y los documentos se eligen con el selector de Android, que entrega solo el archivo que tú eliges.',
+          'La app no pide tu ubicación, tus contactos, tu calendario, tu cámara ni acceso general a tus archivos. Los documentos se eligen con el selector de Android, que entrega solo el archivo que tú eliges.',
         ],
       },
       {
@@ -165,7 +165,7 @@ const TEXTOS = {
               'Puedes borrar un chat desde el menú lateral, o todos desde Ajustes.',
               'Puedes borrar cada modelo descargado desde Modelos o desde Ajustes.',
               'Al cerrar sesión se borra el token de Hugging Face.',
-              'Al desinstalar la app se borra todo: conversaciones, adjuntos, modelos y ajustes.',
+              'Al desinstalar la app se borra todo: conversaciones, documentos adjuntos, modelos y ajustes.',
             ],
           },
           'La app queda fuera de las copias de seguridad de Android y de la transferencia a un teléfono nuevo. Si cambias de teléfono, tus conversaciones no se pasan. El desarrollador no puede recuperar ni borrar nada por ti, porque no tiene tus datos.',
@@ -281,8 +281,8 @@ const TEXTOS = {
             lista: [
               ['Conversations', 'What you write and what the model answers.'],
               [
-                'Attachments',
-                'Photos and documents (PDF, Word, text) you attach are copied inside the app. Their text is extracted on the phone.',
+                'Attached documents',
+                "Documents you attach (PDF, Word, text) are copied inside the app and their text is extracted on the phone. The app doesn't analyze images.",
               ],
               [
                 'Voice',
@@ -296,7 +296,7 @@ const TEXTOS = {
               ],
             ],
           },
-          "The app doesn't ask for your location, contacts, calendar or general access to your files. Photos and documents are chosen with Android's picker, which hands over only the file you choose.",
+          "The app doesn't ask for your location, contacts, calendar, camera or general access to your files. Documents are chosen with Android's picker, which hands over only the file you choose.",
         ],
       },
       {
@@ -390,7 +390,7 @@ const TEXTOS = {
               'You can delete one chat from the side menu, or all of them from Settings.',
               'You can delete each downloaded model from Models or from Settings.',
               'Signing out deletes the Hugging Face token.',
-              'Uninstalling the app deletes everything: conversations, attachments, models and settings.',
+              'Uninstalling the app deletes everything: conversations, attached documents, models and settings.',
             ],
           },
           "The app is excluded from Android backups and from transfers to a new phone. If you switch phones, your conversations don't carry over. The developer can't recover or delete anything for you, because the developer doesn't have your data.",
