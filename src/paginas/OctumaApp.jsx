@@ -47,7 +47,7 @@ const TEXTOS = {
       ],
       [
         'Descárgalo una vez',
-        'Antes de empezar comprueba que haya memoria y espacio. Si sales de la app, la descarga se pausa y luego sigue donde iba. Puedes limitarla a wifi, y el archivo se verifica con SHA-256 antes de usarlo.',
+        'Antes de empezar comprueba que haya memoria y espacio. Puedes salir de la app mientras baja: sigue en segundo plano y te avisa al terminar. Si se corta, continúa donde iba. Puedes limitarla a wifi, y el archivo se verifica con SHA-256 antes de usarlo.',
       ],
       [
         'Conversa sin conexión',
@@ -134,7 +134,7 @@ const TEXTOS = {
       ],
       [
         'Download it once',
-        'Before starting, it checks there is enough memory and storage. If you leave the app, the download pauses and resumes where it left off. You can limit it to wifi, and the file is verified with SHA-256 before use.',
+        'Before starting, it checks there is enough memory and storage. You can leave the app while it downloads: it continues in the background and notifies you when it finishes. If it gets cut off, it resumes where it stopped. You can limit it to wifi, and the file is verified with SHA-256 before use.',
       ],
       [
         'Chat offline',
