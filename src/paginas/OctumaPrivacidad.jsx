@@ -118,6 +118,14 @@ const TEXTOS = {
                 'Micrófono',
                 'Para el dictado por voz. Android lo pregunta la primera vez que dictas. Puedes negarlo y el resto de la app funciona igual.',
               ],
+              [
+                'Notificaciones',
+                'Para mostrar el avance de una descarga y avisarte cuando termina. Android lo pregunta antes de la primera descarga. Si lo niegas, la descarga se hace igual, sin aviso.',
+              ],
+              [
+                'Servicio en primer plano',
+                'Para que una descarga que tú iniciaste no se corte cuando sales de la app. Solo está activo mientras dura la descarga.',
+              ],
             ],
           },
         ],
@@ -355,6 +363,14 @@ const TEXTOS = {
               [
                 'Microphone',
                 'For voice dictation. Android asks the first time you dictate. You can deny it and the rest of the app works the same.',
+              ],
+              [
+                'Notifications',
+                'To show the progress of a download and tell you when it finishes. Android asks before the first download. If you deny it, the download still happens, without a notification.',
+              ],
+              [
+                'Foreground service',
+                "So that a download you started isn't cut off when you leave the app. It is only active while the download lasts.",
               ],
             ],
           },

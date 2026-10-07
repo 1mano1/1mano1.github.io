@@ -66,8 +66,8 @@ const TEXTOS = {
     puntos: [
       ['Sin servidor propio', 'Todo pasa en el teléfono. No hay una cuenta de Octuma ni una nube detrás.'],
       [
-        'Tres permisos',
-        'Internet, para descargar; el estado de la red, para saber si vas por wifi; y el micrófono, solo si usas el dictado, que se transcribe en el teléfono. Ni almacenamiento ni ubicación.',
+        'Solo los permisos que usa',
+        'Internet y el estado de la red, para descargar y saber si vas por wifi; el micrófono, solo si usas el dictado, que se transcribe en el teléfono; y las notificaciones, para el avance de las descargas. Ni almacenamiento, ni cámara, ni ubicación.',
       ],
       [
         'La búsqueda web es opcional',
@@ -153,8 +153,8 @@ const TEXTOS = {
     puntos: [
       ['No server of our own', 'Everything happens on the phone. There is no Octuma account and no cloud behind it.'],
       [
-        'Three permissions',
-        'Internet, to download; network state, to know if you are on wifi; and the microphone, only if you use dictation, which is transcribed on the phone. No storage, no location.',
+        'Only the permissions it uses',
+        'Internet and network state, to download and to know if you are on wifi; the microphone, only if you use dictation, which is transcribed on the phone; and notifications, for download progress. No storage, no camera, no location.',
       ],
       [
         'Web search is optional',
