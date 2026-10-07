@@ -17,6 +17,8 @@ const TEXTOS = {
       'Soy Imanol, desarrollador backend con un pie en el frontend. Cuantizo y despliego modelos de ML, construyo apps Android y juegos en Roblox.',
     proyectos: 'Ver proyectos',
     cv: 'Descargar CV',
+    // Cada idioma baja su propio CV: quien lee el sitio en inglés lo quiere en inglés.
+    cvArchivo: '/cv-imanol-rodriguez.pdf',
   },
   en: {
     nuevo: 'New',
@@ -29,6 +31,7 @@ const TEXTOS = {
       "I'm Imanol, a backend developer with one foot in the frontend. I quantize and deploy ML models, build Android apps and Roblox games.",
     proyectos: 'See projects',
     cv: 'Download CV',
+    cvArchivo: '/cv-imanol-rodriguez-en.pdf',
   },
 }
 
@@ -62,7 +65,7 @@ export default function Hero() {
             <a className="boton boton--primario" href="#proyectos">
               {t.proyectos}
             </a>
-            <a className="boton boton--secundario" href="/cv-imanol-rodriguez.pdf" download>
+            <a className="boton boton--secundario" href={t.cvArchivo} download>
               {t.cv}
             </a>
           </div>
