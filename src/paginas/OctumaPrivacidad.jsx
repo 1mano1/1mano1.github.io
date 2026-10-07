@@ -24,7 +24,7 @@ const TEXTOS = {
     miga: 'Estás en',
     portafolio: 'Portafolio',
     titulo: 'Política de privacidad',
-    vigencia: 'Vigente desde el 6 de octubre de 2026',
+    vigencia: 'Vigente desde el 7 de octubre de 2026',
     irTerminos: 'Términos de uso',
     resumenTitulo: 'En resumen',
     resumen: [
@@ -35,10 +35,11 @@ const TEXTOS = {
     secciones: [
       {
         id: 'responsable',
-        titulo: 'Quién es el responsable',
+        titulo: 'Desarrollador y contacto',
         bloques: [
-          'Octuma App es un proyecto de Imanol Rodríguez, desarrollador independiente en México. Para cualquier duda sobre esta política escribe a:',
+          'Octuma App la desarrolla Imanol Rodríguez, desarrollador independiente en México. Para cualquier duda sobre esta política escribe a:',
           { correo: true },
+          'El desarrollador no recibe tus datos ni interviene en lo que haces con la app. Cómo la usas, qué modelos descargas o importas y qué haces con las respuestas es responsabilidad tuya; los términos de uso, más abajo, lo detallan.',
         ],
       },
       {
@@ -145,7 +146,7 @@ const TEXTOS = {
               ],
               [
                 'Reportar una respuesta',
-                'Cada respuesta tiene una opción para reportarla. Abre tu app de correo con el texto de la respuesta, y tú decides si lo envías.',
+                'Cada respuesta tiene una opción para reportarla, como piden las tiendas de apps a los chats con IA. Sirve para avisar de un modelo que genera contenido ofensivo, y con eso el desarrollador decide qué modelos ofrece la app. Abre tu app de correo con el texto de la respuesta, y tú decides si lo envías.',
               ],
               [
                 'App hecha con ayuda de IA',
@@ -214,7 +215,16 @@ const TEXTOS = {
         id: 't-uso',
         titulo: 'Uso de la app',
         bloques: [
-          'Al usar Octuma App aceptas estos términos. Puedes usarla para fines personales o profesionales, siempre dentro de la ley. No la uses para generar contenido ilegal ni contenido que dañe a otras personas.',
+          'La primera vez que abres Octuma App, la app te muestra estos términos y no deja continuar hasta que los aceptas. La aceptación se guarda en tu teléfono, con la fecha y la versión, y puedes verla en Ajustes. Si los términos cambian, la app te los vuelve a pedir.',
+          'Puedes usar la app para fines personales o profesionales, siempre dentro de la ley. No la uses para generar contenido ilegal ni contenido que dañe a otras personas.',
+        ],
+      },
+      {
+        id: 't-responsabilidad',
+        titulo: 'El uso es responsabilidad tuya',
+        bloques: [
+          'Tú decides cómo usas la app, qué modelos descargas o importas y qué haces con las respuestas, y tú respondes por ello.',
+          'El desarrollador no es el autor de los modelos ni de lo que generan, no los controla mientras se ejecutan en tu teléfono y no revisa tus conversaciones, que nunca recibe.',
         ],
       },
       {
@@ -235,7 +245,7 @@ const TEXTOS = {
         id: 't-garantias',
         titulo: 'Sin garantías',
         bloques: [
-          'La app se ofrece tal cual, sin garantías de ningún tipo. Hasta donde la ley lo permita, el autor no responde por los daños que resulten de usar la app, de las respuestas de los modelos o de modelos de terceros. Eso incluye la pérdida de conversaciones, que solo existen en tu teléfono, y el consumo de datos móviles al descargar modelos.',
+          'La app se ofrece tal cual, sin garantías de ningún tipo. Hasta donde la ley lo permita, el desarrollador no responde por los daños que resulten de usar la app, de las respuestas de los modelos o de modelos de terceros. Eso incluye la pérdida de conversaciones, que solo existen en tu teléfono, y el consumo de datos móviles al descargar modelos.',
         ],
       },
       {
@@ -255,7 +265,7 @@ const TEXTOS = {
     miga: 'You are here',
     portafolio: 'Portfolio',
     titulo: 'Privacy policy',
-    vigencia: 'Effective October 6, 2026',
+    vigencia: 'Effective October 7, 2026',
     irTerminos: 'Terms of use',
     resumenTitulo: 'In short',
     resumen: [
@@ -266,10 +276,11 @@ const TEXTOS = {
     secciones: [
       {
         id: 'responsable',
-        titulo: 'Who is responsible',
+        titulo: 'Developer and contact',
         bloques: [
-          'Octuma App is a project by Imanol Rodríguez, an independent developer in Mexico. For any question about this policy, write to:',
+          'Octuma App is developed by Imanol Rodríguez, an independent developer in Mexico. For any question about this policy, write to:',
           { correo: true },
+          "The developer doesn't receive your data and takes no part in what you do with the app. How you use it, which models you download or import, and what you do with the answers is your responsibility; the terms of use below spell this out.",
         ],
       },
       {
@@ -370,7 +381,7 @@ const TEXTOS = {
               ],
               [
                 'Reporting an answer',
-                'Every answer has an option to report it. It opens your email app with the text of the answer, and you decide whether to send it.',
+                'Every answer has an option to report it, as app stores require of AI chat apps. It is meant for flagging a model that generates offensive content, which the developer uses to decide which models the app offers. It opens your email app with the text of the answer, and you decide whether to send it.',
               ],
               [
                 'Built with the help of AI',
@@ -439,7 +450,16 @@ const TEXTOS = {
         id: 't-uso',
         titulo: 'Using the app',
         bloques: [
-          "By using Octuma App you accept these terms. You may use it for personal or professional purposes, always within the law. Don't use it to generate illegal content or content that harms other people.",
+          "The first time you open Octuma App, the app shows you these terms and won't let you continue until you accept them. Your acceptance is stored on your phone, with the date and version, and you can see it in Settings. If the terms change, the app asks you again.",
+          "You may use the app for personal or professional purposes, always within the law. Don't use it to generate illegal content or content that harms other people.",
+        ],
+      },
+      {
+        id: 't-responsabilidad',
+        titulo: 'How you use it is your responsibility',
+        bloques: [
+          'You decide how you use the app, which models you download or import, and what you do with the answers, and you are responsible for it.',
+          "The developer is not the author of the models or of what they generate, doesn't control them while they run on your phone, and doesn't review your conversations, which the developer never receives.",
         ],
       },
       {
@@ -460,7 +480,7 @@ const TEXTOS = {
         id: 't-garantias',
         titulo: 'No warranty',
         bloques: [
-          "The app is provided as is, without warranties of any kind. To the extent the law allows, the author is not liable for damages resulting from the use of the app, from the models' answers or from third-party models. That includes the loss of conversations, which exist only on your phone, and mobile data used when downloading models.",
+          "The app is provided as is, without warranties of any kind. To the extent the law allows, the developer is not liable for damages resulting from the use of the app, from the models' answers or from third-party models. That includes the loss of conversations, which exist only on your phone, and mobile data used when downloading models.",
         ],
       },
       {
