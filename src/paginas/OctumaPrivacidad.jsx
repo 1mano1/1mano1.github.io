@@ -15,7 +15,7 @@ import './OctumaPrivacidad.css'
    guarda cada cosa. Si la app cambia, esta pagina cambia con ella y se
    actualiza la fecha. */
 
-const CORREO = 'ima.roguez11@gmail.com'
+const CORREO = 'soporte.imanlabs@gmail.com'
 
 /* Un bloque es un parrafo (string) o una lista ({ lista: [...] }). Un item de
    lista puede ser [termino, explicacion] o un string. */
