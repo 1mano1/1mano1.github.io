@@ -4,6 +4,7 @@ import ProveedorIdioma from './lib/ProveedorIdioma'
 import TituloDePagina from './lib/TituloDePagina'
 import AvisoCookies from './secciones/AvisoCookies'
 import OctumaApp from './paginas/OctumaApp'
+import OctumaPrivacidad from './paginas/OctumaPrivacidad'
 import Portafolio from './paginas/Portafolio'
 import Octuma from './paginas/TinyQ'
 
@@ -17,6 +18,8 @@ export default function App() {
           <Route path="/" element={<Portafolio />} />
           <Route path="/octuma" element={<Octuma />} />
           <Route path="/octuma-app" element={<OctumaApp />} />
+          {/* La app enlaza aqui desde Ajustes, y Google Play pide esta direccion. */}
+          <Route path="/octuma-privacidad" element={<OctumaPrivacidad />} />
           {/* La libreria se llamaba TinyQ: los enlaces viejos siguen llegando. */}
           <Route path="/tinyq" element={<Navigate to="/octuma" replace />} />
         </Routes>

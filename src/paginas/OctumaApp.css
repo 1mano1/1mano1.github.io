@@ -673,3 +673,15 @@
   font-size: var(--t-mini) !important;
   color: var(--oa-tenue) !important;
 }
+
+/* El enlace a la politica: subrayado, porque dentro de un texto el color solo
+   no basta para verlo como enlace. */
+.oapp-cierre__pie a {
+  color: var(--oa-secundario);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.oapp-cierre__pie a:hover {
+  color: var(--oa-texto);
+}

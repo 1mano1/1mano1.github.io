@@ -10,11 +10,13 @@ const TITULOS = {
     '/': 'Imanol Rodríguez · Backend, IA y modelos que caben en tu bolsillo',
     '/octuma': 'Octuma · Cuantización de modelos de lenguaje a 4 y 8 bits',
     '/octuma-app': 'Octuma App · Un modelo de lenguaje en tu teléfono',
+    '/octuma-privacidad': 'Octuma App · Política de privacidad',
   },
   en: {
     '/': 'Imanol Rodríguez · Backend, AI and models that fit in your pocket',
     '/octuma': 'Octuma · 4 and 8-bit quantization for language models',
     '/octuma-app': 'Octuma App · A language model on your phone',
+    '/octuma-privacidad': 'Octuma App · Privacy policy',
   },
 }
 

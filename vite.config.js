@@ -6,7 +6,7 @@ import { defineConfig } from 'vite'
 /* GitHub Pages sirve archivos, no sabe de las rutas de React Router: cada ruta
    lleva su copia del index (Pages sirve /octuma desde octuma.html con 200) y
    404.html cubre todo lo demas. */
-const RUTAS = ['octuma', 'octuma-app', 'tinyq']
+const RUTAS = ['octuma', 'octuma-app', 'octuma-privacidad', 'tinyq']
 
 function fallbackSpa() {
   return {
