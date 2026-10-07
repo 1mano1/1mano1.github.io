@@ -120,11 +120,11 @@ const TEXTOS = {
               ],
               [
                 'Notificaciones',
-                'Para mostrar el avance de una descarga y avisarte cuando termina. Android lo pregunta antes de la primera descarga. Si lo niegas, la descarga se hace igual, sin aviso.',
+                'Para mostrar el avance de una descarga y avisarte cuando termina, y para avisarte de que una respuesta está lista si saliste de la app mientras se escribía. El aviso no incluye el texto de la respuesta. Android lo pregunta antes de la primera descarga. Si lo niegas, todo funciona igual, sin avisos.',
               ],
               [
                 'Servicio en primer plano',
-                'Para que una descarga que tú iniciaste no se corte cuando sales de la app. Solo está activo mientras dura la descarga.',
+                'Para que una descarga o una respuesta que tú pediste no se corte cuando sales de la app. Solo está activo mientras dura.',
               ],
             ],
           },
@@ -366,11 +366,11 @@ const TEXTOS = {
               ],
               [
                 'Notifications',
-                'To show the progress of a download and tell you when it finishes. Android asks before the first download. If you deny it, the download still happens, without a notification.',
+                'To show the progress of a download and tell you when it finishes, and to tell you an answer is ready if you left the app while it was being written. The notification does not include the text of the answer. Android asks before the first download. If you deny it, everything works the same, without notifications.',
               ],
               [
                 'Foreground service',
-                "So that a download you started isn't cut off when you leave the app. It is only active while the download lasts.",
+                "So that a download or an answer you asked for isn't cut off when you leave the app. It is only active while it lasts.",
               ],
             ],
           },
