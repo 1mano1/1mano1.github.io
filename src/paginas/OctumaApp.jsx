@@ -43,7 +43,7 @@ const TEXTOS = {
     pasos: [
       [
         'Elige un modelo',
-        'La app revisa cuánta memoria tiene tu teléfono y te ofrece el modelo más grande que le cabe con margen. También puedes buscar otros en Hugging Face.',
+        'La app revisa cuánta memoria tiene tu teléfono y te ofrece el modelo más grande que le cabe con margen. También puedes importar un archivo .gguf que ya tengas.',
       ],
       [
         'Descárgalo una vez',
@@ -130,7 +130,7 @@ const TEXTOS = {
     pasos: [
       [
         'Pick a model',
-        'The app checks how much memory your phone has and offers the largest model that fits with room to spare. You can also search for others on Hugging Face.',
+        'The app checks how much memory your phone has and offers the largest model that fits with room to spare. You can also import a .gguf file you already have.',
       ],
       [
         'Download it once',
