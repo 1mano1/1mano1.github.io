@@ -81,7 +81,7 @@ const TEXTOS = {
             lista: [
               [
                 'Hugging Face',
-                'Para buscar y descargar modelos, y para iniciar sesión si quieres usar tus modelos privados. Hugging Face recibe tu dirección IP, lo que buscas y, si iniciaste sesión, tu token. La sesión se inicia en el navegador: la app nunca ve tu contraseña.',
+                'Para descargar modelos, y para iniciar sesión si quieres usar los modelos de tu cuenta. Hugging Face recibe tu dirección IP, qué modelo descargas y, si iniciaste sesión, tu token. La sesión se inicia en el navegador: la app nunca ve tu contraseña.',
               ],
               [
                 'Búsqueda web (opcional)',
@@ -327,7 +327,7 @@ const TEXTOS = {
             lista: [
               [
                 'Hugging Face',
-                'To search for and download models, and to sign in if you want to use your private models. Hugging Face receives your IP address, what you search for and, if you signed in, your token. Sign-in happens in the browser: the app never sees your password.',
+                'To download models, and to sign in if you want to use the models in your account. Hugging Face receives your IP address, which model you download and, if you signed in, your token. Sign-in happens in the browser: the app never sees your password.',
               ],
               [
                 'Web search (optional)',
