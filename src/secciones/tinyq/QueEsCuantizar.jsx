@@ -21,7 +21,7 @@ const TEXTOS = {
     },
     fuente: 'Memoria de Qwen2.5 3B en cada formato, medida con grupos de 64.',
     nota:
-      'Entre más grande el modelo, menos duele cuantizarlo. Con el mejor método, el de 7B pierde 1.8% de perplejidad y el de 0.5B pierde 5.2%. El orden de los métodos es idéntico en los cuatro tamaños medidos.',
+      'Entre más grande el modelo, menos duele cuantizarlo. Con el mejor método, el de 7B pierde 1.8% de perplejidad y el de 0.5B pierde 5.2%, medido con grupos de 64. El orden de los métodos es idéntico en los cuatro tamaños medidos.',
   },
   en: {
     rotulo: 'What quantization is',
@@ -35,7 +35,7 @@ const TEXTOS = {
     },
     fuente: 'Qwen2.5 3B memory in each format, measured with groups of 64.',
     nota:
-      'The bigger the model, the less quantization hurts. With the best method, the 7B loses 1.8% perplexity and the 0.5B loses 5.2%. The ranking of methods is the same across all four sizes measured.',
+      'The bigger the model, the less quantization hurts. With the best method, the 7B loses 1.8% perplexity and the 0.5B loses 5.2%, measured with groups of 64. The ranking of methods is the same across all four sizes measured.',
   },
 }
 

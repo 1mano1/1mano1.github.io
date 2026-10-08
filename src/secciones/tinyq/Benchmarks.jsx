@@ -58,14 +58,14 @@ const TEXTOS = {
     intro: 'Perplejidad en wikitext-2, 20 ventanas de 2048 tokens. Menos es mejor.',
     columnas: ['Modelo', 'Mem. FP16', 'Mem. INT4', 'PPL FP16', 'PPL INT4', 'Pérdida', 'Método'],
     fuente:
-      'El 7B se cuantizó solo con GPTQ: con AWQ no cupo en la memoria del servidor. Todo se midió con grupos de 64, y los datos completos están en el repositorio.',
+      'El 7B se cuantizó solo con GPTQ: con AWQ no cupo en la memoria del servidor. Todo se midió con grupos de 64. Con grupos de 32, que es lo que usa hoy la librería, el 0.5B pierde 2.8% y el 1.5B 2.0%. Los datos completos están en el repositorio.',
   },
   en: {
     titulo: 'Memory per model',
     intro: 'Perplexity on wikitext-2, 20 windows of 2048 tokens. Lower is better.',
     columnas: ['Model', 'FP16 mem.', 'INT4 mem.', 'FP16 PPL', 'INT4 PPL', 'Loss', 'Method'],
     fuente:
-      "The 7B was quantized with GPTQ only: with AWQ it didn't fit in the server's memory. Everything was measured with groups of 64, and the full data is in the repository.",
+      "The 7B was quantized with GPTQ only: with AWQ it didn't fit in the server's memory. Everything was measured with groups of 64. With groups of 32, which is what the library uses today, the 0.5B loses 2.8% and the 1.5B 2.0%. The full data is in the repository.",
   },
 }
 
