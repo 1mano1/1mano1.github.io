@@ -5,7 +5,7 @@
  * antes estaba escrita a mano en tres componentes y cada uno decia una distinta.
  * La version sale de C:/octuma/src/octuma/__init__.py; las pruebas, de pytest.
  */
-export const VERSION = '0.1.4'
-export const PRUEBAS = 74
+export const VERSION = '0.1.5'
+export const PRUEBAS = 131
 export const PYPI = 'https://pypi.org/project/octuma/'
 export const REPO = 'https://github.com/1mano1/octuma'

@@ -9,7 +9,7 @@ const COMANDO = 'octuma quantize Qwen/Qwen2.5-3B-Instruct'
 const TEXTOS = {
   es: {
     version: 'Versión actual en PyPI',
-    titulo: ['Modelos ', '2.5× más chicos', ', perdiendo 2.4% de calidad.'],
+    titulo: ['Modelos ', '2.6× más chicos', ', perdiendo 2.4% de calidad.'],
     bajada:
       'Librería de Python que cuantiza modelos de lenguaje a INT4 e INT8 con GPTQ + AWQ, mide cuánta calidad se perdió y exporta a GGUF para llama.cpp y Android, o a .tq para PyTorch.',
     github: 'Ver en GitHub',
@@ -17,7 +17,7 @@ const TEXTOS = {
   },
   en: {
     version: 'Current version on PyPI',
-    titulo: ['Models ', '2.5× smaller', ', losing 2.4% of quality.'],
+    titulo: ['Models ', '2.6× smaller', ', losing 2.4% of quality.'],
     bajada:
       'A Python library that quantizes language models to INT4 and INT8 with GPTQ + AWQ, measures how much quality was lost, and exports to GGUF for llama.cpp and Android, or to .tq for PyTorch.',
     github: 'View on GitHub',

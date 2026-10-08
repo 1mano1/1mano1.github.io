@@ -19,7 +19,7 @@ const TEXTOS = {
     rotulo: '02 — OPEN SOURCE',
     titulo: 'Lo que libero para todos',
     texto:
-      'Librería en Python que cuantiza modelos de lenguaje a 8 y 4 bits con un solo comando. Un Qwen de 3B pasa de 6.79 a 2.76 GB perdiendo 2.4% de calidad, y sale en GGUF para llama.cpp o para un teléfono Android.',
+      'Librería en Python que cuantiza modelos de lenguaje a 8 y 4 bits con un solo comando. Un Qwen de 3B pasa de 6.18 a 2.40 GB perdiendo 2.4% de calidad, y sale en GGUF para llama.cpp o para un teléfono Android.',
     pasos: [
       ['Calibra', 'Pasa 128 fragmentos de texto por el modelo para medir cada capa.'],
       ['Cuantiza', 'Agrupa los pesos de 32 en 32 y los baja a 4 bits.'],
@@ -41,7 +41,7 @@ const TEXTOS = {
     rotulo: '02 — OPEN SOURCE',
     titulo: 'What I share with everyone',
     texto:
-      'A Python library that quantizes language models to 8 and 4 bits with a single command. A 3B Qwen goes from 6.79 to 2.76 GB while losing 2.4% of quality, and comes out as GGUF for llama.cpp or an Android phone.',
+      'A Python library that quantizes language models to 8 and 4 bits with a single command. A 3B Qwen goes from 6.18 to 2.40 GB while losing 2.4% of quality, and comes out as GGUF for llama.cpp or an Android phone.',
     pasos: [
       ['Calibrate', 'Runs 128 chunks of text through the model to measure each layer.'],
       ['Quantize', 'Splits the weights into groups of 32 and brings them down to 4 bits.'],
